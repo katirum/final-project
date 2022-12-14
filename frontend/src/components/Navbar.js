@@ -1,6 +1,6 @@
 import React from "react";
 import { NavWrapper } from "utils/GlobalStyles";
-import logo from './utils'
+//import logo from './utils'
 
 export const Navbar = () => {
     return (
