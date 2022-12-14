@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom'
 import styled from "styled-components";
 
 const COLORS = {
-  PrimaryDark: "#115b4c",
+  PrimaryDark: "#064635",
   PrimaryLight: "#f5f5f5",
 
 }
@@ -13,11 +13,11 @@ const COLORS = {
 const MenuLabel = styled.label`
   background-color: ${COLORS.PrimaryLight};
   position: fixed;
-  top: 6rem;
+  top: 2rem;
   right: 6rem;
   border-radius: 50%;
-  height: 7rem;
-  width: 7rem;
+  height: 4rem;
+  width: 4rem;
   cursor: pointer;
   z-index: 1000;
   box-shadow: 0 1rem 3rem rgba(182, 237, 200, 0.3);
@@ -26,8 +26,8 @@ const MenuLabel = styled.label`
 
 const NavBackground = styled.div`
 position: fixed;
-top: 6.5rem;
-right: 6.5rem;
+top: 2rem;
+right: 6rem;
 background-image: radial-gradient(
   ${COLORS.PrimaryDark},
   ${COLORS.PrimaryLight}
@@ -37,24 +37,24 @@ width: 6rem;
 border-radius: 50%;
 
 transform: ${props => props.clicked? "scale(80)": "scale(0)"};
-transition: transform 0.8s;
+transition: transform 0.8s, opacity 0.8s;
 
 `
 
 const Icon = styled.span`
   position: relative;
   background-color: ${(props) => (props.clicked ? "transparent" : "black")};
-  width: 3rem;
+  width: 2rem;
   height: 2px;
   display: inline-block;
-  margin-top: 3.5rem;
+  margin-top: 2rem;
   transition: all 0.3s;
 
   &::before,
   &::after {
     content: "";
     background-color: black;
-    width: 3rem;
+    width: 2rem;
     height: 2px;
     display: inline-block;
     position: absolute;
@@ -83,7 +83,10 @@ position: fixed;
 top:0;
 right:0;
 z-index: 600;
-width: 100%;
+width: ${(props) => (props.clicked ? "100%" : "0")};
+opacity: ${(props) => (props.clicked ? "1" : "0")};
+
+transition: width 0.8s;
 `
 const List = styled.ul`
 position: absolute;
@@ -97,11 +100,27 @@ width: 100%;
 `
 const ItemLink = styled(NavLink)`
 display: inline-block;
-font-size: 3rem;
+font-size: 2rem;
 font-weight: 300;
 text-decoration: none;
 color: ${COLORS.PrimaryLight};
 padding: 1rem 2rem;
+
+background-image: linear-gradient(
+  120deg,
+  transparent 0%,
+  transparent 50%,
+  #fff 50%
+);
+background-size: 240%;
+transition: all 0.4s;
+
+&:hover, 
+&:active {
+  background-position: 100%;
+  color:${COLORS.PrimaryDark};
+  transform: translateX(1rem) ;
+}
 `
 
 export const HamburgerMenu = () => {
@@ -116,13 +135,25 @@ const handleClick = () => setClick(!click);
           </MenuLabel>
           <NavBackground clicked={click}>&nbsp;</NavBackground>
                 
-        <Navigation onClick={handleClick}>
+        <Navigation clicked={click}>
           <List>
             <li>
             <ItemLink onClick={handleClick} to="/">Home</ItemLink>
-            <ItemLink onClick={handleClick} to="/">Login/Register</ItemLink>
-            <ItemLink onClick={handleClick} to="/">Home</ItemLink>
-            <ItemLink onClick={handleClick} to="/">Home</ItemLink>
+            </li>
+            <li>
+            <ItemLink onClick={handleClick} to="/login">Login/Register</ItemLink>
+            </li>
+            <li>
+            <ItemLink onClick={handleClick} to="/events">Events</ItemLink>
+            </li>
+            <li>
+            <ItemLink onClick={handleClick} to="/dashboard">My Profile</ItemLink>
+            </li>
+            <li>
+            <ItemLink onClick={handleClick} to="/contact">Contact</ItemLink>
+            </li>
+            <li>
+            <ItemLink onClick={handleClick} to="/about">About</ItemLink>
             </li>
           </List>
         </Navigation>

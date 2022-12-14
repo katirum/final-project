@@ -9,16 +9,18 @@ export const GlobalStyles = createGlobalStyle`
     --quinary: #FBFAEF;
   }
   * {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
+    /* outline: 1px solid red; */
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    max-height: 100vh;/* 
+     max-width: 100vw;*/
   }
   body{
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Nunito Sans', sans-serif;
     background-color: var(--primary);
-    overflow-x: hidden;
   }
 `
 
@@ -27,6 +29,17 @@ export const NavWrapper = styled.div`
 `
 
 export const Logo = styled.img`
-  height: 100px;
-  width: 100px;
+  height: 150px;
+  position: fixed;
+  top: 0;
+  left: 6rem;
+`
+
+export const Button = styled.button`
+  border: 2px solid var(--secondary);
+  background-color: transparent;
+  color: var(--secondary);
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-family: 'Nunito Sans', sans-serif;
 `
