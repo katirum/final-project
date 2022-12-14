@@ -1,31 +1,37 @@
 import React from "react";
-import styled, { css } from "styled-components/macro";
+/* import styled, { css } from "styled-components/macro"; */
+/* import { BrowserRouter as Router/* , Switch, Route */ 
 import { NavWrapper, Logo } from "utils/GlobalStyles";
 import LogoImg from '../utils/assets/logoimage.png'
+import { HamburgerMenu } from "./Navbar2";
 
 export const Navbar = () => {
 
     return (
         <NavWrapper>
            <Logo src={LogoImg} alt="langish logo" />
+          <HamburgerMenu />
 
-{/* Hamburger menu */}
-  <Menu>
-    <li><MenuItem href="#">Home</MenuItem></li>
-    <li><MenuItem href="#">Profile</MenuItem></li>
-    <li><MenuItem href="#">About</MenuItem></li>
-    <li><MenuItem href="#">Contacts</MenuItem></li>
-  </Menu>
-  <Hamburger>
- {/* material icons https://material.io/resources/icons/  */}
-    <i class="menuIcon material-icons">menu</i>
-    <CloseIcon material-icons>close</CloseIcon>
-  </Hamburger>
+
         </NavWrapper>
     )
 }
 
-const Menu = styled.ul `
+
+
+{/* <Menu>
+<li><MenuItem href="#">Home</MenuItem></li>
+<li><MenuItem href="#">Profile</MenuItem></li>
+<li><MenuItem href="#">About</MenuItem></li>
+<li><MenuItem href="#">Contacts</MenuItem></li>
+</Menu>
+<Hamburger>
+material icons https://material.io/resources/icons/
+<i class="menuIcon material-icons">menu</i>
+<CloseIcon material-icons>close</CloseIcon>
+</Hamburger> */}
+
+/* const Menu = styled.ul `
 position: fixed;
   transform: translateY(-100%);
   transition: transform 0.2s;
@@ -65,4 +71,4 @@ const Hamburger = styled.button`
 
 const CloseIcon = styled.i`
 display: none;
-`
+` */
