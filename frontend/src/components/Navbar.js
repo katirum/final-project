@@ -1,13 +1,68 @@
 import React from "react";
-import { NavWrapper } from "utils/GlobalStyles";
-//import logo from './utils'
+import styled, { css } from "styled-components/macro";
+import { NavWrapper, Logo } from "utils/GlobalStyles";
+import LogoImg from '../utils/assets/logoimage.png'
 
 export const Navbar = () => {
+
     return (
         <NavWrapper>
-           <img src="/utils/assets/logo.png" alt="langish logo" />
-           Navbar
+           <Logo src={LogoImg} alt="langish logo" />
+
+{/* Hamburger menu */}
+  <Menu>
+    <li><MenuItem href="#">Home</MenuItem></li>
+    <li><MenuItem href="#">Profile</MenuItem></li>
+    <li><MenuItem href="#">About</MenuItem></li>
+    <li><MenuItem href="#">Contacts</MenuItem></li>
+  </Menu>
+  <Hamburger>
+ {/* material icons https://material.io/resources/icons/  */}
+    <i class="menuIcon material-icons">menu</i>
+    <CloseIcon material-icons>close</CloseIcon>
+  </Hamburger>
         </NavWrapper>
     )
 }
 
+const Menu = styled.ul `
+position: fixed;
+  transform: translateY(-100%);
+  transition: transform 0.2s;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 99;
+  background: black;
+  color: white;
+  list-style: none;
+  padding-top: 4rem;
+`
+
+const MenuItem = styled.a`
+
+  display: block;
+  margin: 2rem 4rem;
+  font-size: 1.8rem;
+  color: white;
+  text-decoration: none;
+
+:hover {
+  text-decoration: underline;
+}
+`
+const Hamburger = styled.button`
+  position: fixed;
+  z-index: 100;
+  top: 1rem;
+  right: 1rem;
+  padding: 4px;
+  border: black solid 1px;
+  background: white;
+  cursor: pointer;
+`
+
+const CloseIcon = styled.i`
+display: none;
+`
