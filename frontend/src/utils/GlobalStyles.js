@@ -13,7 +13,7 @@ export const GlobalStyles = createGlobalStyle`
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    max-height: 100vh;/* 
+    /*max-height: 100vh; 
      max-width: 100vw;*/
   }
   body{
@@ -57,4 +57,10 @@ export const Button = styled.button`
   border-radius: 5px;
   font-family: 'Nunito Sans', sans-serif;
   cursor: pointer;
+`
+
+export const Img = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 `
