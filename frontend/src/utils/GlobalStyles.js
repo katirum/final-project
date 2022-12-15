@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle, css } from "styled-components";
+import styled, { createGlobalStyle, css } from "styled-components/macro";
 
 export const GlobalStyles = createGlobalStyle`
   :root {
@@ -24,15 +24,29 @@ export const GlobalStyles = createGlobalStyle`
   }
 `
 
+export const PageContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  height: 100vh;
+`
+
+export const InnerWrapper = styled.div`
+width: 80%;
+margin: 0 auto;
+`
+
 export const NavWrapper = styled.div`
   height: 100px;
+  background-color: transparent;
+  z-index: 100;
+  position: fixed;
 `
 
 export const Logo = styled.img`
-  height: 150px;
+  height: 6rem;
   position: fixed;
-  top: 0;
-  left: 6rem;
+  top: 2%;
+  left: 2%;
 `
 
 export const Button = styled.button`
@@ -42,4 +56,5 @@ export const Button = styled.button`
   padding: 10px 20px;
   border-radius: 5px;
   font-family: 'Nunito Sans', sans-serif;
+  cursor: pointer;
 `

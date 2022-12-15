@@ -13,8 +13,8 @@ const COLORS = {
 const MenuLabel = styled.label`
   background-color: ${COLORS.PrimaryLight};
   position: fixed;
-  top: 2rem;
-  right: 6rem;
+  top: 5.5%;
+  right: 5%;
   border-radius: 50%;
   height: 4rem;
   width: 4rem;

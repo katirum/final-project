@@ -1,11 +1,9 @@
 import React from 'react';
-import { GlobalStyles, Logo } from 'utils/GlobalStyles';
+import { GlobalStyles } from 'utils/GlobalStyles';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import LogoImg from './utils/assets/logoimage.png';
-import { HamburgerMenu } from 'components/HamburgerMenu';
+import { Navbar } from 'components/Navbar';
 import { StartPage } from 'pages/StartPage';
 import { LoginPage } from 'pages/LoginPage';
-import { RegisterPage } from 'pages/RegisterPage';
 import { DashboardPage } from 'pages/DashboardPage';
 import { AllEventsPage } from 'pages/AllEventsPage';
 import { CreateEditEventsPage } from 'pages/CreateEditEventsPage';
@@ -16,12 +14,10 @@ export const App = () => {
     <> 
     <GlobalStyles />
     <BrowserRouter>
-    <Logo src={LogoImg} alt="langish logo" />
-    <HamburgerMenu />
+    <Navbar />
     <Routes>
       <Route path="/" element={<StartPage />} />
       <Route path="/login" element={<LoginPage />} />
-      <Route path="/register" element={<RegisterPage />} />
       <Route path="/dashboard" element={<DashboardPage />} />
       <Route path="/events" element={<AllEventsPage />} />
       <Route path="/create-events" element={<CreateEditEventsPage />} />
