@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Routes, Route,  useNavigate } from 'react-rout
 import { Navbar } from 'components/Navbar';
 import { StartPage } from 'pages/StartPage';
 import { LoginPage } from 'pages/LoginPage'; 
-/* import { Form } from 'components/Form'; */
 import { DashboardPage } from 'pages/DashboardPage';
 import { AllEventsPage } from 'pages/AllEventsPage';
 import { CreateEditEventsPage } from 'pages/CreateEditEventsPage';
@@ -19,16 +18,18 @@ export const App = () => {
   const [password, setPassword] = useState('')
   const navigate = useNavigate();
 
+  //Saves the log in info intil page is closed, and if user is logged in navigates to dashboard
   useEffect(() => {
     let authToken = sessionStorage.getItem('Auth Token')
-
     if (authToken) {
       navigate('/dashboard')
     }
   }, [navigate])
 
+  // Function that handles login and register
   const handleAction = (id) => {
     const authentication = getAuth();
+    // If registering(2), navigates to dashboard if successful, otherwise throws error
     if(id === 2){
     createUserWithEmailAndPassword(authentication, email, password)
     .then((response) => {
@@ -44,6 +45,8 @@ export const App = () => {
       }
 })
     } 
+    // If logging in(1), navigates to dashboard if successful, otherwise throws error.
+    // Also navigates to login page if not logged in
     if (id === 1) {
       signInWithEmailAndPassword(authentication, email, password)
         .then((response) => {
@@ -65,7 +68,6 @@ export const App = () => {
     <> 
     <GlobalStyles />
     <ToastContainer />
-    {/* <Router> */}
     <Navbar />
     <Routes>
       <Route path="/" element={<StartPage />} />
@@ -90,7 +92,6 @@ export const App = () => {
       <Route path="/create-events" element={<CreateEditEventsPage />} />
       <Route path="/account-settings" element={<AccountSettingsPage />} />
     </Routes>
-    {/* </Router> */}
     </>
   );
 }
