@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { GlobalStyles } from 'utils/GlobalStyles';
-import { BrowserRouter as Router, Routes, Route,  useNavigate } from 'react-router-dom';
+import { Routes, Route,  useNavigate } from 'react-router-dom';
 import { Navbar } from 'components/Navbar';
+import { Footer } from 'components/Footer';
 import { StartPage } from 'pages/StartPage';
 import { LoginPage } from 'pages/LoginPage'; 
 import { DashboardPage } from 'pages/DashboardPage';
@@ -92,6 +93,7 @@ export const App = () => {
       <Route path="/create-events" element={<CreateEditEventsPage />} />
       <Route path="/account-settings" element={<AccountSettingsPage />} />
     </Routes>
+    <Footer />
     </>
   );
 }

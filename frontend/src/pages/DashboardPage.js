@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import { useNavigate } from 'react-router-dom'
-import { Button } from "utils/GlobalStyles";
+import { InnerWrapper, Button } from "utils/GlobalStyles";
 /* import { Link } from "react-router-dom"; */
+import { MyEvents } from '../components/MyEvents'
 
 export const DashboardPage = () => {
     const handleLogout = () => {
@@ -23,9 +24,9 @@ export const DashboardPage = () => {
     }, [navigate])
     
     return (
-        <div>
-            Hi!
+        <InnerWrapper>
             <Button onClick={handleLogout}>Logout</Button>
-        </div>
+            <MyEvents />
+        </InnerWrapper>
     )
 }
