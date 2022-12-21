@@ -1,8 +1,10 @@
+require('dotenv').config()
 import express from "express";
 import cors from "cors";
 import events from "./data/events"
 import mongoose from "mongoose";
-import dotenv from "dotenv"
+import dotenv from "dotenv";
+/* import connectDB from "./config/db"; */
 
 const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/project-mongo";
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -13,8 +15,9 @@ mongoose.Promise = Promise;
 // PORT=9000 npm start
 const port = process.env.PORT || 8080;
 const app = express();
-dotenv.config();
+/* dotenv.config(); */
 
+/* connectDB(); */
 // Add middlewares to enable cors and json body parsing
 app.use(cors());
 app.use(express.json());
@@ -33,7 +36,21 @@ app.get("/api/events/:id", (req, res) => {
   res.send(event);
 })
 
+//Trisl
+app.post("/api/createevent", async (req, res) => {
+  const {title, content} = req.body;
+  try{
+    const savedEvent= await new Event({title: title, content: content}).save();
+    res.status(201).json({success: true, response: savedEvent});
+  }catch (err){
+    res.status(400).json({success: false, message:'cannot post thoughts'})
+  }
+});
+
 // Start the server
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
 });
+
+
+
