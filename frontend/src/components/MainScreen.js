@@ -4,7 +4,7 @@ export const MainScreen = ({title, children}) => {
     return(
         <Container>
             <Row>
-                <div classname="page">
+                <div className="page">
                     {title && (<>
                     <h1>{title}</h1>
                     </>)}
