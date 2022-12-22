@@ -13,6 +13,18 @@ import { app } from './firebase-config';
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Provider } from 'react-redux';
+import { configureStore, combineReducers } from '@reduxjs/toolkit';
+
+import user from "./reducers/user";
+import events from "./reducers/events";
+
+const reducer = combineReducers({
+  user: user.reducer,
+  events: events.reducer,
+});
+
+const store = configureStore({ reducer });
 
 export const App = () => {
   const [email, setEmail] = useState('');
@@ -67,6 +79,7 @@ export const App = () => {
 
   return (
     <> 
+    <Provider store={store}>
     <GlobalStyles />
     <ToastContainer />
     <Navbar />
@@ -94,6 +107,7 @@ export const App = () => {
       <Route path="/account-settings" element={<AccountSettingsPage />} />
     </Routes>
     <Footer />
+    </ Provider>
     </>
   );
 }
