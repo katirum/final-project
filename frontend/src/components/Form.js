@@ -5,6 +5,7 @@ import { Buttons } from './Button';
 import styled from 'styled-components/macro';
 import Typography from '@mui/material/Typography'
 import {createTheme, ThemeProvider} from '@mui/material/styles'
+import { Link } from 'react-router-dom';
 
 /* import { InnerWrapper } from '../utils/GlobalStyles' */
 
@@ -30,7 +31,7 @@ const customTheme = createTheme({
 
 
 export const Form = ({title, setPassword, setEmail, handleAction}) => {
-  
+
     return (<>
         
             <FormContainer>
@@ -44,13 +45,16 @@ export const Form = ({title, setPassword, setEmail, handleAction}) => {
         <Box
             component="form"
             sx={{
-                color: '#f5f5f5'
+                color: '#f5f5f5',
+                display: 'flex',
+                flexDirection: 'column' 
             }}
             noValidate
             autoComplete="off"
         >
             <TextField 
             sx={{
+                margin: '10px',
                 "& .MuiInputBase-root": {"& > fieldset": {
                         borderColor: "#f5f5f5"
                     }
@@ -73,6 +77,7 @@ export const Form = ({title, setPassword, setEmail, handleAction}) => {
             />
             <TextField 
             sx={{
+                margin: '10px',
                 "& .MuiInputBase-root": {"& > fieldset": {
                         borderColor: "#f5f5f5"
                     }
@@ -100,8 +105,17 @@ export const Form = ({title, setPassword, setEmail, handleAction}) => {
         
         title={title}
         handleAction={handleAction}/>
-        </FormContainer>
+        {title === 'register'
+       && (
+        <p>Already a member? <Link to="/login">Login here</Link></p>
+       )}
+       {title === 'login'
+       && (
+        <p>Not a member? <Link to="/register">Register here</Link></p>
+       )}
 
+        </FormContainer>
+        
         </>
         
     );
@@ -111,7 +125,30 @@ const FormContainer = styled.div `
 border: 2px solid whitesmoke;
 border-radius: 15px;
 padding: 20px;
+text-align: center;
 `
 
+/* 
+import { Link } from 'react-router-dom';
 
+function AuthLink(props) {
+  const { authType } = props;
+  let path = '/login';
+  let text = 'Log in';
+
+  if (authType === 'register') {
+    path = '/register';
+    text = 'Sign up';
+  }
+
+  return (
+    <Link to={path}>
+      {text}
+    </Link>
+  );
+}
+
+export default AuthLink;
+
+*/
 

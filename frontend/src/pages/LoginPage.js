@@ -6,7 +6,7 @@ import { InnerWrapper, PageContainer, /* Button, */ Img } from 'utils/GlobalStyl
 import LoginPageImg from '../utils/assets/loginpage-img.jpg';
 import {Form} from '../components/Form'
 
-export const LoginPage = ({title, setPassword, setEmail, handleAction}) => {
+export const LoginPage = ({ title, setPassword, setEmail, handleAction}) => {
     return (
         <PageContainer>
         <InnerWrapper formWrapper>
