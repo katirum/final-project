@@ -9,7 +9,7 @@ import {Form} from '../components/Form'
 export const LoginPage = ({title, setPassword, setEmail, handleAction}) => {
     return (
         <PageContainer>
-        <InnerWrapper>
+        <InnerWrapper formWrapper>
            <Form 
            title={title}
            setPassword={setPassword}

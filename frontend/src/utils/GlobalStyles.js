@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle } from "styled-components/macro";
+import styled, { createGlobalStyle, css } from "styled-components/macro";
 
 export const GlobalStyles = createGlobalStyle`
   :root {
@@ -33,6 +33,18 @@ export const PageContainer = styled.div`
 export const InnerWrapper = styled.div`
 width: 80%;
 margin: 0 auto;
+
+
+${(props) =>
+    props.formWrapper &&
+    css`
+      display: flex;
+      justify-content: center;
+      align-self: center;
+      flex-direction: column;
+    `
+      }
+
 `
 
 export const NavWrapper = styled.div`
