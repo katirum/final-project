@@ -65,7 +65,7 @@ export const MyEvents = () => {
 
     return (
         <InnerWrapper>
-        <MainScreen title="Welcome back!">
+        <MainScreen title="Welcome back!" >
         <Link to="create-event">
                 <Button>
                     Create New Event
@@ -73,8 +73,7 @@ export const MyEvents = () => {
             </Link>
 
             <div>
-                <h1>Yey! Your're now logged in!</h1> 
-                <h2>Se all posted thoughts below!</h2>
+                <h2 children='You are now logged in' />
                 {eventItems.map((item) => {
                     return <p key={item._id}>{item.description}</p>
                 })}
@@ -105,7 +104,6 @@ export const MyEvents = () => {
         </Col>
       ))}
     </Row>} */}
-
             </MainScreen>
         </InnerWrapper>
     )

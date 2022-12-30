@@ -7,6 +7,7 @@ import Typography from '@mui/material/Typography'
 import {createTheme, ThemeProvider} from '@mui/material/styles'
 import { Link } from 'react-router-dom';
 
+
 /* import { InnerWrapper } from '../utils/GlobalStyles' */
 
 const customTheme = createTheme({
@@ -31,6 +32,11 @@ const customTheme = createTheme({
 
 
 export const Form = ({title, setPassword, setEmail, handleAction}) => {
+  if (title === 'Register') {
+    title = 'Register';
+  } else {
+    title = 'Login';
+  }
 
     return (<>
         
@@ -38,7 +44,7 @@ export const Form = ({title, setPassword, setEmail, handleAction}) => {
             <ThemeProvider theme={customTheme}>
         <div>
             <Typography variant="h3" color="common.white">
-                {title} Form
+                {title}
             </Typography>
         </div>
         
@@ -105,13 +111,13 @@ export const Form = ({title, setPassword, setEmail, handleAction}) => {
         
         title={title}
         handleAction={handleAction}/>
-        {title === 'register'
+        {title === 'Register'
        && (
-        <p>Already a member? <Link to="/login">Login here</Link></p>
+        <P>Already a member? <Link to="/login"><strong>Login here</strong></Link></P>
        )}
-       {title === 'login'
+       {title === 'Login'
        && (
-        <p>Not a member? <Link to="/register">Register here</Link></p>
+        <P>Not a member? <Link to="/register"><strong>Register here</strong></Link></P>
        )}
 
         </FormContainer>
@@ -126,6 +132,11 @@ border: 2px solid whitesmoke;
 border-radius: 15px;
 padding: 20px;
 text-align: center;
+color: whitesmoke;
+`
+
+const P = styled.p`
+margin-top: 5%;
 `
 
 /* 

@@ -9,6 +9,8 @@ import { DashboardPage } from 'pages/DashboardPage';
 import { AllEventsPage } from 'pages/AllEventsPage';
 import { CreateEditEventsPage } from 'pages/CreateEditEventsPage';
 import { AccountSettingsPage } from 'pages/AccountSettingsPage';
+import { AboutPage } from 'pages/AboutPage'
+import { ContactPage } from 'pages/ContactPage'
 import { app } from './firebase-config';
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth'
 import { ToastContainer, toast } from 'react-toastify';
@@ -79,6 +81,7 @@ export const App = () => {
 
   return (
     <> 
+    
     <Provider store={store}>
     <GlobalStyles />
     <ToastContainer />
@@ -105,6 +108,8 @@ export const App = () => {
       <Route path="/events" element={<AllEventsPage />} />
       <Route path="/create-events" element={<CreateEditEventsPage />} />
       <Route path="/account-settings" element={<AccountSettingsPage />} />
+      <Route path="/contact" element={<ContactPage />} />
+      <Route path="/about" element={<AboutPage />} />
     </Routes>
     <Footer />
     </ Provider>
