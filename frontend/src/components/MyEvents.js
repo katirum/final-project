@@ -64,6 +64,7 @@ export const MyEvents = () => {
     }, [])*/
 
     return (
+        
         <InnerWrapper>
         <MainScreen title="Welcome back!" >
         <Link to="create-event">
