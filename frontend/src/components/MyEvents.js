@@ -38,7 +38,7 @@ export const MyEvents = () => {
                 "Authorization": accessToken
             }
         }
-        fetch('http://localhost:8080/events', options)
+        fetch('http://localhost:8080/thoughts', options)
             .then(res => res.json())
             .then(data => {
                 if(data.success) {

@@ -14,7 +14,7 @@ export const CreateEditEventsPage = () => {
   /* first fetch of the list of post */
   const fetchEvent = () => {
     setLoading(true);
-    fetch('https://project-happy-thoughts-api-thr246hagq-lz.a.run.app/thoughts')
+    fetch('https://final-project-xskdls6xhq-lz.a.run.app/thoughts')
       .then((res) => res.json())
       .then((data) => setEventList(data))
       .catch((error) => console.error(error))
@@ -43,7 +43,7 @@ export const CreateEditEventsPage = () => {
         message: newEvent // message is the key in API
       })
     }
-    fetch('https://project-happy-thoughts-api-thr246hagq-lz.a.run.app/thoughts', option)
+    fetch('https://final-project-xskdls6xhq-lz.a.run.app/thoughts', option)
       .then((res) => res.json())
       .then(() => fetchEvent())
       .finally(() => setNewEvent('')) // shows the new thought as it targets the value on the input you posted
