@@ -16,11 +16,19 @@ export const EventForm = ({ newEvent, newLocation, onNewLocationChange, onNewEve
           value={newEvent}
           onChange={onNewEventChange}
           placeholder="write something here..." />
+<<<<<<< HEAD
         <input type="text" placeholder="Language" value={newEvent}
           onChange={onNewEventChange}></input>
         <input type="text" placeholder="City" value={newEvent}
           onChange={onNewEventChange}></input>
         <input type="text" placeholder="Location" value={newLocation}
+=======
+          <input type="text" placeholder="Language" value={newEvent}
+          onChange={onNewEventChange}></input>
+          <input type="text" placeholder="City" value={newEvent}
+          onChange={onNewEventChange}></input>
+          <input type="text" placeholder="Location" value={newLocation}
+>>>>>>> server
           onChange={onNewLocationChange}></input>
         
       </EventFormDetails>
