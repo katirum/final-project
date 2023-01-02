@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { EventList } from 'components/YourEventList';
 import { EventForm } from 'components/YourNewEvent';
+import { API_URL } from 'utils/urls';
 
 export const CreateEditEventsPage = () => {
   const [eventList, setEventList] = useState([]);
   const [loading, setLoading] = useState(false);
   const [newEvent, setNewEvent] = useState('');
+  const [newLocation, setNewLocation] = useState('');
 
   useEffect(() => {
     fetchEvent();
@@ -14,7 +16,7 @@ export const CreateEditEventsPage = () => {
   /* first fetch of the list of post */
   const fetchEvent = () => {
     setLoading(true);
-    fetch('https://final-project-xskdls6xhq-lz.a.run.app/thoughts')
+    fetch(API_URL("events"))
       .then((res) => res.json())
       .then((data) => setEventList(data))
       .catch((error) => console.error(error))
@@ -26,6 +28,10 @@ export const CreateEditEventsPage = () => {
   /* handleNewThoughtChange allows us to write something in the text area */
   const handleNewEventChange = (event) => {
     setNewEvent(event.target.value)
+  }
+
+  const handleNewLocationChange = (event) => {
+    setNewLocation(event.target.value)
   }
 
   /* onFormSubmit allows us to click on the submit button
@@ -40,10 +46,10 @@ export const CreateEditEventsPage = () => {
       },
       body: JSON.stringify({
         // eslint-disable-next-line quotes
-        message: newEvent // message is the key in API
+        description: newEvent // message is the key in API
       })
     }
-    fetch('https://final-project-xskdls6xhq-lz.a.run.app/thoughts', option)
+    fetch(API_URL("events"), option)
       .then((res) => res.json())
       .then(() => fetchEvent())
       .finally(() => setNewEvent('')) // shows the new thought as it targets the value on the input you posted
@@ -54,12 +60,15 @@ export const CreateEditEventsPage = () => {
     <div>
       <EventForm
         newEvent={newEvent}
+        newLocation={newLocation}
         onNewEventChange={handleNewEventChange}
+        onNewLocationChange={handleNewLocationChange}
         onFormSubmit={onFormSubmit} />
       <EventList
         loading={loading}
         eventList={eventList}
         setEventList={setEventList} />
+
     </div>
 
   );
