@@ -45,6 +45,16 @@ ${(props) =>
     `
       }
 
+${(props) =>
+    props.footerWrapper &&
+    css`
+      display: flex;
+      justify-content: space-evenly;
+      align-self: center;
+      flex-wrap: wrap;
+    `
+      }
+
 `
 export const Container = styled.div`
 height: 100vh;
@@ -81,6 +91,6 @@ export const Button = styled.button`
 
 export const Img = styled.img`
   width: 100%;
-  height: 100%;
+  height: 100vh;
   object-fit: cover;
 `
