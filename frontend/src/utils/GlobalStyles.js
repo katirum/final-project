@@ -46,6 +46,14 @@ ${(props) =>
       }
 
 `
+export const Container = styled.div`
+height: 100vh;
+display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    color: var(--secondary);
+`
 
 export const NavWrapper = styled.div`
   height: 100px;
