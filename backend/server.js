@@ -33,6 +33,7 @@ const EventsSchema = new mongoose.Schema({
     maxlength: 50,
     trim: true
   },
+  
   description: {
     type: String,
     required: true,
@@ -111,3 +112,6 @@ app.patch("/events/:id", async (req, res) => {
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
 });
+
+
+
