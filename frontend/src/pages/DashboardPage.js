@@ -4,7 +4,6 @@ import { InnerWrapper, Button, Container } from "utils/GlobalStyles";
 import { Link } from "react-router-dom";
 /* import { MyEvents } from '../components/MyEvents' */
 import styled, {css} from "styled-components";
-import { Sidebar } from "components/Sidebar";
 
 
 export const DashboardPage = () => {
@@ -28,9 +27,7 @@ export const DashboardPage = () => {
     
     return (
         <DashboardPageContainer>
-        <Sidebar />
         <InnerWrapper>
-            
             {/* <MyEvents /> */}
             <MyProfileContainer>
             <Title>My Profile</Title>
@@ -68,6 +65,7 @@ export const DashboardPage = () => {
 </YourEventsContainer>
 </GridContainer>
             <Button onClick={handleLogout}>Logout</Button>
+            
         </InnerWrapper>
         </DashboardPageContainer>
     )
