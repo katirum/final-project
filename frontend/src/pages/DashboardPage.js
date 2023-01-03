@@ -27,6 +27,7 @@ export const DashboardPage = () => {
     
     return (
         <DashboardPageContainer>
+            <Sidebar />
         <InnerWrapper>
             {/* <MyEvents /> */}
             <MyProfileContainer>
