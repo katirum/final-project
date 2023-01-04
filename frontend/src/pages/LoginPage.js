@@ -4,19 +4,21 @@ import { InnerWrapper, PageContainer, /* Button, */ Img } from 'utils/GlobalStyl
 /* import { UserInput } from */
 /* import styled from "styled-components"; */
 import LoginPageImg from '../utils/assets/loginpage-img.jpg';
-import {Form} from '../components/Form'
+/* import {Form} from '../components/Form' */
+import { Login } from '../components/Login'
 
-export const LoginPage = ({ title, setPassword, setEmail, handleAction}) => {
+export const LoginPage = (/* { title, setPassword, setEmail, handleAction} */) => {
      
     return (
         <PageContainer>
         <InnerWrapper formWrapper>
-           <Form 
+           {/* <Form 
            title={title}
            setPassword={setPassword}
            setEmail={setEmail}
            handleAction={handleAction}
-           /> 
+           />  */}
+           <Login />
         
         </InnerWrapper>
         <Img src={LoginPageImg} alt="login-image" />

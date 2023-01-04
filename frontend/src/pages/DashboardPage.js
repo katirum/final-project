@@ -8,12 +8,12 @@ import { Sidebar } from '../components/Sidebar'
 
 
 export const DashboardPage = () => {
-    const handleLogout = () => {
+    /* const handleLogout = () => {
         sessionStorage.removeItem('Auth Token');
         navigate('/login')
-    }
+    } */
 
-    let navigate = useNavigate();
+    /* let navigate = useNavigate();
    useEffect(() => {
         let authToken = sessionStorage.getItem('Auth Token')
 
@@ -24,7 +24,7 @@ export const DashboardPage = () => {
         if (!authToken) {
             navigate('/register')
         }
-    }, [])
+    }, []) */
     
     return (
         <DashboardPageContainer>
@@ -66,7 +66,7 @@ export const DashboardPage = () => {
     type="button">Edit Event</Button></Link>
 </YourEventsContainer>
 </GridContainer>
-            <Button onClick={handleLogout}>Logout</Button>
+            {/* <Button onClick={handleLogout}>Logout</Button> */}
             
         </InnerWrapper>
         </DashboardPageContainer>
