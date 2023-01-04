@@ -18,7 +18,7 @@
     "dotenv": "^16.0.3",
     "express": "^4.17.3",
     "firebase": "^9.15.0",
-    "mongoose": "^6.3.0",
+    "mongoose": "^6.8.2",
     "nodemon": "^2.0.20"
   }
 }

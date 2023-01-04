@@ -4,7 +4,8 @@ import { InnerWrapper, Button, Container } from "utils/GlobalStyles";
 import { Link } from "react-router-dom";
 /* import { MyEvents } from '../components/MyEvents' */
 import styled, {css} from "styled-components";
-import { Sidebar } from "components/Sidebar";
+import { Sidebar } from '../components/Sidebar'
+
 
 export const DashboardPage = () => {
     const handleLogout = () => {

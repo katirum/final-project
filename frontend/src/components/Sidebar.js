@@ -24,8 +24,4 @@ const SidebarContainer = styled.div`
     height: 100vh;
     position: fixed;
     padding: 30px;
-<<<<<<< HEAD
-    
-=======
->>>>>>> footer
 `
