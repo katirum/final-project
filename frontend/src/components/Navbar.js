@@ -7,15 +7,18 @@ import { HamburgerMenu } from "./HamburgerMenu";
 import { useDispatch, useSelector } from 'react-redux';
 import { auth } from '../firebase-config';
 import { logout, selectUser } from '../reducers/userSlice';
+import { useNavigate } from "react-router-dom";
 
 export const Navbar = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const logoutOfApp = () => {
     // dispatch to the store with the logout action
     dispatch(logout());
     // sign out function from firebase
     auth.signOut();
+    navigate('/')
   };
 
   const user = useSelector(selectUser);

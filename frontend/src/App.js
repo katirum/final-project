@@ -1,4 +1,4 @@
-import React, { /* useState, */ useEffect } from 'react';
+import React, {  useState, useEffect } from 'react';
 import { GlobalStyles } from 'utils/GlobalStyles';
 import { Routes, Route,  useNavigate } from 'react-router-dom'; 
 import { Navbar } from 'components/Navbar';
@@ -11,7 +11,7 @@ import { CreateEditEventsPage } from 'pages/CreateEditEventsPage';
 import { AccountSettingsPage } from 'pages/AccountSettingsPage';
 import { AboutPage } from 'pages/AboutPage'
 import { ContactPage } from 'pages/ContactPage'
-/* import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth'; */
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth'; 
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import { useDispatch, useSelector } from 'react-redux';
@@ -33,7 +33,7 @@ const store = configureStore({ reducer }); */
 export const App = () => {
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
 
   // check at page load if a user is authenticated
   useEffect(() => {
@@ -46,7 +46,8 @@ export const App = () => {
             uid: userAuth.uid,
             displayName: userAuth.displayName,
             photoUrl: userAuth.photoURL,
-          })
+          }),
+          navigate('/dashboard')
         );
       } else {
         dispatch(logout());
@@ -84,6 +85,7 @@ export const App = () => {
         <div className='app__body'>
             <Routes>
             <Route path="/" element={<StartPage />} />
+           
               <Route path="/dashboard" element={<DashboardPage />} />
               
               <Route path="/create-events" element={<CreateEditEventsPage />} />
