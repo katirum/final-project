@@ -8,6 +8,8 @@ export const CreateEditEventsPage = () => {
   const [loading, setLoading] = useState(false);
   const [newEvent, setNewEvent] = useState('');
   const [newLocation, setNewLocation] = useState('');
+  const [newLanguage, setNewLanguage] = useState('');
+  const [newCity, setNewCity] = useState('');
 
   useEffect(() => {
     fetchEvent();
@@ -34,6 +36,14 @@ export const CreateEditEventsPage = () => {
     setNewLocation(event.target.value)
   }
 
+  const handleNewLanguageChange = (event) => {
+    setNewLanguage(event.target.value)
+  }
+
+  const handleNewCityChange = (event) => {
+    setNewCity(event.target.value)
+  }
+
   /* onFormSubmit allows us to click on the submit button
   and then it displays the whole recent thoughts */
   const onFormSubmit = (event) => {
@@ -52,7 +62,7 @@ export const CreateEditEventsPage = () => {
     fetch(API_URL("events"), option)
       .then((res) => res.json())
       .then(() => fetchEvent())
-      .finally(() => setNewEvent('')) // shows the new thought as it targets the value on the input you posted
+      .finally(() => setNewEvent('').setNewLanguage('').setNewCity('').setNewLocation('')) // shows the new thought as it targets the value on the input you posted
   }
 
 
@@ -61,8 +71,12 @@ export const CreateEditEventsPage = () => {
       <EventForm
         newEvent={newEvent}
         newLocation={newLocation}
+        newLanguage={newLanguage}
+        newCity={newCity}
         onNewEventChange={handleNewEventChange}
         onNewLocationChange={handleNewLocationChange}
+        onNewLanguageChange={handleNewLanguageChange}
+        onNewCityChange={handleNewCityChange}
         onFormSubmit={onFormSubmit} />
       <EventList
         loading={loading}

@@ -2,7 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { Button } from 'utils/GlobalStyles';
 
-export const EventForm = ({ newEvent, newLocation, onNewLocationChange, onNewEventChange, onFormSubmit }) => {
+
+export const EventForm = ({ newEvent, newLanguage, newCity, newLocation, onNewLocationChange, onNewEventChange, onNewLanguageChange, onNewCityChange, onFormSubmit }) => {
   return (
     <PostEventContainer
     // OnFormSubmit function is found in create/edit event page
@@ -16,19 +17,11 @@ export const EventForm = ({ newEvent, newLocation, onNewLocationChange, onNewEve
           value={newEvent}
           onChange={onNewEventChange}
           placeholder="write something here..." />
-<<<<<<< HEAD
-        <input type="text" placeholder="Language" value={newEvent}
-          onChange={onNewEventChange}></input>
-        <input type="text" placeholder="City" value={newEvent}
-          onChange={onNewEventChange}></input>
-        <input type="text" placeholder="Location" value={newLocation}
-=======
-          <input type="text" placeholder="Language" value={newEvent}
-          onChange={onNewEventChange}></input>
-          <input type="text" placeholder="City" value={newEvent}
-          onChange={onNewEventChange}></input>
+          <input type="text" placeholder="Language" value={newLanguage}
+          onChange={onNewLanguageChange}></input>
+          <input type="text" placeholder="City" value={newCity}
+          onChange={onNewCityChange}></input>
           <input type="text" placeholder="Location" value={newLocation}
->>>>>>> server
           onChange={onNewLocationChange}></input>
         
       </EventFormDetails>
