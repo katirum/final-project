@@ -53,7 +53,7 @@ export const App = () => {
         dispatch(logout());
       }
     });
-  }, [dispatch]);
+  }, [dispatch, navigate]);
 
   return (
     <>
