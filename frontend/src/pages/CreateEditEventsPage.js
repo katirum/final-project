@@ -62,7 +62,7 @@ export const CreateEditEventsPage = () => {
     fetch(API_URL("events"), option)
       .then((res) => res.json())
       .then(() => fetchEvent())
-      .finally(() => setNewEvent('').setNewLanguage('').setNewCity('').setNewLocation('')) // shows the new thought as it targets the value on the input you posted
+      .finally(() => setNewEvent('')/* .setNewLanguage('').setNewCity('').setNewLocation('') */) // shows the new thought as it targets the value on the input you posted
   }
 
 

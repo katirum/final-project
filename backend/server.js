@@ -1,6 +1,12 @@
 import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
+import dotenv from "dotenv";
+/* import connectDB from "./config/db"; */
+
+import userRoutes from './routes/userRoutes'
+
+
 
 const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/final-project";
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -11,13 +17,13 @@ mongoose.Promise = Promise;
 // PORT=9000 npm start
 const port = process.env.PORT || 8080;
 const app = express();
-/* dotenv.config(); */
-
+dotenv.config();
 /* connectDB(); */
+
 // Add middlewares to enable cors and json body parsing
 app.use(cors());
 app.use(express.json());
-
+/* 
 const EventsSchema = new mongoose.Schema({
   title: {
     type: String,
@@ -34,9 +40,6 @@ const EventsSchema = new mongoose.Schema({
     maxlength: 500,
     trim: true
   },
-  /* image: {
-    type: 
-  }, */
   language: {
     type: String,
     required: true,
@@ -56,10 +59,23 @@ const EventsSchema = new mongoose.Schema({
   }
 })
 
-const Event = mongoose.model("Event", EventsSchema);
+const Event = mongoose.model("Event", EventsSchema); */
 
-// Start defining your routes here
+//From MERN
 app.get("/", (req, res) => {
+  res.send("API is running...");
+});
+
+app.get("/api/notes", (req, res) => {
+  res.json(events);
+});
+
+app.use("/api/users", userRoutes)
+
+
+//OLD CODE
+// Start defining your routes here
+/* app.get("/", (req, res) => {
   res.send("Events!");
 });
 
@@ -86,7 +102,7 @@ app.patch("/events/:id", async (req, res) => {
   } catch (error) {
     res.status(400).json({success: false, response: error});
   }
-})
+}) */
 
 // Start the server
 app.listen(port, () => {
@@ -94,4 +110,12 @@ app.listen(port, () => {
 });
 
 
+/* const PORT = process.env.PORT || 8080;
+
+app.listen(
+  PORT,
+  console.log(
+    `Server running in ${process.env.NODE_ENV} mode on port ${PORT}..`
+  )
+); */
 
