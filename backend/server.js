@@ -1,10 +1,13 @@
 import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
-import dotenv from "dotenv";
+import dotenv from 'dotenv';
+/* require("dotenv").config(); */
 /* import connectDB from "./config/db"; */
+require('dotenv').config({ path: 'backend/.env' })
 
 import userRoutes from './routes/userRoutes'
+import { errorHandler, notFound } from "./middlewares/ErrorMiddleware";
 
 
 
@@ -15,7 +18,7 @@ mongoose.Promise = Promise;
 // Defines the port the app will run on. Defaults to 8080, but can be overridden
 // when starting the server. Example command to overwrite PORT env variable value:
 // PORT=9000 npm start
-const port = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8080;
 const app = express();
 dotenv.config();
 /* connectDB(); */
@@ -104,15 +107,19 @@ app.patch("/events/:id", async (req, res) => {
   }
 }) */
 
+app.use(notFound);
+app.use(errorHandler);
+
 // Start the server
-app.listen(port, () => {
-  console.log(`Server running on http://localhost:${port}`);
+app.listen(PORT, () => {
+  console.log(`Server running on http://localhost:${PORT}`);
 });
 
 
-/* const PORT = process.env.PORT || 8080;
 
-app.listen(
+/* const PORT = process.env.PORT || 8080; */
+
+/* app.listen(
   PORT,
   console.log(
     `Server running in ${process.env.NODE_ENV} mode on port ${PORT}..`
