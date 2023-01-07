@@ -5,11 +5,14 @@ import { Link } from "react-router-dom";
 /* import { MyEvents } from '../components/MyEvents' */
 import styled, {css} from "styled-components";
 import { Sidebar } from '../components/Sidebar'
+import { useDispatch } from "react-redux";
+import { logout } from "actions/userActions";
 
 
 export const DashboardPage = () => {
+    const dispatch = useDispatch()
     const handleLogout = () => {
-        sessionStorage.removeItem('Auth Token');
+        dispatch(logout())
         navigate('/login')
     }
 
