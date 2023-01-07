@@ -4,21 +4,23 @@ import { Routes, Route,  useNavigate } from 'react-router-dom';
 import { Navbar } from 'components/Navbar';
 import { Footer } from 'components/Footer';
 import { StartPage } from 'pages/StartPage';
-import { LoginPage } from 'pages/LoginPage'; 
+/* import { LoginPage } from 'pages/LoginPage'; */
+import LoginScreen from 'pages/LoginScreen';
+import RegisterPage from'pages/RegisterPage';
 import { DashboardPage } from 'pages/DashboardPage';
 import { AllEventsPage } from 'pages/AllEventsPage';
 import { CreateEditEventsPage } from 'pages/CreateEditEventsPage';
 import { AccountSettingsPage } from 'pages/AccountSettingsPage';
 import { AboutPage } from 'pages/AboutPage'
 import { ContactPage } from 'pages/ContactPage'
-import { app } from './firebase-config';
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth'
+/* import { app } from './firebase-config';
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth' */
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Provider } from 'react-redux';
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 
-import user from "./reducers/user";
+/* import user from "./reducers/user";
 import events from "./reducers/events";
 
 const reducer = combineReducers({
@@ -26,13 +28,13 @@ const reducer = combineReducers({
   events: events.reducer,
 });
 
-const store = configureStore({ reducer });
+const store = configureStore({ reducer }); */
 
 export const App = () => {
-  const [email, setEmail] = useState('');
+  /* const [email, setEmail] = useState('');
   const [password, setPassword] = useState('')
   const navigate = useNavigate();
-
+ */
   //Saves the log in info intil page is closed, and if user is logged in navigates to dashboard
   /* useEffect(() => {
     let authToken = sessionStorage.getItem('Auth Token')
@@ -40,7 +42,7 @@ export const App = () => {
       navigate('/events')
     }
   }, [navigate]) */ 
-
+/* 
   // Function that handles login and register
   const handleAction = (id) => {
     const authentication = getAuth();
@@ -77,12 +79,12 @@ export const App = () => {
           }
  })
     }
-  }
+  } */
 
   return (
     <> 
     
-    <Provider store={store}>
+   {/*  <Provider store={store}> */}
     <GlobalStyles />
     <ToastContainer />
     <Navbar />
@@ -96,23 +98,23 @@ export const App = () => {
       <Route path="/about" element={<AboutPage />} />
       <Route 
       path="/login" 
-      element={<LoginPage 
-        title="Login"
+      element={<LoginScreen 
+        /* title="Login"
         setEmail={setEmail}
         setPassword={setPassword}
-        handleAction={() => handleAction(1)}
+        handleAction={() => handleAction(1)} */
         />} />
       <Route 
       path="/register" 
-      element={<LoginPage 
-        title="Register"
+      element={<RegisterPage 
+       /*  title="Register"
         setEmail={setEmail}
         setPassword={setPassword}
-        handleAction={() => handleAction(2)}
+        handleAction={() => handleAction(2)} */
         />} />
     </Routes>
     <Footer />
-    </ Provider>
+    {/* </ Provider> */}
     </>
   );
 }
