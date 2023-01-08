@@ -2,21 +2,25 @@ import React from 'react';
 import styled from 'styled-components';
 import { Button } from 'utils/GlobalStyles';
 
-export const EventForm = ({ newEvent, newLocation, newCity, newLanguage, onNewLocationChange, onNewLanguageChange, onNewCityChange, onNewEventChange, onFormSubmit }) => {
+export const EventForm = ({ newTitle, newEvent, newLocation, newCity, newLanguage, onNewLocationChange, onNewLanguageChange, onNewCityChange, onNewTitleChange, onNewEventChange, onFormSubmit /* */ }) => {
   return (
     <PostEventContainer
     // OnFormSubmit function is found in create/edit event page
       onSubmit={onFormSubmit}>
       <EventFormDetails>
         <h3>Create New Event</h3>
-        <input type="text" placeholder="Title"></input>
+        <input 
+        type="text" 
+        placeholder="Title"
+        value={newTitle}
+        onChange={onNewTitleChange} />
         <TextArea
         rows="5" 
         cols="40"
           value={newEvent}
           onChange={onNewEventChange}
           placeholder="write something here..." />
-        <input 
+         <input 
         type="text" 
         placeholder="Language" 
         value={newLanguage}
@@ -26,11 +30,11 @@ export const EventForm = ({ newEvent, newLocation, newCity, newLanguage, onNewLo
         placeholder="City" 
         value={newCity}
         onChange={onNewCityChange} />
-        <input 
+       {/* <input 
         type="text" 
         placeholder="Location" 
         value={newLocation}
-        OnChange={onNewLocationChange} />
+        OnChange={onNewLocationChange} /> */}
         
       </EventFormDetails>
       <Button

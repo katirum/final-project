@@ -7,9 +7,11 @@ export const CreateEditEventsPage = () => {
   const [eventList, setEventList] = useState([]);
   const [loading, setLoading] = useState(false);
   const [newEvent, setNewEvent] = useState('');
-  const [newLocation, setNewLocation] = useState('');
+  const [newTitle, setNewTitle] = useState('');
   const [newLanguage, setNewLanguage] = useState('');
+ /*  const [newLocation, setNewLocation] = useState(''); */
   const [newCity, setNewCity] = useState('');
+
 
   useEffect(() => {
     fetchEvent();
@@ -32,17 +34,20 @@ export const CreateEditEventsPage = () => {
     setNewEvent(event.target.value)
   }
 
-  const handleNewLocationChange = (event) => {
-    setNewLocation(event.target.value)
+  const handleNewTitleChange = (event) => {
+    setNewTitle(event.target.value)
   }
-
   const handleNewLanguageChange = (event) => {
     setNewLanguage(event.target.value)
   }
 
+   /* const handleNewLocationChange = (event) => {
+    setNewLocation(event.target.value)
+  } */
+
   const handleNewCityChange = (event) => {
     setNewCity(event.target.value)
-  }
+  } /**/
 
   /* onFormSubmit allows us to click on the submit button
   and then it displays the whole recent thoughts */
@@ -56,13 +61,17 @@ export const CreateEditEventsPage = () => {
       },
       body: JSON.stringify({
         // eslint-disable-next-line quotes
-        description: newEvent // message is the key in API
+        title: newTitle,
+        description: newEvent,
+        language: newLanguage,
+        city: newCity,
+        /* location: newLocation */ // message is the key in API
       })
     }
     fetch(API_URL("events"), option)
       .then((res) => res.json())
       .then(() => fetchEvent())
-      .finally(() => setNewEvent('').setNewLanguage('').setNewCity('').setNewLocation('')) // shows the new thought as it targets the value on the input you posted
+      .finally(() => setNewEvent('').setNewTitle('').setNewLanguage('').setNewCity('')/* */) // shows the new thought as it targets the value on the input you posted
   }
 
 
@@ -70,19 +79,20 @@ export const CreateEditEventsPage = () => {
     <div>
       <EventForm
         newEvent={newEvent}
-        newLocation={newLocation}
+        newTitle={newTitle}
         newLanguage={newLanguage}
-        newCity={newCity}
+         /* newLocation={newLocation} */
+        newCity={newCity} 
         onNewEventChange={handleNewEventChange}
-        onNewLocationChange={handleNewLocationChange}
+        onNewTitleChange={handleNewTitleChange}
         onNewLanguageChange={handleNewLanguageChange}
+        /*  onNewLocationChange={handleNewLocationChange} */
         onNewCityChange={handleNewCityChange}
         onFormSubmit={onFormSubmit} />
       <EventList
         loading={loading}
         eventList={eventList}
         setEventList={setEventList} />
-
     </div>
 
   );
