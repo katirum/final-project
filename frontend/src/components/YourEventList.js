@@ -12,11 +12,15 @@ export const EventList = ({ loading, eventList}) => {
       {eventList.map((event) => (
       
         <EachEventContainer key={event._id} className="event-list">
-          <p>Title: {event.title}</p>
-          <p>Description: {event.description}</p>
+          <h2>{event.title}</h2>
+          <p>{event.description}</p>
            <p>Language: {event.language}</p>
           <p>City: {event.city}</p>
-          {/*<p>Location: {event.location}</p> */}
+          <p>Event date: {event.eventDate}</p>
+          {/* <p>Start: {event.startDate}</p>
+          <p>End: {event.endDate}</p> */}
+          
+          <p>Place: {event.place}</p>
           <Link to="/create-events">Edit Event</Link>
         </EachEventContainer>
       ))}

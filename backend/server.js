@@ -33,9 +33,25 @@ const EventsSchema = new mongoose.Schema({
     type: String,
    required: true, 
   },
-  /* location: {
+  place: {
     type: String,
-  required: true, 
+  /* required: true,  */
+  },
+  eventDate: {
+    type: String, 
+    /* required: true, */
+  },
+  startDate: {
+    type: String, 
+    /* required: true, */
+  },
+  endDate: {
+    type: String, 
+    /* required: true, */
+  },
+  /* eventTime: {
+    type: String,
+    required: true
   }, */
   createdAt: {
     type: Date,
@@ -69,9 +85,9 @@ app.get("/events", async (req, res) => {
 });
 
 app.post("/events", async (req, res) => {
-  const {title, description, language, city, /* location, */ createdAt /* */} = req.body;
+  const {title, description, language, city, eventDate, place, createdAt, /* */} = req.body;
   try{
-    const savedEvent = await new Event({title: title, description: description,  language: language, city: city, /* location: location, */ createdAt: createdAt /**/}).save();
+    const savedEvent = await new Event({title: title, description: description, language: language, city: city, eventDate: eventDate, place: place, createdAt: createdAt /**/}).save();
     res.status(201).json({success: true, response: savedEvent});
   }catch (err){
     res.status(400).json({success: false, message:'cannot post event'})
@@ -81,7 +97,7 @@ app.post("/events", async (req, res) => {
 app.patch("/events/:id", async (req, res) => {
   const { id } = req.params;
   try{
-    const eventsUpdate = await Event.findByIdAndUpdate(id,  title, description, language, city, /*location */);
+    const eventsUpdate = await Event.findByIdAndUpdate(id,  title, description, language, city, date);
     res.status(200).json({success: true, response: `Thought ${eventsUpdate.title} has their heart updated`});
   } catch (error) {
     res.status(400).json({success: false, response: error});

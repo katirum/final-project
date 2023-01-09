@@ -1,8 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Button } from 'utils/GlobalStyles';
+import DatePicker from "react-datepicker";
+import DatePickerTable from './DatePickerTable'
 
-export const EventForm = ({ newTitle, newEvent, newLocation, newCity, newLanguage, onNewLocationChange, onNewLanguageChange, onNewCityChange, onNewTitleChange, onNewEventChange, onFormSubmit /* */ }) => {
+export const EventForm = (
+  { newEvent, newTitle, newLanguage, newCity, newEventDate, newStartDate, newEndDate, newPlace, onNewLanguageChange, onNewCityChange, onNewTitleChange, onNewEventChange, onNewEventDateChange, onNewStartDateChange, onNewEndDateChange, onNewPlaceChange, onFormSubmit }) => {
   return (
     <PostEventContainer
     // OnFormSubmit function is found in create/edit event page
@@ -19,7 +22,7 @@ export const EventForm = ({ newTitle, newEvent, newLocation, newCity, newLanguag
         cols="40"
           value={newEvent}
           onChange={onNewEventChange}
-          placeholder="write something here..." />
+          placeholder="Describe your event here" />
          <input 
         type="text" 
         placeholder="Language" 
@@ -30,11 +33,47 @@ export const EventForm = ({ newTitle, newEvent, newLocation, newCity, newLanguag
         placeholder="City" 
         value={newCity}
         onChange={onNewCityChange} />
-       {/* <input 
+        {/* <DatePicker
+ isClearable
+ filterDate={d => {
+   return new Date() < d;
+ }}
+ placeholderText="Select Start Time"
+ showTimeSelect
+ dateFormat="MMMM d, yyyy h:mmaa"
+ selected={newStartDate}
+ selectsStart
+ startDate={newStartDate}
+ onChange={onNewStartDateChange}
+/>
+<DatePicker
+ isClearable
+ filterDate={d => {
+   return new Date() < d;
+ }} 
+ placeholderText="Select End Time"
+ showTimeSelect
+ dateFormat="MMMM d, yyyy h:mmaa"
+  selected={newEndDate} 
+ selectsEnd
+ startDate={newStartDate}
+ endDate={newEndDate}
+ minDate={newStartDate} 
+ onChange={onNewStartDateChange}
+/> */}
+        <input 
+        type="date" 
+        placeholder="Date" 
+        /* showTimeSelect */
+        dateFormat="MMMM d, yyyy"
+        value={newEventDate}
+        onChange={onNewEventDateChange} />
+         {/* <DatePickerTable /> */}
+       <input 
         type="text" 
-        placeholder="Location" 
-        value={newLocation}
-        OnChange={onNewLocationChange} /> */}
+        placeholder="Meeting spot" 
+        value={newPlace}
+        onChange={onNewPlaceChange} />
         
       </EventFormDetails>
       <Button
