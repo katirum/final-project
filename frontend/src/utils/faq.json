@@ -1,17 +1,17 @@
 [
     {
      "id": 1,
-     "question": "Voluptates corporis vitae tempora quod provident facere?",
-     "answer": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium, sed. Dolores, sequi.Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium, sed. Dolores, sequi."
+     "question": "How do I use this page?",
+     "answer": "We believe that the best way to learn a language is by talking and having conversations. When you create an account you are able to see and create events, so that you can connect with other people to learn the language. To find an event, you search by either language or place. All neccessary info about the event should be in the description. After you've found an event, the only thing you need to do is attend!"
     },
     {
      "id": 2,
-     "question": "Voluptates quod provident tenetur culpa dolore facere?",
-     "answer": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Architecto iusto veniam eveniet labore impedit namLorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium, sed. Dolores, sequi.Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium, sed. Dolores, sequi."
+     "question": "Why should we only meet at cafes?",
+     "answer": "As this is not a dating app, we believe that the best  way to connect people in a safe and comfortable environment is to meet at a public space such as a café."
     },
     {
      "id": 3,
-     "question": "Voluptates quod provident tenetur culpa dolore facere?",
+     "question": "Why is there no event in my city?",
      "answer": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium, sed. Dolores,Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium, sed. Dolores, sequi.Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium, sed. Dolores, sequi."
     },
     {
@@ -21,7 +21,7 @@
     },
     {
      "id": 5,
-     "question": "Voluptates provident tenetur culpa dolore facere?",
-     "answer": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium, sed. Dolores, sequi.Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium, sed. Dolores, sequi.Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium, sed. Dolores, sequi."
+     "question": "Why is it called languable?",
+     "answer": "It is a play on words! Where is one of the best places to hang out and socialize? At a cafe of course! We wanted to incorporate that feeling, and that is why we connected the word \"language\" and \"table\" to each other. Conversing with other people is also what makes you more \"able\" to speak in the end."
     }
    ]

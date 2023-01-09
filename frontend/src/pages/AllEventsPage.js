@@ -1,12 +1,29 @@
-import React, {useState}from "react";
+import React, { useState, useEffect }from "react";
 import { InnerWrapper, Button } from "utils/GlobalStyles";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import data from "../components/HardCodeEvents"
+import { EventList } from 'components/YourEventList';
+import { API_URL } from 'utils/urls';
 
 
 export const AllEventsPage = () => {
     const [query, setQuery] = useState("")
+    const [loading, setLoading] = useState(false);
+    const [eventList, setEventList] = useState([]);
+    useEffect(() => {
+      fetchEvent();
+    }, []);
+  
+    /* first fetch of the list of post */
+    const fetchEvent = () => {
+      setLoading(true);
+      fetch(API_URL("events"))
+        .then((res) => res.json())
+        .then((data) => setEventList(data))
+        .catch((error) => console.error(error))
+        .finally(() => setLoading(false));
+    }
     return (
         <AllEventsPageContainer>
             <InnerWrapper>
@@ -30,7 +47,10 @@ onChange={event => setQuery(event.target.value)}/>
         return post;}
   }).map((item) => (
         <EventsWrapper key={item.id}>
-            
+            <EventList
+        loading={loading}
+        eventList={eventList}
+        setEventList={setEventList} />
 <EventDetail>
     <Img src={item.image} alt="placeholder"/>
     <EventText>

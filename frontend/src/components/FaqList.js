@@ -13,10 +13,11 @@ export const FaqsList = () => {
   );
 };
 
+// background color of faqlist and font color for the question
 const StyledFaqsList = styled.div`
-background-color: salmon;
+background-color: whitesmoke;
   margin: 20px 0;
   padding: 1rem;
-  color: var(--primary);
+  color: var(--secondary);
   border-radius: 15px;
 `;

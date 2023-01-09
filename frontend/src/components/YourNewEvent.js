@@ -5,7 +5,7 @@ import DatePicker from "react-datepicker";
 import DatePickerTable from './DatePickerTable'
 
 export const EventForm = (
-  { newEvent, newTitle, newLanguage, newCity, newEventDate, newStartDate, newEndDate, newPlace, onNewLanguageChange, onNewCityChange, onNewTitleChange, onNewEventChange, onNewEventDateChange, onNewStartDateChange, onNewEndDateChange, onNewPlaceChange, onFormSubmit }) => {
+  { newEvent, newTitle, newLanguage, newCity, newEventDate, newTime, newStartDate, newEndDate, newPlace, onNewLanguageChange, onNewCityChange, onNewTitleChange, onNewEventChange, onNewEventDateChange, onNewTimeChange, onNewStartDateChange, onNewEndDateChange, onNewPlaceChange, onFormSubmit }) => {
   return (
     <PostEventContainer
     // OnFormSubmit function is found in create/edit event page
@@ -33,6 +33,7 @@ export const EventForm = (
         placeholder="City" 
         value={newCity}
         onChange={onNewCityChange} />
+        
         {/* <DatePicker
  isClearable
  filterDate={d => {
@@ -68,10 +69,15 @@ export const EventForm = (
         dateFormat="MMMM d, yyyy"
         value={newEventDate}
         onChange={onNewEventDateChange} />
+        <input 
+        type="time" 
+        /* timeFormat="hh, mm" */
+        value={newTime}
+        onChange={onNewTimeChange} />
          {/* <DatePickerTable /> */}
        <input 
         type="text" 
-        placeholder="Meeting spot" 
+        placeholder="Meeting spot Ex vete-katten, kungsgatan" 
         value={newPlace}
         onChange={onNewPlaceChange} />
         

@@ -16,7 +16,8 @@ export const EventList = ({ loading, eventList}) => {
           <p>{event.description}</p>
            <p>Language: {event.language}</p>
           <p>City: {event.city}</p>
-          <p>Event date: {event.eventDate}</p>
+          <p>Date: {event.eventDate}</p>
+          <p>Time: {event.time}</p>
           {/* <p>Start: {event.startDate}</p>
           <p>End: {event.endDate}</p> */}
           

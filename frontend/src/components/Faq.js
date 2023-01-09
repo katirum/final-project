@@ -54,19 +54,21 @@ export default Faq;
 const StyledFaq = styled.div`
   cursor: pointer;
   margin: 10px 0 10px;
+  
 `
   const FaqQuestion = styled.div`
   font-size: 125%;
     font-weight: 800;
     margin: 10px 0 0;
-    background-color: pink;
+    background-color: var(--primary);
+    border: var(--primary);
     border-radius: 5px 0 0;
   `
-    
+    //Styles the answers, suck as background and font
     const FaqAnswer = styled.div`
-   border: 3px solid pink;
+   border: 3px solid whitesmoke;
     overflow: hidden;
-    color: var(--secondary);
+    color: var(--primary);
     span {
       display: block; 
       padding: 20px 10px;
