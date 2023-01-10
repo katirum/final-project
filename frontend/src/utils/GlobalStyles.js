@@ -58,6 +58,13 @@ ${(props) =>
     `
       }
 
+${(props) =>
+    props.createEventWrapper &&
+    css`
+      width: 60%;
+    `
+      }
+
 `
 export const Container = styled.div`
 height: 100vh;

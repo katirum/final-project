@@ -1,19 +1,19 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import { Button, InnerWrapper } from 'utils/GlobalStyles';
 import { Sidebar } from './Sidebar';
 
 export const EventForm = (
   { newEvent, newTitle, newLanguage, newCity, newEventDate, newTime, newStartDate, newEndDate, newPlace, onNewLanguageChange, onNewCityChange, onNewTitleChange, onNewEventChange, onNewEventDateChange, onNewTimeChange, onNewStartDateChange, onNewEndDateChange, onNewPlaceChange, onFormSubmit }) => {
   return (
-    <InnerWrapper>
+    <InnerWrapper createEventWrapper>
       <Sidebar />
     <PostEventContainer
     // OnFormSubmit function is found in create/edit event page
       onSubmit={onFormSubmit}>
       <EventFormDetails>
         <h1>Create New Event</h1>
-        <input 
+        <Input 
         type="text" 
         placeholder="Title"
         value={newTitle}
@@ -24,38 +24,38 @@ export const EventForm = (
           value={newEvent}
           onChange={onNewEventChange}
           placeholder="Describe your event here" />
-         <input 
+         <Input
         type="text" 
         placeholder="Language" 
         value={newLanguage}
         onChange={onNewLanguageChange} />
-        <input 
+        <Input
         type="text" 
         placeholder="City" 
         value={newCity}
         onChange={onNewCityChange} />
         
-        <input 
+        <Input 
         type="date" 
         placeholder="Date" 
         /* showTimeSelect */
         dateFormat="MMMM d, yyyy"
         value={newEventDate}
         onChange={onNewEventDateChange} />
-        <input 
+        <Input 
         type="time" 
         /* timeFormat="hh, mm" */
         value={newTime}
         onChange={onNewTimeChange} />
          {/* <DatePickerTable /> */}
-       <input 
+       <Input 
         type="text" 
         placeholder="Meeting spot Ex vete-katten, kungsgatan" 
         value={newPlace}
         onChange={onNewPlaceChange} />
         
       </EventFormDetails>
-      <Button
+      <Button style={{marginTop: "20px"}}
           type="submit">
            Submit
         </Button>
@@ -68,12 +68,16 @@ const PostEventContainer = styled.form`
     display: flex;
     flex-direction: column;
     text-align: center;
-   margin-top: 15%;
+   margin: 15% 0 10% 0;
     color: var(--secondary);
 align-items: center;
+/* width: 70%; */
+align-self:center;
 `
 
 const EventFormDetails = styled.div`
+display: flex;
+flex-direction: column;
    
     p{
         margin: 0;
@@ -81,10 +85,21 @@ const EventFormDetails = styled.div`
 `
 
 const TextArea = styled.textarea`
-    margin: 20px 0;
+    margin: 10px 0;
     border-radius: 15px;
 
     ::placeholder{
         text-align: center;
+        color: var(--primary);
     }
+`
+const Input = styled.input`
+margin: 10px 0;
+border-radius: 10px;
+text-align: center;
+::placeholder {
+  text-align: center;
+  color: var(--primary);
+  text-align-last: center;
+}
 `

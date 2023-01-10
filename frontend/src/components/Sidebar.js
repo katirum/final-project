@@ -25,6 +25,7 @@ const SidebarContainer = styled.div`
     border-top-right-radius: 15px;
     position: fixed;
     padding: 30px;
+    z-index: 100;
 
     p{
         font-size: 150%;
@@ -34,7 +35,7 @@ const SidebarContainer = styled.div`
 
         &:hover{
             /* border-top: none; */
-            transform: scale(0.95);
+            transform: scale(0.8);
         }
     }
 
