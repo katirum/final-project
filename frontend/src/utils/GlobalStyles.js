@@ -76,7 +76,7 @@ export const NavWrapper = styled.div`
 `
 
 export const Logo = styled.img`
-  height: 6rem;
+  height: 10rem;
   position: fixed;
   top: 2%;
   left: 2%;
