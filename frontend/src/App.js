@@ -34,12 +34,12 @@ export const App = () => {
   const navigate = useNavigate();
 
   //Saves the log in info intil page is closed, and if user is logged in navigates to dashboard
-  /* useEffect(() => {
+/* useEffect(() => {
     let authToken = sessionStorage.getItem('Auth Token')
     if (authToken) {
       navigate('/events')
     }
-  }, [navigate]) */ 
+  }, [navigate]) */
 
   // Function that handles login and register
   const handleAction = (id) => {
@@ -78,7 +78,7 @@ export const App = () => {
  })
     }
   }
-
+ /* let authToken = sessionStorage.getItem('Auth Token') */
   return (
     <> 
     
@@ -87,30 +87,30 @@ export const App = () => {
     <ToastContainer />
     <Navbar />
     <Routes>
-      <Route path="/" element={<StartPage />} />
-      <Route path="/dashboard" element={<DashboardPage />} />
-      <Route path="/events" element={<AllEventsPage />} />
-      <Route path="/create-events" element={<CreateEditEventsPage />} />
-      <Route path="/account-settings" element={<AccountSettingsPage />} />
-      <Route path="/contact" element={<ContactPage />} />
-      <Route path="/about" element={<AboutPage />} />
-      <Route 
-      path="/login" 
-      element={<LoginPage 
-        title="Login"
-        setEmail={setEmail}
-        setPassword={setPassword}
-        handleAction={() => handleAction(1)}
-        />} />
-      <Route 
-      path="/register" 
-      element={<LoginPage 
-        title="Register"
-        setEmail={setEmail}
-        setPassword={setPassword}
-        handleAction={() => handleAction(2)}
-        />} />
-    </Routes>
+    <Route path="/" element={<StartPage />} />
+    <Route path="/dashboard" element={<DashboardPage />} />
+    <Route path="/events" element={<AllEventsPage />} />
+    <Route path="/create-events" element={<CreateEditEventsPage />} />
+    <Route path="/account-settings" element={<AccountSettingsPage />} />
+    <Route path="/contact" element={<ContactPage />} />
+    <Route path="/about" element={<AboutPage />} />
+    <Route 
+    path="/login" 
+    element={<LoginPage 
+      title="Login"
+      setEmail={setEmail}
+      setPassword={setPassword}
+      handleAction={() => handleAction(1)}
+      />} />
+    <Route 
+    path="/register" 
+    element={<LoginPage 
+      title="Register"
+      setEmail={setEmail}
+      setPassword={setPassword}
+      handleAction={() => handleAction(2)}
+      />} />
+  </Routes>
     <Footer />
     </ Provider>
     </>

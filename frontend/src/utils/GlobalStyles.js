@@ -22,6 +22,9 @@ export const GlobalStyles = createGlobalStyle`
     font-family: 'Nunito Sans', sans-serif;
     background-color: var(--primary);
   }
+  a{
+    text-decoration: none;
+  }
 `
 
 export const PageContainer = styled.div`

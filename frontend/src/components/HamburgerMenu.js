@@ -147,9 +147,6 @@ const handleClick = () => setClick(!click);
             <ItemLink onClick={handleClick} to="/events">Events</ItemLink>
             </li>
             <li>
-            <ItemLink onClick={handleClick} to="/dashboard">My Profile</ItemLink>
-            </li>
-            <li>
             <ItemLink onClick={handleClick} to="/contact">Contact</ItemLink>
             </li>
             <li>

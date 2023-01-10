@@ -1,17 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Button } from 'utils/GlobalStyles';
-import DatePicker from "react-datepicker";
-import DatePickerTable from './DatePickerTable'
+import { Button, InnerWrapper } from 'utils/GlobalStyles';
+import { Sidebar } from './Sidebar';
 
 export const EventForm = (
   { newEvent, newTitle, newLanguage, newCity, newEventDate, newTime, newStartDate, newEndDate, newPlace, onNewLanguageChange, onNewCityChange, onNewTitleChange, onNewEventChange, onNewEventDateChange, onNewTimeChange, onNewStartDateChange, onNewEndDateChange, onNewPlaceChange, onFormSubmit }) => {
   return (
+    <InnerWrapper>
+      <Sidebar />
     <PostEventContainer
     // OnFormSubmit function is found in create/edit event page
       onSubmit={onFormSubmit}>
       <EventFormDetails>
-        <h3>Create New Event</h3>
+        <h1>Create New Event</h1>
         <input 
         type="text" 
         placeholder="Title"
@@ -34,34 +35,6 @@ export const EventForm = (
         value={newCity}
         onChange={onNewCityChange} />
         
-        {/* <DatePicker
- isClearable
- filterDate={d => {
-   return new Date() < d;
- }}
- placeholderText="Select Start Time"
- showTimeSelect
- dateFormat="MMMM d, yyyy h:mmaa"
- selected={newStartDate}
- selectsStart
- startDate={newStartDate}
- onChange={onNewStartDateChange}
-/>
-<DatePicker
- isClearable
- filterDate={d => {
-   return new Date() < d;
- }} 
- placeholderText="Select End Time"
- showTimeSelect
- dateFormat="MMMM d, yyyy h:mmaa"
-  selected={newEndDate} 
- selectsEnd
- startDate={newStartDate}
- endDate={newEndDate}
- minDate={newStartDate} 
- onChange={onNewStartDateChange}
-/> */}
         <input 
         type="date" 
         placeholder="Date" 
@@ -87,6 +60,7 @@ export const EventForm = (
            Submit
         </Button>
     </PostEventContainer>
+    </InnerWrapper>
   )
 }
 

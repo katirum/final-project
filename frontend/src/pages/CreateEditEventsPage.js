@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { EventList } from 'components/YourEventList';
 import { EventForm } from 'components/YourNewEvent';
 import { API_URL } from 'utils/urls';
+import { useNavigate } from 'react-router-dom';
 /* import moment from 'react-moment' */
 
 import "react-datepicker/dist/react-datepicker.css"
@@ -107,6 +108,18 @@ export const CreateEditEventsPage = () => {
       .finally(() => setNewEvent('').setNewTitle('').setNewLanguage('').setNewCity('').setNewEventDate('').setNewTime('')/* .setNewPlace('').setNewStartDate('').setNewEndDate('') */) // shows the new thought as it targets the value on the input you posted
   }
 
+ let navigate = useNavigate();
+   useEffect(() => {
+        let authToken = sessionStorage.getItem('Auth Token')
+
+        if (authToken) {
+            navigate('/create-events')
+        }
+
+        if (!authToken) {
+            navigate('/register')
+        }
+    }, [])
 
   return (
     <div>

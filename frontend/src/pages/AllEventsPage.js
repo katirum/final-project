@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 /* import data from "../components/HardCodeEvents" */
 import { EventList } from 'components/YourEventList';
+import { Sidebar } from "components/Sidebar";
 import { API_URL } from 'utils/urls';
 
 export const AllEventsPage= () => {
@@ -30,6 +31,7 @@ export const AllEventsPage= () => {
   return (
     <AllEventsPageContainer>
       <InnerWrapper>
+        <Sidebar />
       <Title>
             All Events
         </Title>
@@ -50,7 +52,6 @@ export const AllEventsPage= () => {
             
             <EventsWrapper key={event._id}> 
             <EventDetail>
-              {/* hardcodeimage? */}
             <EventText>
             <h2>{event.title}</h2>
             <p>{event.description}</p>
