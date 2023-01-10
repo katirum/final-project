@@ -2,11 +2,76 @@ import React, { useState, useEffect }from "react";
 import { InnerWrapper, Button } from "utils/GlobalStyles";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import data from "../components/HardCodeEvents"
+/* import data from "../components/HardCodeEvents" */
 import { EventList } from 'components/YourEventList';
 import { API_URL } from 'utils/urls';
 
+export const AllEventsPage= () => {
+  const [loading, setLoading] = useState(false);
+    const [eventList, setEventList] = useState([]);
+    const [query, setQuery] = useState("");
+    useEffect(() => {
+      fetchEvent();
+    }, []);
+  
+    /* first fetch of the list of post */
+    const fetchEvent = () => {
+      setLoading(true);
+      fetch(API_URL("events"))
+        .then((res) => res.json())
+        .then((data) => setEventList(data))
+        .catch((error) => console.error(error))
+        .finally(() => setLoading(false));
+    }
+  if (loading) {
+    return <h1 className="loading">😬 loading 😬</h1>
+  }
 
+  return (
+    <AllEventsPageContainer>
+      <InnerWrapper>
+      <Title>
+            All Events
+        </Title>
+        <Input
+        placeholder="Search for title, city or language"
+        onChange={event => setQuery(event.target.value)}/>{
+          eventList.filter(post => {
+            if (query === '') {
+              return post;
+            } else if (post.title.toLowerCase().includes(query.toLowerCase())) {
+              return post;
+            } else if (post.city.toLowerCase().includes(query.toLowerCase())) {
+                return post;
+              }else if (post.language.toLowerCase().includes(query.toLowerCase())) {
+                return post;
+              }
+          }).map((event) => (
+            
+            <EventsWrapper key={event._id}> 
+            <EventDetail>
+              {/* hardcodeimage? */}
+            <EventText>
+            <h2>{event.title}</h2>
+            <p>{event.description}</p>
+            <p>Language: {event.language}</p>
+            <p>City: {event.city}</p>
+            <p>Date: {event.eventDate}</p>
+            <p>Time: {event.time}</p>
+            <p>Place: {event.place}</p>
+            <Link to="/Home"><Button
+    type="button">More Info</Button></Link>
+            </EventText>
+          </EventDetail>
+          </EventsWrapper>
+          ))
+        }
+      </InnerWrapper>
+    </AllEventsPageContainer>
+  )
+}
+
+ /* 
 export const AllEventsPage = () => {
     const [query, setQuery] = useState("")
     const [loading, setLoading] = useState(false);
@@ -15,7 +80,7 @@ export const AllEventsPage = () => {
       fetchEvent();
     }, []);
   
-    /* first fetch of the list of post */
+    first fetch of the list of post
     const fetchEvent = () => {
       setLoading(true);
       fetch(API_URL("events"))
@@ -43,15 +108,12 @@ onChange={event => setQuery(event.target.value)}/>
         return post;
       }else if (post.language.toLowerCase().includes(query.toLowerCase())) {
         return post;
-      }else if (post.organizer.toLowerCase().includes(query.toLowerCase())) {
-        return post;}
+      }
   }).map((item) => (
-        <EventsWrapper key={item.id}>
-            <EventList
-        loading={loading}
-        eventList={eventList}
-        setEventList={setEventList} />
+        <EventsWrapper key={item._id}>
+            
 <EventDetail>
+
     <Img src={item.image} alt="placeholder"/>
     <EventText>
     <h3>{item.title}</h3>
@@ -63,15 +125,13 @@ onChange={event => setQuery(event.target.value)}/>
     <Link to="/Home"><Button
     type="button">More Info</Button></Link>
     </EventText>
-    
-    
 </EventDetail>
 
 </EventsWrapper>))}
 </InnerWrapper>
         </AllEventsPageContainer>
     )
-}
+}  */
 
 const AllEventsPageContainer = styled.div`
      display: flex;
@@ -125,3 +185,19 @@ const Input = styled.input`
   border-radius: 20px;
   text-decoration: none;
 `
+
+
+
+/* 
+{eventList.map((event) => (
+      
+        <div key={event._id} className="event-list">
+         
+          {/* <p>Start: {event.startDate}</p>
+          <p>End: {event.endDate}</p> 
+          
+          <p>Place: {event.place}</p>
+          <Link to="/create-events">Edit Event</Link>
+        </div>
+      ))}
+       */
