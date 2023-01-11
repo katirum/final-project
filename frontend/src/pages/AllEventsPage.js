@@ -5,27 +5,31 @@ import { Link } from "react-router-dom";
 /* import data from "../components/HardCodeEvents" */
 import { EventList } from 'components/YourEventList';
 import { Sidebar } from "components/Sidebar";
+import { Loader } from "components/Loader";
+import { Timer } from "components/LoaderTimer";
 import { API_URL } from 'utils/urls';
 
 export const AllEventsPage= () => {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
     const [eventList, setEventList] = useState([]);
     const [query, setQuery] = useState("");
     useEffect(() => {
+      Timer(setLoading);
+
       fetchEvent();
     }, []);
   
     /* first fetch of the list of post */
     const fetchEvent = () => {
-      setLoading(true);
+     setLoading(false);
       fetch(API_URL("events"))
         .then((res) => res.json())
         .then((data) => setEventList(data))
         .catch((error) => console.error(error))
-        .finally(() => setLoading(false));
+        .finally(() => setLoading(true));
     }
   if (loading) {
-    return <h1 className="loading">😬 loading 😬</h1>
+    return <Loader />
   }
 
   return (
