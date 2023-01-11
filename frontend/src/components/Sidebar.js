@@ -10,7 +10,7 @@ return(
         <Styled to="/create-events"><p>Create Event</p></Styled>
         {/* Shows created events and where you can edit events */}
         <Styled to="/events"><p>All Events</p></Styled>
-        <Styled to="/about"><p>FAQ</p></Styled>
+        <Styled to="/faq"><p>FAQ</p></Styled>
     </SidebarContainer>
 )
 }
