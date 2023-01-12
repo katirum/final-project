@@ -26,7 +26,6 @@ const SidebarContainer = styled.div`
     border-top-right-radius: 15px;
     position: fixed;
     padding: 30px;
-    /* z-index: 100; */
 
     p{
         font-size: 150%;
@@ -43,43 +42,38 @@ const SidebarContainer = styled.div`
     /* a{
         text-decoration: none;
     } */
-
-    
-    @media (min-width: 200px) and (max-width: 299px){
-        position: relative;
+    @media (max-width: 350px){
+    position: relative;
     display: flex;
     justify-content: center;
-    top: 0;
-    left: -10%;
+    top: 0%;
     background-color: var(--secondary);
     color: var(--primary);
     line-height: 2;
-    padding: 5px 10px;
-    height: 35vh;
-    width: 100vw;
-    align-items: flex-start;
-    /* z-index: 100; */
+    border-top-right-radius: 0;
+    height: 100px;
+    flex-wrap: nowrap;
 
     p{
-        font-size: 13px;
+        font-size: 15px;
         text-align: center;
     }
 
 }
 
-@media (min-width: 300px) and (max-width: 699px){
+
+@media (min-width: 351px) and (max-width: 699px){
     position: relative;
     display: flex;
     justify-content: center;
-    top: 0;
-    left: -5%;
+    top: 0%;
+    left: -12%;
     background-color: var(--secondary);
     color: var(--primary);
     line-height: 2;
     border-top-right-radius: 0;
-    padding: 25px;
-    height: 4%;
-    width: 100vw;
+    height: 140px;
+    width: 80vw;
 
     p{
         font-size: 15px;
@@ -93,12 +87,12 @@ const SidebarContainer = styled.div`
     display: flex;
     justify-content: space-evenly;
     top: 0;
-    left: -20%;
+    left: -13%;
     background-color: var(--secondary);
     color: var(--primary);
     line-height: 2;
     border-top-right-radius: 0;
-    padding: 25px;
+    /* padding: 25px; */
     height: 8vh;
     width: 100vw;
     /* z-index: 100; */
@@ -110,7 +104,16 @@ const SidebarContainer = styled.div`
 }
 `
 
+// Links in the navbar
 const Styled = styled(Link)`
     text-decoration: none;
+    flex-basis: 20%;
+
+// Size on margin in text in links
+    p {
+        @media  (max-width: 700px){
+        margin-bottom: 1.5rem;
+    }
+}
    
 `

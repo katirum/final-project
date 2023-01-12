@@ -18,4 +18,8 @@ const LoaderContainer = styled.div`
     align-items: center;
     height: 100vh;
     overflow: hidden;
+
+    @media (max-width: 700px){
+        /* height:50%; */
+    }
 `

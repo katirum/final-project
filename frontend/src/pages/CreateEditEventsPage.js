@@ -48,6 +48,7 @@ export const CreateEditEventsPage = () => {
   and then it displays the whole recent thoughts */
   const onFormSubmit = (event) => {
     event.preventDefault()
+    navigate('/events')
 
     // TO POST A NEW EVENT
     const option = {

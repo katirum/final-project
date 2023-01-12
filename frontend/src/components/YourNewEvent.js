@@ -1,11 +1,12 @@
 import React from 'react';
 import styled from 'styled-components/macro';
-import { Button, InnerWrapper } from 'utils/GlobalStyles';
+import { Button, InnerWrapper, PageContainer } from 'utils/GlobalStyles';
 import { Sidebar } from './Sidebar';
 
 export const EventForm = (
   { newEvent, newTitle, newLanguage, newCity, newEventDate, newTime, newStartDate, newEndDate, newPlace, onNewLanguageChange, onNewCityChange, onNewTitleChange, onNewEventChange, onNewEventDateChange, onNewTimeChange, onNewStartDateChange, onNewEndDateChange, onNewPlaceChange, onFormSubmit }) => {
   return (
+    <PageContainer>
     <InnerWrapper createEventWrapper>
       <Sidebar />
     <PostEventContainer
@@ -62,6 +63,7 @@ export const EventForm = (
         </Button>
     </PostEventContainer>
     </InnerWrapper>
+    </PageContainer>
   )
 }
 

@@ -28,8 +28,9 @@ export const DashboardPage = () => {
     
     return (
         <DashboardPageContainer>
-            <Sidebar />
+            
         <InnerWrapper>
+        <Sidebar />
             {/* <MyEvents /> */}
             <MyProfileContainer>
             <Title>My Profile</Title>
@@ -90,6 +91,10 @@ const GridContainer = styled.div`
     display: grid;
     grid-template-columns: 50% 50%;
     margin-bottom:15%;
+
+    @media  (max-width: 700px){
+        grid-template-columns: 1fr;
+}
 `
 const Title = styled.h1`
     border-bottom: 3px solid var(--secondary);
@@ -103,11 +108,25 @@ const MyProfileContainer = styled.div`
     flex-direction: column;
     align-items: center;
    margin-bottom: 15%;
+
+   @media (max-width: 699px){
+    margin-top: 15%;
+}
+
+   @media (min-width: 700px) and (max-width: 1200px){
+    margin-top: 10%;
+}
+   
 `
 const ProfileDetails = styled.div`
     display: flex;
     align-items: center;
     gap: 30px;
+
+    @media (max-width: 350px){
+        flex-direction: column;
+}
+    
 `
 const Biography = styled.p`
     margin: 30px;
@@ -117,14 +136,22 @@ const Biography = styled.p`
     padding: 10px;
     background-color: var(--secondary);
     color: var(--primary);
+
+    @media  (max-width: 699px){
+    width: 85%;
+}
+
+    @media (min-width: 700px) and (max-width: 1200px){
+    width: 80%;
+}
+
 `
 const YourEventsContainer = styled.section`
-   /* display: flex;
-   flex-direction: column;
-    margin: 80px 50px 30px;
-     align-items: center; */
      text-align: center;
      margin: 0 70px;
+     @media  (max-width: 700px){
+        margin: 5%;
+}
 `
 
 const Img = styled.img`

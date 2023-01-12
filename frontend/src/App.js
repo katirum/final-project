@@ -32,8 +32,8 @@ const reducer = combineReducers({
 const store = configureStore({ reducer });
 
 export const App = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('')
+  /* const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('') */
   const navigate = useNavigate();
   /* const [cookies, setCookie] = useCookies(['access_token', 'refresh_token']) */
 
@@ -41,7 +41,7 @@ export const App = () => {
     const authentication = getAuth();
     createUserWithEmailAndPassword(authentication, args.email, args.password)
     .then((response) => {
-      sessionStorage.setItem('Auth Token', response._tokenResponse.idToken)
+      sessionStorage.setItem('Auth Token', response._tokenResponse.refreshToken)
       navigate('/dashboard')
     })
     .catch((error) => {
@@ -58,7 +58,7 @@ export const App = () => {
       const authentication = getAuth();
        signInWithEmailAndPassword(authentication, args.email, args.password)
         .then((response) => {
-          sessionStorage.setItem('Auth Token', response._tokenResponse.idToken)
+          sessionStorage.setItem('Auth Token', response._tokenResponse.refreshToken)
           navigate('/dashboard')
         })
         .catch((error) => {

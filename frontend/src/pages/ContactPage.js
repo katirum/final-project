@@ -7,7 +7,7 @@ import portfolioimg from '../utils/assets/web.png'
 import styled from 'styled-components/macro'
 export const ContactPage = () => {
     return(
-        <Container contactPageContainer>
+        <Container contactPage>
             <InnerWrapper contactPageWrapper>
                 <h2>Hello, Creators!</h2>
                     <p>Get in touch with our creators to know more about this project or our other projects</p>

@@ -218,16 +218,20 @@ display: flex;
     text-align: center;
     color: var(--secondary);
 
-    /* ${(props) =>
-    props.contactPageContainer &&
+    ${(props) =>
+    props.contactPage &&
     css`
-    height: 100vh;
 
-    @media (min-width: 700px) and (max-width: 1200px){
-     height: 100vh;
-}
+@media (max-width: 350px){
+    height: 100%;
+      }
+
+@media (min-width: 351px) and (max-width: 700px){
+    height: 150%;
+      }
+
     `
-      } */
+      }
 `
 
 export const NavWrapper = styled.div`

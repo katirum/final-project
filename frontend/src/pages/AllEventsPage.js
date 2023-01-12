@@ -38,8 +38,9 @@ export const AllEventsPage= () => {
 
   return (
     <AllEventsPageContainer>
+      
       <InnerWrapper eventWrapper>
-        <Sidebar />
+      <Sidebar />
       <Title>
             All Events
         </Title>
@@ -90,15 +91,11 @@ const AllEventsPageContainer = styled.div`
     color: var(--secondary);
     
 
-    @media (min-width: 200px) and (max-width: 299px){
-    margin: 60% 5%;
-
-    p{
-    margin: 30px 10px;
-    }
+    @media (max-width: 350px){
+    margin: 70% 0;
 }
 
-@media (min-width: 300px) and (max-width: 699px){
+@media (min-width: 351px) and (max-width: 699px){
     margin: 50% 10%;
 
     p{
@@ -158,17 +155,18 @@ const EventGrid = styled.div`
   margin: 5% 0;
 }
 `
-
+//styling for event detail
 const EventDetail = styled.div`
     margin: 0 5% 10%;
-    /* background-color: rgba(245, 245, 245, 0.5); */
      border: 3px solid var(--secondary);
      border-radius: 15px;
-  padding: 5%;
+     padding: 5%;
      ;
     
-     @media (min-width: 200px) and (max-width: 299px){
-      margin-top: 10%;
+     // For really small devices
+     @media  (max-width: 350px){
+      padding: 0;
+      margin: 20px 0;
 
 }
 
@@ -235,13 +233,18 @@ const Input = styled.input`
   /* margin-top: 15%; */
 }
 `
-const Tags = styled.div`
+const Tags = styled.span`
   
     color: var(--primary);
     display: inline-block;
     background-color: var(--secondary);
     
     padding: 5px 10px;
+
+    @media (max-width: 700px){
+        
+        padding: 2px;
+    }
     `
 
 
