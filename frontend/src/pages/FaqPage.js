@@ -2,13 +2,11 @@ import React from "react";
 import Faq from "../components/Faq";
 import faqsData from '../utils/faq.json'
 import styled from "styled-components";
-import { Sidebar } from '../components/Sidebar'
 import { InnerWrapper } from "utils/GlobalStyles";
 
 export const FaqPage = () => {
   return (
     <FaqPageContainer>
-    <Sidebar />
     <InnerWrapper>
         <StyledFaqsList>
           {faqsData.map((faq, i) => (

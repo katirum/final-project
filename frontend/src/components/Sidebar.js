@@ -18,6 +18,7 @@ return(
 const SidebarContainer = styled.div`
     position: relative;
     left: 0;
+    top: 30%;
     background-color: var(--secondary);
     color: var(--primary);
     line-height: 2;

@@ -139,9 +139,29 @@ onChange={event => setQuery(event.target.value)}/>
 }  */
 
 const AllEventsPageContainer = styled.div`
-     display: flex;
+    display: flex;
     margin: 10% 0;
     color: var(--secondary);
+
+    @media (min-width: 200px) and (max-width: 299px){
+    margin: 60% 5%;
+
+    p{
+    margin: 30px 10px;
+    }
+}
+
+@media (min-width: 300px) and (max-width: 699px){
+    margin: 50% 10%;
+
+    p{
+    margin: 30px 10px;
+    }
+}
+
+@media (min-width: 700px) and (max-width: 1200px){
+    margin: 30% 10%;
+}
 `
 
 const Title = styled.h1`
@@ -161,9 +181,11 @@ padding: 50px 0; */
 `
 
 const EventDetail = styled.div`
-    display: flex;
+    display: grid;
+    grid-template-columns: 50% 50%;
     /* background-color: rgba(245, 245, 245, 0.5); */
     margin: 80px 50px 30px;
+    border: 2px solid var(--secondary);
 `
 const Img = styled.img`
     width: 900px;

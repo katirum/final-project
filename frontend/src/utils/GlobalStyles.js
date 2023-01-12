@@ -31,6 +31,7 @@ export const PageContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   height: 100vh;
+
 `
 
 export const InnerWrapper = styled.div`
@@ -45,6 +46,13 @@ ${(props) =>
       justify-content: center;
       align-self: center;
       flex-direction: column;
+    `
+      }
+
+${(props) =>
+    props.aboutPageWrapper &&
+    css`
+      width: 90%;
     `
       }
 
