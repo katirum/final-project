@@ -31,11 +31,26 @@ export const PageContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   height: 100vh;
-`
 
+  @media (max-width: 350px){
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    height: 60%;
+      }
+
+  @media (min-width: 351px) and (max-width: 1000px){
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+      }
+`
+//Main styling for the Inner Wrapper
 export const InnerWrapper = styled.div`
 width: 80%;
 margin: 0 auto;
+
+@media (max-width: 700px){
+        width: 60%;
+      }
 
 
 ${(props) =>
@@ -48,6 +63,7 @@ ${(props) =>
     `
       }
 
+//Wrapper for the footer and media query for footer
 ${(props) =>
     props.footerWrapper &&
     css`
@@ -55,6 +71,12 @@ ${(props) =>
       justify-content: space-evenly;
       align-self: center;
       flex-wrap: wrap;
+
+      // makes the sections in the footer into a column and not a row
+      @media (max-width: 700px){
+        flex-direction: column;
+        width: 50%;
+      }
     `
       }
 
@@ -81,12 +103,26 @@ export const NavWrapper = styled.div`
   z-index: 100;
   position: fixed;
 `
-
+// Styling for logo on big screen
 export const Logo = styled.img`
-  height: 10rem;
+  height: 8rem;
   position: fixed;
-  top: 2%;
-  left: 2%;
+  top: -5px;
+  left: 10px;
+
+  // Styling and psoitioning for logo on smaller screen
+  @media (min-width: 351px) and (max-width: 700px){
+    height: 4rem;
+    top: -5px;
+    left: -1px;
+      }
+// Styling and psoitioning for logo on very small screens
+      @media (max-width: 350px){
+    height: 3rem;
+    top: 1px;
+    left: -3px;
+      }
+
 `
 
 export const Button = styled.button`
@@ -97,10 +133,23 @@ export const Button = styled.button`
   border-radius: 5px;
   font-family: 'Nunito Sans', sans-serif;
   cursor: pointer;
-`
 
+  ${(props) =>
+    props.start &&
+    css`
+      margin-bottom: 20px;
+    `
+      }
+`
+// Start page image
 export const Img = styled.img`
   width: 100%;
   height: 100vh;
   object-fit: cover;
+
+  // Styling for startpage image. Makes the image appear on top on smaller devices
+  @media (max-width: 1000px){
+        grid-area: 1 / 1 / span 1 / span 1; 
+        height: 40vh;
+      }
 `

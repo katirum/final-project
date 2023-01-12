@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { MainScreen } from 'components/MainScreen'
 import { Button, InnerWrapper } from 'utils/GlobalStyles'
 import styled from 'styled-components/macro'
-import { FaqPage } from './FaqPage'
+/* import { FaqPage } from './FaqPage' */
 
 
 
@@ -21,7 +21,7 @@ export const AboutPage = () => {
                 
                 {/* FAQ */}
 
-                <FaqPage />
+                {/* <FaqPage /> */}
                 </InnerWrapper>
                 </AboutPageContainer >
                 )

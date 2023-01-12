@@ -12,12 +12,12 @@ import {createTheme, ThemeProvider} from '@mui/material/styles'
 import { Link } from 'react-router-dom';
 
 
-export const LoginPage = ({ onLogin }) => {
+export const RegisterPage = ({ onRegister }) => {
     
     let password
     let email
     const onSubmit = (e) => {
-        onLogin({
+        onRegister({
             email: email,
             password: password,
         })
@@ -30,7 +30,7 @@ export const LoginPage = ({ onLogin }) => {
         <ThemeProvider theme={customTheme}>
         <div>
           <Typography variant="h3" color="common.white">
-            Login
+            Register
           </Typography>
         </div>
 
@@ -98,11 +98,11 @@ export const LoginPage = ({ onLogin }) => {
         </ThemeProvider>
 
         <Buttons  
-          title="Login"
+          title="Register"
           handleAction={onSubmit}
         />
         
-        <P>Not a member? <Link to="/register"><strong>Register here</strong></Link></P>
+        <P>Already a member? <Link to="/login"><strong>Login here</strong></Link></P>
       
 
         </FormContainer>
@@ -144,42 +144,3 @@ const customTheme = createTheme({
       }
       }
   });
-
-/* const LabelWrapper = styled.div`
-    text-align: center;
-    padding: 70px 0 30px;
-`
-
-const LabelInnerWrapper = styled.div`
-    display: inline-block;
-    margin: 20% 2% 0;
-    label {margin: 5px;}
-
-` 
-
- const Form = styled.form`
-    display: flex;
-    flex-direction: column;
-    margin: 0 auto;
-    align-items: center;
-` 
-
-const InputContainer = styled.div`
-    margin-bottom: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    label {
-        margin: 5px;
-        padding: 10px;
-        color: var(--secondary);
-    }
-    input {
-        border: none;
-        border: 2px solid var(--secondary);
-        background-color: transparent;
-        padding: 12px;
-        
-    }
-`
-*/

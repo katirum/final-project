@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
+/* import cookieParser from "cookie-parser"; */
 
 const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/final-project";
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -63,6 +64,7 @@ const app = express();
 // Add middlewares to enable cors and json body parsing
 app.use(cors());
 app.use(express.json());
+/* app.use(cookieParser()); */
 
 
 // Start defining your routes here
@@ -71,9 +73,16 @@ app.get("/", (req, res) => {
 });
 
 app.get("/events", async (req, res) => {
+  /* console.log(req.cookies("access_token"))
+  const { id } = req.params; */
   const events = await Event.find().sort({createdAt: 'desc'}).limit(20).exec();
   res.json(events);
 });
+
+/* app.get("/events/:accessToken/:accessToken", async (req, res) => {
+  const events = await Event.find().sort({createdAt: 'desc'}).limit(20).exec();
+  res.json(events);
+}); */
 
 app.post("/events", async (req, res) => {
   const {title, description, language, city, eventDate, place, createdAt, time/* */} = req.body;

@@ -1,36 +1,43 @@
-import React from "react";
-/* import { Link } from "react-router-dom"; */
-import { InnerWrapper, PageContainer, /* Button, */ Img } from 'utils/GlobalStyles'
-/* import { UserInput } from */
-import LoginPageImg from '../utils/assets/loginpage-img.jpg';
+import * as React from 'react';
 import Box  from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-import { Buttons } from 'components/Button';
+import { Buttons } from './Button';
 import styled from 'styled-components/macro';
 import Typography from '@mui/material/Typography'
 import {createTheme, ThemeProvider} from '@mui/material/styles'
 import { Link } from 'react-router-dom';
 
 
-export const LoginPage = ({ onLogin }) => {
-    
-    let password
-    let email
-    const onSubmit = (e) => {
-        onLogin({
-            email: email,
-            password: password,
-        })
-    }
+/* import { InnerWrapper } from '../utils/GlobalStyles' */
 
-    return (
-        <PageContainer>
-        <InnerWrapper formWrapper>
-        <FormContainer>
+const customTheme = createTheme({
+    palette: {
+      primary: {
+        light: "#f5f5f5", // border
+        main: "#f5f5f5", //button and outline
+        dark: "#f5f5f5", 
+        contrastText: "#f5f5f5" //text when u type
+      },
+      secondary: {
+        light: "#f5f5f5",
+        main: "#c93434",
+        dark: "#f5f5f5",
+        contrastText: "#f5f5f5"
+      },
+      text: {
+        primary: "#f5f5f5"
+      }
+      }
+  });
+
+
+export const Form = ({title, setPassword, setEmail, handleAction}) => {
+    return (<>
+      <FormContainer>
         <ThemeProvider theme={customTheme}>
         <div>
           <Typography variant="h3" color="common.white">
-            Login
+            {title}
           </Typography>
         </div>
 
@@ -65,9 +72,7 @@ export const LoginPage = ({ onLogin }) => {
             label="Enter your Email" 
             variant="outlined"
             color="primary"
-            onChange={(e)=>{
-                email = e.target.value
-            }}
+            onChange={(e) => setEmail(e.target.value)}
             />
             <TextField 
             sx={{
@@ -90,27 +95,24 @@ export const LoginPage = ({ onLogin }) => {
             type= "password"
             label="Enter your Password" 
             variant="outlined"
-            onChange={(e)=>{
-                password = e.target.value
-            }}
+            onChange={(e) => setPassword(e.target.value)}
             />
         </Box>
         </ThemeProvider>
 
         <Buttons  
-          title="Login"
-          handleAction={onSubmit}
+          title={title}
+          handleAction={handleAction}
         />
         
-        <P>Not a member? <Link to="/register"><strong>Register here</strong></Link></P>
+        <P>Already a member? <Link to="/login"><strong>Login here</strong></Link></P>
       
 
         </FormContainer>
         
-        </InnerWrapper>
-        <Img src={LoginPageImg} alt="login-image" />
-        </PageContainer>
-    )
+        </>
+        
+    );
 }
 
 const FormContainer = styled.div `
@@ -124,62 +126,3 @@ color: whitesmoke;
 const P = styled.p`
 margin-top: 5%;
 `
-
-const customTheme = createTheme({
-    palette: {
-      primary: {
-        light: "#f5f5f5", // border
-        main: "#f5f5f5", //button and outline
-        dark: "#f5f5f5", 
-        contrastText: "#f5f5f5" //text when u type
-      },
-      secondary: {
-        light: "#f5f5f5",
-        main: "#c93434",
-        dark: "#f5f5f5",
-        contrastText: "#f5f5f5"
-      },
-      text: {
-        primary: "#f5f5f5"
-      }
-      }
-  });
-
-/* const LabelWrapper = styled.div`
-    text-align: center;
-    padding: 70px 0 30px;
-`
-
-const LabelInnerWrapper = styled.div`
-    display: inline-block;
-    margin: 20% 2% 0;
-    label {margin: 5px;}
-
-` 
-
- const Form = styled.form`
-    display: flex;
-    flex-direction: column;
-    margin: 0 auto;
-    align-items: center;
-` 
-
-const InputContainer = styled.div`
-    margin-bottom: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    label {
-        margin: 5px;
-        padding: 10px;
-        color: var(--secondary);
-    }
-    input {
-        border: none;
-        border: 2px solid var(--secondary);
-        background-color: transparent;
-        padding: 12px;
-        
-    }
-`
-*/

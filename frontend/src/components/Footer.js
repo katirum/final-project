@@ -8,19 +8,19 @@ export const Footer = () => {
         <FooterContainer>
       <InnerWrapper footerWrapper>
         <InfoColumn>
-          <h3>ABOUT US</h3>
+          <h2>ABOUT US</h2>
           <Link to="/about">About</Link>
           <Link to="/contact">Contact</Link>
-          <Link to="/guidelines">Guidelines</Link>
+          <Link to="/faq">FAQ</Link>
         </InfoColumn>
         <InfoColumn>
-          <h3>FOLLOW US</h3>
+          <h2>FOLLOW US</h2>
           <a href='/#'>Twitter</a>
           <a href='/#'>Instagram</a>
           <a href='/#'>Facebook</a>
         </InfoColumn>
         <InfoColumn>
-          <h3>JOIN US</h3>
+          <h2>JOIN US</h2>
           <Link to="/login">Login</Link>
           <Link to="/register">Register</Link>
         </InfoColumn>
@@ -41,16 +41,45 @@ const FooterContainer = styled.footer`
   color: var(--primary);
   padding-top: 40px;
   
-`
+  @media (min-width: 351px) and (max-width: 700px){
+    flex-direction: column;
+  }
 
+  @media  (max-width: 350px){
+    flex-direction: column;
+    padding-top: 20px;
+  }
+`
+// Styling for info columns
 const InfoColumn = styled.div`
   display: flex;
   flex-direction: column;
-  
+  margin-bottom: 20px;
+
+  @media (max-width: 350px){
+  margin-bottom: 10px;
+  h2 {
+    font-size: 15px;
+  }
+  a{
+    font-size: 12px;
+  }
+  }
+
+  @media (min-width: 351px) and (max-width: 700px){
+    h2 {
+      font-size: 20px;
+    }
+  }
 `
 
 const Copyright = styled.p`
   font-size: 12px;
   flex-basis: 100%;
   margin: 40px 0 20px 0;
+
+  @media (max-width: 350px){
+    margin: 10px 0 5px 0;
+  }
+
 `

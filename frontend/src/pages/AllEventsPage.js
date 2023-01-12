@@ -3,7 +3,7 @@ import { InnerWrapper, Button } from "utils/GlobalStyles";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 /* import data from "../components/HardCodeEvents" */
-import { EventList } from 'components/YourEventList';
+/* import { EventList } from 'components/YourEventList'; */
 import { Sidebar } from "components/Sidebar";
 import { Loader } from "components/Loader";
 import { Timer } from "components/LoaderTimer";
@@ -18,11 +18,14 @@ export const AllEventsPage= () => {
 
       fetchEvent();
     }, []);
+
+   /* const accessToken = sessionStorage.getItem('Auth Token') */
   
     /* first fetch of the list of post */
     const fetchEvent = () => {
      setLoading(false);
-      fetch(API_URL("events"))
+     fetch(API_URL("events"))
+      /* fetch(API_URL("events")+'?accessToken='+accessToken) */
         .then((res) => res.json())
         .then((data) => setEventList(data))
         .catch((error) => console.error(error))

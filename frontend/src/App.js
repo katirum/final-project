@@ -4,7 +4,9 @@ import { Routes, Route,  useNavigate } from 'react-router-dom';
 import { Navbar } from 'components/Navbar';
 import { Footer } from 'components/Footer';
 import { StartPage } from 'pages/StartPage';
-import { LoginPage } from 'pages/LoginPage'; 
+import { LoginPage } from 'pages/LoginPage';
+import { RegisterPage } from 'pages/RegisterPage';
+
 import { DashboardPage } from 'pages/DashboardPage';
 import { AllEventsPage } from 'pages/AllEventsPage';
 import { CreateEditEventsPage } from 'pages/CreateEditEventsPage';
@@ -15,6 +17,7 @@ import { FaqPage } from 'pages/FaqPage';
 import { app } from './firebase-config';
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth'
 import { ToastContainer, toast } from 'react-toastify';
+import { useCookies } from 'react-cookie'
 import 'react-toastify/dist/ReactToastify.css';
 import { Provider } from 'react-redux';
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
@@ -33,24 +36,20 @@ export const App = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('')
   const navigate = useNavigate();
+  const [cookies, setCookie] = useCookies(['access_token', 'refresh_token'])
 
-  //Saves the log in info intil page is closed, and if user is logged in navigates to dashboard
-/* useEffect(() => {
-    let authToken = sessionStorage.getItem('Auth Token')
-    if (authToken) {
-      navigate('/events')
-    }
-  }, [navigate]) */
-
-  // Function that handles login and register
-  const handleAction = (id) => {
+  const handleRegister = (args) => {
     const authentication = getAuth();
-    // If registering(2), navigates to dashboard if successful, otherwise throws error
-    if(id === 2){
-    createUserWithEmailAndPassword(authentication, email, password)
+    createUserWithEmailAndPassword(authentication, args.email, args.password)
     .then((response) => {
-      navigate('/dashboard')
       sessionStorage.setItem('Auth Token', response._tokenResponse.refreshToken)
+      /* let expires = new Date()
+      expires.setTime(expires.getTime() + (response._tokenResponse.expiresIn * 1000))
+
+      setCookie('access_token', response._tokenResponse.idToken, { path: '/',  expires})
+      setCookie('refresh_token', response._tokenResponse.refreshToken, {path: '/', expires}) */
+
+      navigate('/dashboard')
     })
     .catch((error) => {
       if(error.code === 'auth/wrong-password'){
@@ -59,15 +58,15 @@ export const App = () => {
       if(error.code === 'auth/user-not-found'){
         toast.error('Please check your Password and/or Email');
       }
-})
-    } 
-    // If logging in(1), navigates to dashboard if successful, otherwise throws error.
-    // Also navigates to login page if not logged in
-    if (id === 1) {
-      signInWithEmailAndPassword(authentication, email, password)
+    })
+  }
+
+  const handleLogin = (args) => {
+      const authentication = getAuth();
+       signInWithEmailAndPassword(authentication, args.email, args.password)
         .then((response) => {
-          navigate('/dashboard')
           sessionStorage.setItem('Auth Token', response._tokenResponse.refreshToken)
+          navigate('/dashboard')
         })
         .catch((error) => {
           if(error.code === 'auth/wrong-password'){
@@ -76,9 +75,11 @@ export const App = () => {
           if(error.code === 'auth/user-not-found'){
             toast.error('Please check your Password and/or Email');
           }
- })
-    }
+      })
   }
+
+ 
+
  /* let authToken = sessionStorage.getItem('Auth Token') */
   return (
     <> 
@@ -99,19 +100,14 @@ export const App = () => {
     <Route 
     path="/login" 
     element={<LoginPage 
-      title="Login"
-      setEmail={setEmail}
-      setPassword={setPassword}
-      handleAction={() => handleAction(1)}
+      onLogin={handleLogin}
       />} />
     <Route 
     path="/register" 
-    element={<LoginPage 
-      title="Register"
-      setEmail={setEmail}
-      setPassword={setPassword}
-      handleAction={() => handleAction(2)}
-      />} />
+    element={<RegisterPage 
+      onRegister={handleRegister}
+      />}
+    />
   </Routes>
     <Footer />
     </ Provider>

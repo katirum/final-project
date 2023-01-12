@@ -1,19 +1,17 @@
 import React,{useState} from "react";
 import { NavLink } from 'react-router-dom'
-/* import "./styles.css"; */
 import styled from "styled-components";
 
 const COLORS = {
   PrimaryDark: "#064635",
   PrimaryLight: "#f5f5f5",
-
 }
 
-
+// Styling for the entire hamburger menu such as positioning
 const MenuLabel = styled.label`
   background-color: ${COLORS.PrimaryLight};
   position: fixed;
-  top: 5.5%;
+  top: 25px;
   right: 5%;
   border-radius: 50%;
   height: 4rem;
@@ -22,72 +20,126 @@ const MenuLabel = styled.label`
   z-index: 1000;
   box-shadow: 0 1rem 3rem rgba(182, 237, 200, 0.3);
   text-align: center;
+
+  // Positioning for hamburger menu on smaller screens (circle and background)
+  @media (max-width: 700px){
+    height: 2rem;
+  width: 2rem;
+  top: 10px;
+  right: 2%;
+      }
 `;
 
+// Styling for the shading when opening and closing the menu
 const NavBackground = styled.div`
 position: fixed;
-top: 2rem;
-right: 6rem;
+top: 25px;
+right: 5%;
 background-image: radial-gradient(
   ${COLORS.PrimaryDark},
   ${COLORS.PrimaryLight}
 );
-height: 6rem;
-width: 6rem;
+height: 4rem;
+width: 4rem;
 border-radius: 50%;
-
 transform: ${props => props.clicked? "scale(80)": "scale(0)"};
 transition: transform 0.8s, opacity 0.8s;
 
+// media query for background shading
+@media (max-width: 700px){
+    height: 2rem;
+  width: 2rem;
+  top: 10px;
+  right: 2%;
+      }
 `
 
+// Styling of the icon (the lines and the x)
 const Icon = styled.span`
   position: relative;
-  background-color: ${(props) => (props.clicked ? "transparent" : "black")};
+  background-color: ${(props) => (props.clicked ? "transparent" : "var(--primary)")};
   width: 2rem;
   height: 2px;
   display: inline-block;
   margin-top: 2rem;
   transition: all 0.3s;
 
+  //media query for lines in hamburger menu
+  @media (max-width: 700px){
+    width: 1rem;
+  height: 2px;
+  margin-top: 1rem;
+      }
+
   &::before,
   &::after {
     content: "";
-    background-color: black;
+    background-color: var(--primary);
     width: 2rem;
     height: 2px;
     display: inline-block;
     position: absolute;
     left: 0;
     transition: all 0.3s;
+
+    @media (max-width: 700px){
+    width: 1rem;
+  height: 2px;
+      }
   }
+
+  // effect for lines during hover and when clicked + media queries
   &::before {
     top: ${(props) => (props.clicked ? "0" : "-0.8rem")};
     transform: ${(props) => (props.clicked ? "rotate(135deg)" : "rotate(0)")};
+
+    @media (max-width: 700px){
+    top: ${(props) => (props.clicked ? "0" : "-0.5rem")};
+    transform: ${(props) => (props.clicked ? "rotate(135deg)" : "rotate(0)")};
+    
+      }
   }
   &::after {
     top: ${(props) => (props.clicked ? "0" : "0.8rem")};
     transform: ${(props) => (props.clicked ? "rotate(-135deg)" : "rotate(0)")};
+
+    @media (max-width: 700px){
+      top: ${(props) => (props.clicked ? "0" : "0.5rem")};
+    transform: ${(props) => (props.clicked ? "rotate(-135deg)" : "rotate(0)")};
+    
+      }
   }
   ${MenuLabel}:hover &::before {
     top: ${(props) => (props.clicked ? "0" : "-1rem")};
+
+    @media (max-width: 700px){
+      top: ${(props) => (props.clicked ? "0" : "-0.5rem")};
+    
+      }
   }
   ${MenuLabel}:hover &::after {
     top: ${(props) => (props.clicked ? "0" : "1rem")};
+
+    @media (max-width: 700px){
+      top: ${(props) => (props.clicked ? "0" : "0.5rem")};
+    
+      }
   }
 `;
 
+// The nav where all of the links are
 const Navigation = styled.nav`
 height:100vh;
 position: fixed;
-top:0;
+top: 0;
 right:0;
 z-index: 600;
 width: ${(props) => (props.clicked ? "100%" : "0")};
 opacity: ${(props) => (props.clicked ? "1" : "0")};
-
 transition: width 0.8s;
 `
+
+// styling for the list of links
 const List = styled.ul`
 position: absolute;
 list-style: none;
@@ -96,8 +148,9 @@ left: 50%;
 transform: translate(-50%, -50%);
 text-align: center;
 width: 100%;
-
 `
+
+// Styling for the NavLink router
 const ItemLink = styled(NavLink)`
 display: inline-block;
 font-size: 2rem;
@@ -123,6 +176,7 @@ transition: all 0.4s;
 }
 `
 
+// HAMBURGER MENU
 export const HamburgerMenu = () => {
   
 const [click, setClick] = useState(false);
@@ -151,6 +205,9 @@ const handleClick = () => setClick(!click);
             </li>
             <li>
             <ItemLink onClick={handleClick} to="/about">About</ItemLink>
+            </li>
+            <li>
+            <ItemLink onClick={handleClick} to="/faq">FAQ</ItemLink>
             </li>
           </List>
         </Navigation>

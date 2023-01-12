@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { EventList } from 'components/YourEventList';
+/* import { EventList } from 'components/YourEventList'; */
 import { EventForm } from 'components/YourNewEvent';
 import { API_URL } from 'utils/urls';
 import { useNavigate } from 'react-router-dom';
