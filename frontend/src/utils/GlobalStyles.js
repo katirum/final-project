@@ -32,6 +32,7 @@ export const PageContainer = styled.div`
   grid-template-columns: repeat(2, 1fr);
   height: 100vh;
 
+
   @media (max-width: 350px){
     grid-template-columns: repeat(1, 1fr);
     grid-template-rows: repeat(2, 1fr);
@@ -64,6 +65,13 @@ ${(props) =>
       }
 
 //Wrapper for the footer and media query for footer
+${(props) =>
+    props.aboutPageWrapper &&
+    css`
+      width: 90%;
+    `
+      }
+
 ${(props) =>
     props.footerWrapper &&
     css`
