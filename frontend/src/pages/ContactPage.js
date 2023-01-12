@@ -7,8 +7,8 @@ import portfolioimg from '../utils/assets/web.png'
 import styled from 'styled-components/macro'
 export const ContactPage = () => {
     return(
-        <Container>
-            <InnerWrapper>
+        <Container contactPageContainer>
+            <InnerWrapper contactPageWrapper>
                 <h2>Hello, Creators!</h2>
                     <p>Get in touch with our creators to know more about this project or our other projects</p>
                     <ContactPageContainer>
@@ -21,7 +21,7 @@ export const ContactPage = () => {
               role="button">
                 <Img src={item.image} alt="profpic" />
             </a>
-            <CreatorInfoContainer><h3>{item.name}</h3>
+            <CreatorInfoContainer><h4>{item.name}</h4>
             
             <IconContainer><a
             href={`mailto: ${item.email}`}
@@ -57,8 +57,7 @@ const ContactPageContainer = styled.div`
   align-items: center;
   color: var(--secondary);
   @media (min-width: 668px){
-    grid-template-columns: 50% 50%;
-    
+    grid-template-columns: 50% 50%;  
   }
          
 `
@@ -69,6 +68,24 @@ const Img = styled.img`
     padding: 5px;
     object-fit: cover;
     border: 3px solid var(--secondary);
+
+    @media (min-width: 200px) and (max-width: 299px){
+        width: 150px;
+    height: 150px;
+
+}
+
+@media (min-width: 300px) and (max-width: 699px){
+    width: 200px;
+    height: 200px;
+
+}
+
+@media (min-width: 700px) and (max-width: 1200px){
+    width: 250px;
+    height: 250px;
+  
+}
 `
 const IconImg = styled.img`
     width: 30px;
@@ -86,6 +103,23 @@ const CreatorContainer = styled.div`
     flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: 5% 0 10%;
+  /* border: 2px solid blue; */
+
+  @media (min-width: 200px) and (max-width: 299px){
+        margin: 30% 0;
+
+}
+
+@media (min-width: 300px) and (max-width: 699px){
+    margin: 10% 0;
+
+}
+
+@media (min-width: 700px) and (max-width: 1200px){
+  /* margin-top: 20%; */
+  
+}
 `
 
 const CreatorInfoContainer = styled.div`
@@ -93,4 +127,6 @@ display: flex;
 flex-direction: column;
 align-items: center;
 margin: 20px 0;
+
+
 `

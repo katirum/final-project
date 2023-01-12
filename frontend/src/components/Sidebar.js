@@ -26,7 +26,7 @@ const SidebarContainer = styled.div`
     border-top-right-radius: 15px;
     position: fixed;
     padding: 30px;
-    z-index: 100;
+    /* z-index: 100; */
 
     p{
         font-size: 150%;
@@ -43,6 +43,71 @@ const SidebarContainer = styled.div`
     /* a{
         text-decoration: none;
     } */
+
+    
+    @media (min-width: 200px) and (max-width: 299px){
+        position: relative;
+    display: flex;
+    justify-content: center;
+    top: 0;
+    left: -10%;
+    background-color: var(--secondary);
+    color: var(--primary);
+    line-height: 2;
+    padding: 5px 10px;
+    height: 35vh;
+    width: 100vw;
+    align-items: flex-start;
+    /* z-index: 100; */
+
+    p{
+        font-size: 13px;
+        text-align: center;
+    }
+
+}
+
+@media (min-width: 300px) and (max-width: 699px){
+    position: relative;
+    display: flex;
+    justify-content: center;
+    top: 0;
+    left: -5%;
+    background-color: var(--secondary);
+    color: var(--primary);
+    line-height: 2;
+    border-top-right-radius: 0;
+    padding: 25px;
+    height: 4%;
+    width: 100vw;
+
+    p{
+        font-size: 15px;
+        text-align: center;
+    }
+
+}
+
+@media (min-width: 700px) and (max-width: 1200px){
+    position: relative;
+    display: flex;
+    justify-content: space-evenly;
+    top: 0;
+    left: -20%;
+    background-color: var(--secondary);
+    color: var(--primary);
+    line-height: 2;
+    border-top-right-radius: 0;
+    padding: 25px;
+    height: 8vh;
+    width: 100vw;
+    /* z-index: 100; */
+
+    p{
+        font-size: 15px;
+        text-align: center;
+    }
+}
 `
 
 const Styled = styled(Link)`

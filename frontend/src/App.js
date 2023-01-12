@@ -16,7 +16,7 @@ import { FaqPage } from 'pages/FaqPage';
 import { app } from './firebase-config';
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth'
 import { ToastContainer, toast } from 'react-toastify';
-import { useCookies } from 'react-cookie'
+/* import { useCookies } from 'react-cookie' */
 import 'react-toastify/dist/ReactToastify.css';
 import { Provider } from 'react-redux';
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
@@ -35,7 +35,7 @@ export const App = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('')
   const navigate = useNavigate();
-  const [cookies, setCookie] = useCookies(['access_token', 'refresh_token'])
+  /* const [cookies, setCookie] = useCookies(['access_token', 'refresh_token']) */
 
   const handleRegister = (args) => {
     const authentication = getAuth();

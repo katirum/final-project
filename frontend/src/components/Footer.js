@@ -40,6 +40,7 @@ const FooterContainer = styled.footer`
   background-color: rgba(	245,	245,	245 );
   color: var(--primary);
   padding-top: 40px;
+  z-index: -100;
   
   @media (min-width: 351px) and (max-width: 700px){
     flex-direction: column;

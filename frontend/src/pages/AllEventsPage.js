@@ -1,6 +1,6 @@
 import React, { useState, useEffect }from "react";
 import { InnerWrapper, Button } from "utils/GlobalStyles";
-import styled from "styled-components";
+import styled, {css} from "styled-components/macro";
 import { Link } from "react-router-dom";
 /* import EventImage from '../utils/assets/logoimage.png' */
 /* import data from "../components/HardCodeEvents" */
@@ -38,14 +38,15 @@ export const AllEventsPage= () => {
 
   return (
     <AllEventsPageContainer>
-      <InnerWrapper>
+      <InnerWrapper eventWrapper>
         <Sidebar />
       <Title>
             All Events
         </Title>
         <Input
         placeholder="Search for title, city or language"
-        onChange={event => setQuery(event.target.value)}/>{
+        onChange={event => setQuery(event.target.value)}/>
+        <EventGrid>{
           eventList.filter(post => {
             if (query === '') {
               return post;
@@ -58,13 +59,12 @@ export const AllEventsPage= () => {
               }
           }).map((event) => (
             
-            <EventsWrapper key={event._id}> 
-            <EventDetail>
-            {/* <Img>{EventImage}</Img> */}
+           <EventDetail key={event._id}>
             <EventText>
             <h2>{event.title}</h2>
             <p>{event.description}</p>
-            <p>Language: {event.language}</p>
+            
+            <p>Language: <Tags> {event.language}</Tags></p>
             <p>City: {event.city}</p>
             <p>Date: {event.eventDate}</p>
             <p>Time: {event.time}</p>
@@ -72,19 +72,23 @@ export const AllEventsPage= () => {
             <Link to="/Home"><Button
     type="button">More Info</Button></Link>
             </EventText>
-          </EventDetail>
-          </EventsWrapper>
+         </EventDetail>
+        
           ))
-        }
+        } </EventGrid>
       </InnerWrapper>
+     
     </AllEventsPageContainer>
   )
 }
+
+ 
 
 const AllEventsPageContainer = styled.div`
     display: flex;
     margin: 10% 0;
     color: var(--secondary);
+    
 
     @media (min-width: 200px) and (max-width: 299px){
     margin: 60% 5%;
@@ -114,22 +118,70 @@ const Title = styled.h1`
     border-bottom: 3px solid var(--secondary);
     padding: 0 0 2px;
     margin: 0 32% 30px;
-    font-size: 50px;
+    font-size: 3rem;
+
+    @media (min-width: 200px) and (max-width: 299px){
+      margin: 15% 20%;
+  font-size: 1.5rem;
+
+}
+
+@media (min-width: 300px) and (max-width: 699px){
+  margin: 15% 20%;
+  font-size: 2rem;
+}
+
+@media (min-width: 700px) and (max-width: 1200px){
+  margin: 10% 20%;
+}
+      
 `
 
-const EventsWrapper = styled.div`
-    /* border: 2px solid var(--secondary);
-border-radius: 15px;
-padding: 50px 0; */
+const EventGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 5% 0 0 10%;
+
+  @media (min-width: 200px) and (max-width: 299px){
+    grid-template-columns: 1fr;
+  margin: 0;
+
+}
+
+@media (min-width: 300px) and (max-width: 699px){
+  grid-template-columns: 1fr;
+  margin: 0;
+
+}
+
+@media (min-width: 700px) and (max-width: 1200px){
+  margin: 5% 0;
+}
 `
 
 const EventDetail = styled.div`
-    display: grid;
-    grid-template-columns: 50% 50%;
+    margin: 0 5% 10%;
     /* background-color: rgba(245, 245, 245, 0.5); */
-    margin: 80px 50px 30px;
-    border: 2px solid var(--secondary);
-`
+     border: 3px solid var(--secondary);
+     border-radius: 15px;
+  padding: 5%;
+     ;
+    
+     @media (min-width: 200px) and (max-width: 299px){
+      margin-top: 10%;
+
+}
+
+@media (min-width: 300px) and (max-width: 699px){
+  margin-top: 10%;
+
+}
+
+@media (min-width: 700px) and (max-width: 1200px){
+  /* margin-top: 15%; */
+}
+    
+`/**/
 const Img = styled.img`
     width: 900px;
     height: 300px;
@@ -140,8 +192,22 @@ const Img = styled.img`
 `
 
 const EventText = styled.div`
- margin: auto 0 auto 5%;
+ margin: 5%;
  text-align: justify;
+
+ h2{
+  text-align: center;
+  background-color: var(--secondary);
+  color: var(--primary);
+  padding: 10px 0;
+  margin-bottom: 5%;
+ }
+
+ Button{
+    display: flex;
+    margin: 0 auto;
+  }
+ 
 `
 
 const Input = styled.input`
@@ -150,8 +216,110 @@ const Input = styled.input`
   border: none;
   font-size: 15px;
   background-color: var(--secondary);
-  padding: 10px 10px;
+  padding: 2% 5%;
   margin: auto;
   border-radius: 20px;
   text-decoration: none;
+
+  @media (min-width: 200px) and (max-width: 299px){
+        
+    padding: 1px;
+}
+
+@media (min-width: 300px) and (max-width: 699px){
+  
+
+}
+
+@media (min-width: 700px) and (max-width: 1200px){
+  /* margin-top: 15%; */
+}
 `
+const Tags = styled.div`
+  
+    color: var(--primary);
+    display: inline-block;
+    background-color: var(--secondary);
+    
+    padding: 5px 10px;
+    `
+
+
+/* 
+{eventList.map((event) => (
+      
+        <div key={event._id} className="event-list">
+         
+          {/* <p>Start: {event.startDate}</p>
+          <p>End: {event.endDate}</p> 
+          
+          <p>Place: {event.place}</p>
+          <Link to="/create-events">Edit Event</Link>
+        </div>
+      ))}
+       */
+
+
+
+
+      /* 
+export const AllEventsPage = () => {
+    const [query, setQuery] = useState("")
+    const [loading, setLoading] = useState(false);
+    const [eventList, setEventList] = useState([]);
+    useEffect(() => {
+      fetchEvent();
+    }, []);
+  
+    first fetch of the list of post
+    const fetchEvent = () => {
+      setLoading(true);
+      fetch(API_URL("events"))
+        .then((res) => res.json())
+        .then((data) => setEventList(data))
+        .catch((error) => console.error(error))
+        .finally(() => setLoading(false));
+    }
+    return (
+        <AllEventsPageContainer>
+            <InnerWrapper>
+                <Title>
+            All Events
+        </Title>
+        <Input 
+placeholder="Search"
+onChange={event => setQuery(event.target.value)}/>
+{
+  data.filter(post => {
+    if (query === '') {
+      return post;
+    } else if (post.title.toLowerCase().includes(query.toLowerCase())) {
+      return post;
+    } else if (post.city.toLowerCase().includes(query.toLowerCase())) {
+        return post;
+      }else if (post.language.toLowerCase().includes(query.toLowerCase())) {
+        return post;
+      }
+  }).map((item) => (
+        <EventsWrapper key={item._id}>
+            
+<EventDetail>
+
+    <Img src={item.image} alt="placeholder"/>
+    <EventText>
+    <h3>{item.title}</h3>
+    <p>{item.description}</p>
+    <p>Language: {item.language}</p>
+    <p>Meeting Spot: {item.meeting_spot}</p>
+    <p>Organized by: {item.organizer}</p>
+
+    <Link to="/Home"><Button
+    type="button">More Info</Button></Link>
+    </EventText>
+</EventDetail>
+
+</EventsWrapper>))}
+</InnerWrapper>
+        </AllEventsPageContainer>
+    )
+}  */
