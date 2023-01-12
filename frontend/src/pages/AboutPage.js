@@ -31,7 +31,7 @@ const AboutPageContainer = styled.div`
 
     display: flex;
     text-align: center;
-    margin: 20% 15%;
+    margin: 15%;
     color: var(--secondary);
     border: 2px solid var(--secondary);
     border-radius: 15px;

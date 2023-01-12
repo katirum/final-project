@@ -13,6 +13,7 @@ export const EventForm = (
       onSubmit={onFormSubmit}>
       <EventFormDetails>
         <h1>Create New Event</h1>
+        <label>Title</label>
         <Input 
         type="text" 
         placeholder="Title"
@@ -78,6 +79,11 @@ align-self:center;
 const EventFormDetails = styled.div`
 display: flex;
 flex-direction: column;
+
+  h1{
+    border-bottom: 3px solid var(--secondary);
+     margin: 0 5px 30px;
+  }
    
     p{
         margin: 0;
@@ -85,18 +91,22 @@ flex-direction: column;
 `
 
 const TextArea = styled.textarea`
-    margin: 10px 0;
+    margin: 10px;
     border-radius: 15px;
+    text-align: center;
+
 
     ::placeholder{
         text-align: center;
         color: var(--primary);
+        margin: 10px;
     }
 `
 const Input = styled.input`
-margin: 10px 0;
+margin: 10px;
 border-radius: 10px;
 text-align: center;
+padding: 5px;
 ::placeholder {
   text-align: center;
   color: var(--primary);

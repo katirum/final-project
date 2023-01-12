@@ -2,7 +2,7 @@
     {
       "id": 1,
       "name": "Kartika Purwahyuningrum",
-      "image": "http://placekitten.com/200/300",
+      "image": "https://loremflickr.com/320/240",
       "email": "tikaprw@gmail.com",
       "github": "https://github.com/katirum",
       "portfolio": "https://kartikap.netlify.app/"
@@ -10,7 +10,7 @@
     {
       "id": 2,
         "name": "Neah Rockstroh",
-        "image": "http://placekitten.com/200/300",
+        "image": "https://loremflickr.com/320/240",
         "email": "neah.rockstroh@gmail.com",
         "github": "https://github.com/Archkrull",
         "portfolio": "https://neah-rockstroh-portfolio.netlify.app/"

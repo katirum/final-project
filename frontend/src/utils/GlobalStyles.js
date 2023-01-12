@@ -49,9 +49,9 @@ export const InnerWrapper = styled.div`
 width: 80%;
 margin: 0 auto;
 
-@media (max-width: 700px){
+/* @media (max-width: 700px){
         width: 60%;
-      }
+      } */
 
 
 ${(props) =>
@@ -91,9 +91,42 @@ ${(props) =>
 ${(props) =>
     props.createEventWrapper &&
     css`
-      width: 60%;
+      
     `
       }
+
+${(props) =>
+    props.eventWrapper &&
+    css`
+      width: 90%;
+
+      @media (max-width: 700px){
+        
+      }
+    `
+      }
+
+${(props) =>
+    props.contactPageWrapper &&
+    css`
+    margin-top: 5%;
+
+      @media (min-width: 200px) and (max-width: 299px){
+        margin-top: 30%;
+
+}
+
+@media (min-width: 300px) and (max-width: 699px){
+  margin-top: 30%;
+
+}
+
+@media (min-width: 700px) and (max-width: 1200px){
+  /* margin-top: 15%; */
+}
+    `
+      }
+
 
 `
 export const Container = styled.div`
@@ -103,6 +136,17 @@ display: flex;
     justify-content: center;
     text-align: center;
     color: var(--secondary);
+
+    /* ${(props) =>
+    props.contactPageContainer &&
+    css`
+    height: 100vh;
+
+    @media (min-width: 700px) and (max-width: 1200px){
+     height: 100vh;
+}
+    `
+      } */
 `
 
 export const NavWrapper = styled.div`
