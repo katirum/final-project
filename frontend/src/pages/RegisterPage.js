@@ -1,13 +1,12 @@
 import React from "react";
 /* import { Link } from "react-router-dom"; */
-import { InnerWrapper, PageContainer, /* Button, */ Img } from 'utils/GlobalStyles'
+import { InnerWrapper, PageContainer, Img, Typography, FormContainer, P } from 'utils/GlobalStyles'
 /* import { UserInput } from */
 import LoginPageImg from '../utils/assets/loginpage-img.jpg';
 import Box  from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { Buttons } from 'components/Button';
 import styled from 'styled-components/macro';
-import Typography from '@mui/material/Typography'
 import {createTheme, ThemeProvider} from '@mui/material/styles'
 import { Link } from 'react-router-dom';
 
@@ -24,41 +23,44 @@ export const RegisterPage = ({ onRegister }) => {
     }
 
     return (
-        <PageContainer>
-        <InnerWrapper formWrapper>
-        <FormContainer>
-        <ThemeProvider theme={customTheme}>
-        <div>
-          <Typography variant="h3" color="common.white">
-            Register
-          </Typography>
-        </div>
+        <PageContainer LoginRegister>
+          <InnerWrapper formWrapper>
+            <FormContainer>
+              <ThemeProvider theme={customTheme}>
+                 <div>
+                   <Typography>
+                      Register
+                   </Typography>
+                 </div>
 
-        <Box
-            component="form"
-            sx={{
-                color: '#f5f5f5',
-                display: 'flex',
-                flexDirection: 'column' 
-            }}
-            noValidate
-            autoComplete="off"
-        >
-            <TextField 
-            sx={{
-                margin: '10px',
-                "& .MuiInputBase-root": {"& > fieldset": {
-                        borderColor: "#f5f5f5"
-                    }
-                },
-                "& .MuiOutlinedInput-root:hover": {
-                    "& > fieldset": {
-              borderColor: "#f5f5f5"
-                    }
-                  },
-                  label: {
-                    color: "#f5f5f5",
-                  }
+              <Box
+                  component="form"
+                  sx={{
+                      color: '#f5f5f5',
+                      display: 'flex',
+                      flexDirection: 'column' 
+                     }}
+                    noValidate
+                    autoComplete="off"
+              >
+                <TextField 
+                  sx={{
+                    margin: '10px',
+                      "& .MuiInputBase-root": {"& > fieldset": {
+                            borderColor: "#f5f5f5"
+                        },
+                        '@media (max-width: 700px)' : {
+                          margin: '3px'
+                        }
+                    },
+                    "& .MuiOutlinedInput-root:hover": {
+                        "& > fieldset": {
+                    borderColor: "#f5f5f5"
+                        }
+                      },
+                      label: {
+                        color: "#f5f5f5",
+                      }
                  
             }}
             id="email" 
@@ -74,6 +76,9 @@ export const RegisterPage = ({ onRegister }) => {
                 margin: '10px',
                 "& .MuiInputBase-root": {"& > fieldset": {
                         borderColor: "#f5f5f5"
+                    },
+                    '@media (max-width: 700px)' : {
+                      margin: '3px'
                     }
                 },
                 "& .MuiOutlinedInput-root:hover": {
@@ -103,28 +108,14 @@ export const RegisterPage = ({ onRegister }) => {
         />
         
         <P>Already a member? <Link to="/login"><strong>Login here</strong></Link></P>
-      
-
         </FormContainer>
-        
         </InnerWrapper>
         <Img src={LoginPageImg} alt="login-image" />
         </PageContainer>
     )
 }
 
-const FormContainer = styled.div `
-border: 2px solid whitesmoke;
-border-radius: 15px;
-padding: 20px;
-text-align: center;
-color: whitesmoke;
-`
-
-const P = styled.p`
-margin-top: 5%;
-`
-
+// Color theme for MUI
 const customTheme = createTheme({
     palette: {
       primary: {

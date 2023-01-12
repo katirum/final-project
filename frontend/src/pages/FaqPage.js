@@ -1,13 +1,14 @@
 import React from "react";
 import Faq from "../components/Faq";
 import faqsData from '../utils/faq.json'
-import styled from "styled-components";
-import { InnerWrapper } from "utils/GlobalStyles";
+import styled from "styled-components/macro";
+import { InnerWrapper, Title } from "utils/GlobalStyles";
 
 export const FaqPage = () => {
   return (
     <FaqPageContainer>
-    <InnerWrapper>
+    <InnerWrapper FAQWrapper>
+      <Title>FAQ</Title>
         <StyledFaqsList>
           {faqsData.map((faq, i) => (
               <Faq key={"faq_" + i} question={faq.question} answer={faq.answer} />
@@ -29,6 +30,12 @@ text-align: center;
   padding: 20px;
   color: var(--secondary);
   border-radius: 15px;
+
+  @media (max-width: 700px){
+    margin: 5%;
+    padding: 5px;
+    font-size: 15px;
+  }
 `;
 
 const FaqPageContainer = styled.div`

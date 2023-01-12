@@ -97,6 +97,7 @@ const Title = styled.h1`
     margin-bottom: 30px;
     font-size: 50px;
 `
+
 const MyProfileContainer = styled.div`
     display: flex;
     flex-direction: column;

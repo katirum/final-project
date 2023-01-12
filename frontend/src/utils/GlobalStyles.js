@@ -26,22 +26,37 @@ export const GlobalStyles = createGlobalStyle`
     text-decoration: none;
   }
 `
-
+// Outer container for the entire page
 export const PageContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   height: 100vh;
 
+  // Specific page styling for login/register pages in tablet size
+  ${(props) =>
+    props.LoginRegister &&
+    css`
 
+     @media (min-width: 351px) and (max-width: 1000px){
+    /* height: 85vh; */
+      }
+
+      @media (max-width: 700px) and (max-height: 400px){
+    height: 100%;
+      }
+
+    `
+      }
+
+// Page container styling for very small devices
   @media (max-width: 350px){
     grid-template-columns: repeat(1, 1fr);
-    grid-template-rows: repeat(2, 1fr);
     height: 60%;
       }
 
+      // Page container styling for small to medium devices
   @media (min-width: 351px) and (max-width: 1000px){
     grid-template-columns: repeat(1, 1fr);
-    grid-template-rows: repeat(2, 1fr);
       }
 `
 //Main styling for the Inner Wrapper
@@ -49,11 +64,12 @@ export const InnerWrapper = styled.div`
 width: 80%;
 margin: 0 auto;
 
+//Inner wrapper for small devices
 @media (max-width: 700px){
         width: 60%;
       }
 
-
+// Inner wrapper for login/register
 ${(props) =>
     props.formWrapper &&
     css`
@@ -61,10 +77,16 @@ ${(props) =>
       justify-content: center;
       align-self: center;
       flex-direction: column;
+
+// Inner wrapper for login/register on small devices
+      @media (max-width: 700px){
+        margin: 10% auto;
+      }
     `
+    
       }
 
-//Wrapper for the footer and media query for footer
+//Wrapper for the about page and media query for footer
 ${(props) =>
     props.aboutPageWrapper &&
     css`
@@ -72,6 +94,7 @@ ${(props) =>
     `
       }
 
+//Wrapper for the footer and media query for footer
 ${(props) =>
     props.footerWrapper &&
     css`
@@ -88,6 +111,7 @@ ${(props) =>
     `
       }
 
+//Wrapper for the create event page and media query for footer
 ${(props) =>
     props.createEventWrapper &&
     css`
@@ -95,7 +119,55 @@ ${(props) =>
     `
       }
 
+// Inner wrapper for the FAQ page
+${(props) =>
+    props.FAQWrapper &&
+    css`
+      margin-top: 10%;
+      margin-bottom: 5%;
+
+      // Inner wrapper for the FAQ page on small devices
+      @media (max-width: 700px){
+        width: 70%;
+      }
+    `
+      }
+
 `
+
+// Title for login and register
+export const Typography = styled.h3`
+  color: whitesmoke;
+  font-size: 350%;
+
+  @media (max-width: 350px){
+        font-size: 200%;
+      }
+  `
+
+  //Container for login/register form
+ export const FormContainer = styled.div `
+  border: 2px solid whitesmoke;
+  border-radius: 15px;
+  padding: 20px;
+  text-align: center;
+  color: whitesmoke;
+
+  @media (max-width: 700px){
+    padding: 5px;
+      }
+  `
+  
+  //Paragraph in login/register from
+ export const P = styled.p`
+  margin-top: 5%;
+
+  @media (max-width: 700px){
+    margin-top: 10%;
+      }
+  `
+
+// Container for
 export const Container = styled.div`
 height: 100vh;
 display: flex;
@@ -159,5 +231,17 @@ export const Img = styled.img`
   @media (max-width: 1000px){
         grid-area: 1 / 1 / span 1 / span 1; 
         height: 40vh;
+      }
+`
+export const Title = styled.h1`
+    text-align: center;
+    color: var(--secondary);
+    border-bottom: 3px solid var(--secondary);
+    padding: 0 0 2px;
+    margin: 0 32% 30px;
+    font-size: 50px;
+
+    @media (max-width: 350px){
+        font-size: 30px;
       }
 `

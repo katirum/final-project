@@ -2,6 +2,7 @@ import React, { useState, useEffect }from "react";
 import { InnerWrapper, Button } from "utils/GlobalStyles";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+/* import EventImage from '../utils/assets/logoimage.png' */
 /* import data from "../components/HardCodeEvents" */
 /* import { EventList } from 'components/YourEventList'; */
 import { Sidebar } from "components/Sidebar";
@@ -19,13 +20,13 @@ export const AllEventsPage= () => {
       fetchEvent();
     }, []);
 
-   /* const accessToken = sessionStorage.getItem('Auth Token') */
+   const idToken = sessionStorage.getItem('idToken')
   
     /* first fetch of the list of post */
     const fetchEvent = () => {
      setLoading(false);
-     fetch(API_URL("events"))
-      /* fetch(API_URL("events")+'?accessToken='+accessToken) */
+     /* fetch(API_URL("events")) */
+      fetch(API_URL("events")+'?idToken='+idToken)
         .then((res) => res.json())
         .then((data) => setEventList(data))
         .catch((error) => console.error(error))
@@ -59,6 +60,7 @@ export const AllEventsPage= () => {
             
             <EventsWrapper key={event._id}> 
             <EventDetail>
+            {/* <Img>{EventImage}</Img> */}
             <EventText>
             <h2>{event.title}</h2>
             <p>{event.description}</p>
@@ -78,68 +80,6 @@ export const AllEventsPage= () => {
     </AllEventsPageContainer>
   )
 }
-
- /* 
-export const AllEventsPage = () => {
-    const [query, setQuery] = useState("")
-    const [loading, setLoading] = useState(false);
-    const [eventList, setEventList] = useState([]);
-    useEffect(() => {
-      fetchEvent();
-    }, []);
-  
-    first fetch of the list of post
-    const fetchEvent = () => {
-      setLoading(true);
-      fetch(API_URL("events"))
-        .then((res) => res.json())
-        .then((data) => setEventList(data))
-        .catch((error) => console.error(error))
-        .finally(() => setLoading(false));
-    }
-    return (
-        <AllEventsPageContainer>
-            <InnerWrapper>
-                <Title>
-            All Events
-        </Title>
-        <Input 
-placeholder="Search"
-onChange={event => setQuery(event.target.value)}/>
-{
-  data.filter(post => {
-    if (query === '') {
-      return post;
-    } else if (post.title.toLowerCase().includes(query.toLowerCase())) {
-      return post;
-    } else if (post.city.toLowerCase().includes(query.toLowerCase())) {
-        return post;
-      }else if (post.language.toLowerCase().includes(query.toLowerCase())) {
-        return post;
-      }
-  }).map((item) => (
-        <EventsWrapper key={item._id}>
-            
-<EventDetail>
-
-    <Img src={item.image} alt="placeholder"/>
-    <EventText>
-    <h3>{item.title}</h3>
-    <p>{item.description}</p>
-    <p>Language: {item.language}</p>
-    <p>Meeting Spot: {item.meeting_spot}</p>
-    <p>Organized by: {item.organizer}</p>
-
-    <Link to="/Home"><Button
-    type="button">More Info</Button></Link>
-    </EventText>
-</EventDetail>
-
-</EventsWrapper>))}
-</InnerWrapper>
-        </AllEventsPageContainer>
-    )
-}  */
 
 const AllEventsPageContainer = styled.div`
     display: flex;
@@ -215,19 +155,3 @@ const Input = styled.input`
   border-radius: 20px;
   text-decoration: none;
 `
-
-
-
-/* 
-{eventList.map((event) => (
-      
-        <div key={event._id} className="event-list">
-         
-          {/* <p>Start: {event.startDate}</p>
-          <p>End: {event.endDate}</p> 
-          
-          <p>Place: {event.place}</p>
-          <Link to="/create-events">Edit Event</Link>
-        </div>
-      ))}
-       */

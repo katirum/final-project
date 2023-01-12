@@ -1,13 +1,13 @@
 import React from "react";
 /* import { Link } from "react-router-dom"; */
-import { InnerWrapper, PageContainer, /* Button, */ Img } from 'utils/GlobalStyles'
+import { InnerWrapper, PageContainer, Img, Typography, FormContainer, P } from 'utils/GlobalStyles'
 /* import { UserInput } from */
 import LoginPageImg from '../utils/assets/loginpage-img.jpg';
 import Box  from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { Buttons } from 'components/Button';
 import styled from 'styled-components/macro';
-import Typography from '@mui/material/Typography'
+/* import Typography from '../utils' */
 import {createTheme, ThemeProvider} from '@mui/material/styles'
 import { Link } from 'react-router-dom';
 
@@ -24,12 +24,12 @@ export const LoginPage = ({ onLogin }) => {
     }
 
     return (
-        <PageContainer>
+        <PageContainer LoginRegister>
         <InnerWrapper formWrapper>
         <FormContainer>
         <ThemeProvider theme={customTheme}>
         <div>
-          <Typography variant="h3" color="common.white">
+          <Typography >
             Login
           </Typography>
         </div>
@@ -49,6 +49,9 @@ export const LoginPage = ({ onLogin }) => {
                 margin: '10px',
                 "& .MuiInputBase-root": {"& > fieldset": {
                         borderColor: "#f5f5f5"
+                    },
+                    '@media (max-width: 700px)' : {
+                      margin: '3px'
                     }
                 },
                 "& .MuiOutlinedInput-root:hover": {
@@ -74,6 +77,9 @@ export const LoginPage = ({ onLogin }) => {
                 margin: '10px',
                 "& .MuiInputBase-root": {"& > fieldset": {
                         borderColor: "#f5f5f5"
+                    },
+                    '@media (max-width: 700px)' : {
+                      margin: '3px'
                     }
                 },
                 "& .MuiOutlinedInput-root:hover": {
@@ -113,18 +119,6 @@ export const LoginPage = ({ onLogin }) => {
     )
 }
 
-const FormContainer = styled.div `
-border: 2px solid whitesmoke;
-border-radius: 15px;
-padding: 20px;
-text-align: center;
-color: whitesmoke;
-`
-
-const P = styled.p`
-margin-top: 5%;
-`
-
 const customTheme = createTheme({
     palette: {
       primary: {
@@ -145,41 +139,9 @@ const customTheme = createTheme({
       }
   });
 
-/* const LabelWrapper = styled.div`
-    text-align: center;
-    padding: 70px 0 30px;
-`
+ 
 
-const LabelInnerWrapper = styled.div`
-    display: inline-block;
-    margin: 20% 2% 0;
-    label {margin: 5px;}
 
-` 
 
- const Form = styled.form`
-    display: flex;
-    flex-direction: column;
-    margin: 0 auto;
-    align-items: center;
-` 
 
-const InputContainer = styled.div`
-    margin-bottom: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    label {
-        margin: 5px;
-        padding: 10px;
-        color: var(--secondary);
-    }
-    input {
-        border: none;
-        border: 2px solid var(--secondary);
-        background-color: transparent;
-        padding: 12px;
-        
-    }
-`
-*/
+  

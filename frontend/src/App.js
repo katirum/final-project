@@ -41,7 +41,7 @@ export const App = () => {
     const authentication = getAuth();
     createUserWithEmailAndPassword(authentication, args.email, args.password)
     .then((response) => {
-      sessionStorage.setItem('Auth Token', response._tokenResponse.refreshToken)
+      sessionStorage.setItem('Auth Token', response._tokenResponse.idToken)
       navigate('/dashboard')
     })
     .catch((error) => {
@@ -58,7 +58,7 @@ export const App = () => {
       const authentication = getAuth();
        signInWithEmailAndPassword(authentication, args.email, args.password)
         .then((response) => {
-          sessionStorage.setItem('Auth Token', response._tokenResponse.refreshToken)
+          sessionStorage.setItem('Auth Token', response._tokenResponse.idToken)
           navigate('/dashboard')
         })
         .catch((error) => {

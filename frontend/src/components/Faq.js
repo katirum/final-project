@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 import open from "../utils/assets/add.png"
 
 const Faq = props => {
@@ -39,7 +39,12 @@ const StyledFaq = styled.div`
    background-color: var(--primary);
     border: var(--primary);
     border-radius: 5px 0 0;
-    padding: 20px 0; 
+    padding: 20px 5px; 
+
+    @media (max-width: 700px){
+        font-size: 100%;
+        padding: 15px 3px; 
+  }
     
 
     img{
@@ -58,10 +63,19 @@ const StyledFaq = styled.div`
     padding: ${props => (props.isOpen ? "15px" : "0 15px")};
     overflow: hidden;
     transition: all 0.4s ease;
+
+    @media (max-width: 700px){
+      padding: ${props => (props.isOpen ? "5px" : "0 5px")};
+  }
     
     span {
       display: block;
       padding: 20px 10px;
+
+      @media (max-width: 700px){
+        padding: 10px 1px;
+        font-size: 13px;
+  }
       
     }
     `
