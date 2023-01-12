@@ -6,7 +6,6 @@ import { Footer } from 'components/Footer';
 import { StartPage } from 'pages/StartPage';
 import { LoginPage } from 'pages/LoginPage';
 import { RegisterPage } from 'pages/RegisterPage';
-
 import { DashboardPage } from 'pages/DashboardPage';
 import { AllEventsPage } from 'pages/AllEventsPage';
 import { CreateEditEventsPage } from 'pages/CreateEditEventsPage';
@@ -43,12 +42,6 @@ export const App = () => {
     createUserWithEmailAndPassword(authentication, args.email, args.password)
     .then((response) => {
       sessionStorage.setItem('Auth Token', response._tokenResponse.refreshToken)
-      /* let expires = new Date()
-      expires.setTime(expires.getTime() + (response._tokenResponse.expiresIn * 1000))
-
-      setCookie('access_token', response._tokenResponse.idToken, { path: '/',  expires})
-      setCookie('refresh_token', response._tokenResponse.refreshToken, {path: '/', expires}) */
-
       navigate('/dashboard')
     })
     .catch((error) => {
