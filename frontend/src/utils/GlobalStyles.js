@@ -48,6 +48,17 @@ export const PageContainer = styled.div`
     `
       }
 
+${(props) =>
+    props.createNewEventContainer &&
+    css`
+     height: 100%;
+     /* @media (max-width: 1200px){
+    height: none;
+      } */
+
+    `
+      }
+
 // Page container styling for very small devices
   @media (max-width: 350px){
     grid-template-columns: repeat(1, 1fr);
@@ -123,6 +134,11 @@ ${(props) =>
     props.createEventWrapper &&
     css`
       width: 60%;
+      margin: 10% 60%;
+
+      @media (max-width: 1200px){
+        margin: 0 auto;
+      }
     `
       }
 
@@ -302,3 +318,41 @@ export const Title = styled.h1`
         font-size: 30px;
       }
 `
+
+export const Tags = styled.span`
+  
+    color: var(--primary);
+    display: inline-block;
+    background-color: var(--secondary);
+    
+    padding: 5px 10px;
+
+    @media (max-width: 700px){
+        
+        padding: 2px;
+    }
+    `
+
+   /*  export const Title = styled.h1`
+    text-align: center;
+    border-bottom: 3px solid var(--secondary);
+    padding: 0 0 2px;
+    margin: 0 32% 30px;
+    font-size: 3rem;
+
+    @media (min-width: 200px) and (max-width: 299px){
+      margin: 15% 20%;
+  font-size: 1.5rem;
+
+}
+
+@media (min-width: 300px) and (max-width: 699px){
+  margin: 15% 20%;
+  font-size: 2rem;
+}
+
+@media (min-width: 700px) and (max-width: 1200px){
+  margin: 10% 20%;
+}
+      
+` */

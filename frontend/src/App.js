@@ -12,14 +12,15 @@ import { CreateEditEventsPage } from 'pages/CreateEditEventsPage';
 import { AccountSettingsPage } from 'pages/AccountSettingsPage';
 import { AboutPage } from 'pages/AboutPage'
 import { ContactPage } from 'pages/ContactPage'
+import { EventDetailsPage } from 'pages/EventDetailsPage';
 import { FaqPage } from 'pages/FaqPage';
 import { app } from './firebase-config';
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth'
 import { ToastContainer, toast } from 'react-toastify';
-/* import { useCookies } from 'react-cookie' */
 import 'react-toastify/dist/ReactToastify.css';
 import { Provider } from 'react-redux';
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
+import { API_URL } from 'utils/urls';
 
 import user from "./reducers/user";
 import events from "./reducers/events";
@@ -32,16 +33,41 @@ const reducer = combineReducers({
 const store = configureStore({ reducer });
 
 export const App = () => {
-  /* const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('') */
   const navigate = useNavigate();
-  /* const [cookies, setCookie] = useCookies(['access_token', 'refresh_token']) */
 
+
+  // function that saves the  UID to the server
+  const sendUidToServer = (uid) => {
+    const options = {
+      method: 'POST',
+      headers: { 
+        'Content-Type': 'application/json' },
+      body: JSON.stringify({ uid })
+    };
+  
+    fetch(API_URL("save-uid"), options)
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          // UID saved successfully on the server-side
+        } else {
+          console.log(data.message);
+        }
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  };
+  
+
+  //HANDLES THE REGISTRATION OF NEW USER
   const handleRegister = (args) => {
     const authentication = getAuth();
     createUserWithEmailAndPassword(authentication, args.email, args.password)
     .then((response) => {
       sessionStorage.setItem('Auth Token', response._tokenResponse.refreshToken)
+      const { uid } = response.user;
+      sendUidToServer(uid);
       navigate('/dashboard')
     })
     .catch((error) => {
@@ -54,11 +80,14 @@ export const App = () => {
     })
   }
 
+  //HANDLES THE LOGIN OF EXISTING USERS
   const handleLogin = (args) => {
       const authentication = getAuth();
        signInWithEmailAndPassword(authentication, args.email, args.password)
         .then((response) => {
           sessionStorage.setItem('Auth Token', response._tokenResponse.refreshToken)
+         /*  const { uid } = response.user;
+      sendUidToServer(uid); */
           navigate('/dashboard')
         })
         .catch((error) => {
@@ -76,7 +105,6 @@ export const App = () => {
  /* let authToken = sessionStorage.getItem('Auth Token') */
   return (
     <> 
-    
     <Provider store={store}>
     <GlobalStyles />
     <ToastContainer />
@@ -90,6 +118,7 @@ export const App = () => {
     <Route path="/contact" element={<ContactPage />} />
     <Route path="/about" element={<AboutPage />} />
     <Route path="/faq" element={<FaqPage />} />
+    <Route path="/events/:id" element={<EventDetailsPage />} />
     <Route 
     path="/login" 
     element={<LoginPage 

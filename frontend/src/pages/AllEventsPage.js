@@ -1,5 +1,5 @@
 import React, { useState, useEffect }from "react";
-import { InnerWrapper, Button } from "utils/GlobalStyles";
+import { InnerWrapper, Button, Title } from "utils/GlobalStyles";
 import styled, {css} from "styled-components/macro";
 import { Link } from "react-router-dom";
 /* import EventImage from '../utils/assets/logoimage.png' */
@@ -9,6 +9,7 @@ import { Sidebar } from "components/Sidebar";
 import { Loader } from "components/Loader";
 import { Timer } from "components/LoaderTimer";
 import { API_URL } from 'utils/urls';
+import { Tags } from "utils/GlobalStyles";
 
 export const AllEventsPage= () => {
   const [loading, setLoading] = useState(true);
@@ -20,13 +21,13 @@ export const AllEventsPage= () => {
       fetchEvent();
     }, []);
 
-   const idToken = sessionStorage.getItem('idToken')
+   /* const idToken = sessionStorage.getItem('idToken') */
   
     /* first fetch of the list of post */
     const fetchEvent = () => {
      setLoading(false);
      /* fetch(API_URL("events")) */
-      fetch(API_URL("events")+'?idToken='+idToken)
+      fetch(API_URL("events")/* +'?idToken='+idToken */)
         .then((res) => res.json())
         .then((data) => setEventList(data))
         .catch((error) => console.error(error))
@@ -68,9 +69,9 @@ export const AllEventsPage= () => {
             <p>Language: <Tags> {event.language}</Tags></p>
             <p>City: {event.city}</p>
             <p>Date: {event.eventDate}</p>
-            <p>Time: {event.time}</p>
-            <p>Place: {event.place}</p>
-            <Link to="/Home"><Button
+            {/* <p>Time: {event.time}</p>
+            <p>Place: {event.place}</p> */}
+            <Link to={`${event._id}`}><Button
     type="button">More Info</Button></Link>
             </EventText>
          </EventDetail>
@@ -106,32 +107,6 @@ const AllEventsPageContainer = styled.div`
 @media (min-width: 700px) and (max-width: 1200px){
     margin: 30% 10%;
 }
-`
-
-const Title = styled.h1`
-    text-align: center;
-    /* text-decoration: 2px underline var(--secondary);
-    text-underline-offset: 8px; */
-    border-bottom: 3px solid var(--secondary);
-    padding: 0 0 2px;
-    margin: 0 32% 30px;
-    font-size: 3rem;
-
-    @media (min-width: 200px) and (max-width: 299px){
-      margin: 15% 20%;
-  font-size: 1.5rem;
-
-}
-
-@media (min-width: 300px) and (max-width: 699px){
-  margin: 15% 20%;
-  font-size: 2rem;
-}
-
-@media (min-width: 700px) and (max-width: 1200px){
-  margin: 10% 20%;
-}
-      
 `
 
 const EventGrid = styled.div`
@@ -233,19 +208,7 @@ const Input = styled.input`
   /* margin-top: 15%; */
 }
 `
-const Tags = styled.span`
-  
-    color: var(--primary);
-    display: inline-block;
-    background-color: var(--secondary);
-    
-    padding: 5px 10px;
 
-    @media (max-width: 700px){
-        
-        padding: 2px;
-    }
-    `
 
 
 /* 

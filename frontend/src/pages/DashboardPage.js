@@ -24,7 +24,7 @@ export const DashboardPage = () => {
         if (!authToken) {
             navigate('/register')
         }
-    }, [])
+    }, [navigate])
     
     return (
         <DashboardPageContainer>

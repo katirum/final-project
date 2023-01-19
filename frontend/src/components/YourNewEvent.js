@@ -6,7 +6,7 @@ import { Sidebar } from './Sidebar';
 export const EventForm = (
   { newEvent, newTitle, newLanguage, newCity, newEventDate, newTime, newStartDate, newEndDate, newPlace, onNewLanguageChange, onNewCityChange, onNewTitleChange, onNewEventChange, onNewEventDateChange, onNewTimeChange, onNewStartDateChange, onNewEndDateChange, onNewPlaceChange, onFormSubmit }) => {
   return (
-    <PageContainer>
+    <PageContainer createNewEventContainer>
     <InnerWrapper createEventWrapper>
       <Sidebar />
     <PostEventContainer
