@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 /* import { Navbar } from "components/Navbar"; */
 import StartImg from '../utils/assets/startimage.jpg';
 import styled from "styled-components/macro";
-import { PageContainer, InnerWrapper, Button, Img } from "utils/GlobalStyles";
+import { StartPageContainer, InnerWrapper, Button, Img } from "utils/GlobalStyles";
 
 export const StartPage = () => {
     return (
-        <PageContainer>
+        <StartPageContainer>
           <InnerWrapper>
             <TextContainer>
                 <h1>Level up your language skills!</h1>
@@ -20,7 +20,7 @@ export const StartPage = () => {
             <Img src={StartImg} alt="langish logo" />
            {/* </ImgContainer> */}
             
-        </PageContainer>
+        </StartPageContainer>
     )
 }
 

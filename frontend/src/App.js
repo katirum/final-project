@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { GlobalStyles } from 'utils/GlobalStyles';
 import { Routes, Route,  useNavigate } from 'react-router-dom';
 import { Navbar } from 'components/Navbar';
@@ -68,7 +68,7 @@ export const App = () => {
       sessionStorage.setItem('Auth Token', response._tokenResponse.refreshToken)
       const { uid } = response.user;
       sendUidToServer(uid);
-      navigate('/dashboard')
+      navigate('/create-events')
     })
     .catch((error) => {
       if(error.code === 'auth/wrong-password'){
@@ -88,7 +88,7 @@ export const App = () => {
           sessionStorage.setItem('Auth Token', response._tokenResponse.refreshToken)
          /*  const { uid } = response.user;
       sendUidToServer(uid); */
-          navigate('/dashboard')
+          navigate('/create-events')
         })
         .catch((error) => {
           if(error.code === 'auth/wrong-password'){

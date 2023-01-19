@@ -1,20 +1,22 @@
 import React from 'react';
 import styled from 'styled-components/macro';
-import { Button, InnerWrapper, PageContainer } from 'utils/GlobalStyles';
-import { Sidebar } from './Sidebar';
+import { Button, InnerWrapper, PageContainer, Title } from 'utils/GlobalStyles';
+
 
 export const EventForm = (
   { newEvent, newTitle, newLanguage, newCity, newEventDate, newTime, newStartDate, newEndDate, newPlace, onNewLanguageChange, onNewCityChange, onNewTitleChange, onNewEventChange, onNewEventDateChange, onNewTimeChange, onNewStartDateChange, onNewEndDateChange, onNewPlaceChange, onFormSubmit }) => {
   return (
-    <PageContainer createNewEventContainer>
-    <InnerWrapper createEventWrapper>
-      <Sidebar />
+    <PageContainer>
+    <InnerWrapper>
+      {/* <Sidebar /> */}
+      <Title>New Event</Title>
     <PostEventContainer
+
     // OnFormSubmit function is found in create/edit event page
       onSubmit={onFormSubmit}>
       <EventFormDetails>
-        <h1>Create New Event</h1>
-        <label>Title</label>
+        
+        {/* <label>Title</label> */}
         <Input 
         type="text" 
         placeholder="Title"
@@ -71,11 +73,19 @@ const PostEventContainer = styled.form`
     display: flex;
     flex-direction: column;
     text-align: center;
-   margin: 15% 0 10% 0;
+   margin: 5% auto;
+   padding: 5% 0;
     color: var(--secondary);
 align-items: center;
-/* width: 70%; */
+width: 70%;
 align-self:center;
+border: 3px solid var(--secondary);
+border-radius: 15px;
+
+@media (max-width: 700px){
+        border: none;
+
+      }
 `
 
 const EventFormDetails = styled.div`
@@ -90,6 +100,16 @@ flex-direction: column;
     p{
         margin: 0;
     }
+
+    @media (max-width: 250px){
+        width: 100%;
+
+      }
+
+    @media (min-width: 251px) and (max-width: 700px){
+        width: 100%;
+
+      }
 `
 
 const TextArea = styled.textarea`

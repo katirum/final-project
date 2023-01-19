@@ -15,7 +15,20 @@ export const CreateEditEventsPage = () => {
   const [newTime, setNewTime] = useState(null);
   const [newPlace, setNewPlace] = useState('');
   const [newEventDate, setNewEventDate] = useState(new Date());
-   
+
+  let navigate = useNavigate();
+   useEffect(() => {
+        let authToken = sessionStorage.getItem('Auth Token')
+
+        if (authToken) {
+            navigate('/create-events')
+        }
+
+        if (!authToken) {
+            navigate('/login')
+        }
+    }, [])
+
   /* functions for all the changes that happen after input/like a post */
 
   /* handleNewThoughtChange allows us to write something in the text area */
@@ -73,18 +86,7 @@ export const CreateEditEventsPage = () => {
       .finally(() => setNewEvent('').setNewTitle('').setNewLanguage('').setNewCity('').setNewEventDate('').setNewTime('')/* .setNewPlace('').setNewStartDate('').setNewEndDate('') */) // shows the new thought as it targets the value on the input you posted
   }
 
- let navigate = useNavigate();
-   useEffect(() => {
-        let authToken = sessionStorage.getItem('Auth Token')
-
-        if (authToken) {
-            navigate('/create-events')
-        }
-
-        if (!authToken) {
-            navigate('/register')
-        }
-    }, [])
+ 
 
   return (
     <div>

@@ -1,11 +1,10 @@
 import React, { useState, useEffect }from "react";
 import { InnerWrapper, Button, Title } from "utils/GlobalStyles";
 import styled, {css} from "styled-components/macro";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 /* import EventImage from '../utils/assets/logoimage.png' */
 /* import data from "../components/HardCodeEvents" */
 /* import { EventList } from 'components/YourEventList'; */
-import { Sidebar } from "components/Sidebar";
 import { Loader } from "components/Loader";
 import { Timer } from "components/LoaderTimer";
 import { API_URL } from 'utils/urls';
@@ -20,6 +19,19 @@ export const AllEventsPage= () => {
 
       fetchEvent();
     }, []);
+
+    let navigate = useNavigate();
+useEffect(() => {
+    let authToken = sessionStorage.getItem('Auth Token')
+
+    if (authToken) {
+        navigate('/events')
+    }
+
+    if (!authToken) {
+        navigate('/login')
+    }
+}, [navigate])
 
    /* const idToken = sessionStorage.getItem('idToken') */
   
@@ -41,7 +53,6 @@ export const AllEventsPage= () => {
     <AllEventsPageContainer>
       
       <InnerWrapper eventWrapper>
-      <Sidebar />
       <Title>
             All Events
         </Title>

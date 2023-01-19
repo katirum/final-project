@@ -2,12 +2,12 @@ import React from "react";
 import Faq from "../components/Faq";
 import faqsData from '../utils/faq.json'
 import styled from "styled-components/macro";
-import { InnerWrapper, Title } from "utils/GlobalStyles";
+import { InnerWrapper, Title, PageContainer } from "utils/GlobalStyles";
 
 export const FaqPage = () => {
   return (
-    <FaqPageContainer>
-    <InnerWrapper FAQWrapper>
+    <PageContainer>
+    <InnerWrapper>
       <Title>FAQ</Title>
         <StyledFaqsList>
           {faqsData.map((faq, i) => (
@@ -16,7 +16,7 @@ export const FaqPage = () => {
       </StyledFaqsList>
       </InnerWrapper>
     
-      </FaqPageContainer>
+      </PageContainer>
   );
 };
 
@@ -37,13 +37,3 @@ text-align: center;
     font-size: 15px;
   }
 `;
-
-const FaqPageContainer = styled.div`
-    /* display: flex; 
-    text-align: center;
-    
-    color: var(--secondary);*/
-    /* border: 2px solid var(--secondary); 
-border-radius: 15px;
-padding: 50px 0;*/
-`

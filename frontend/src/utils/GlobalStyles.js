@@ -9,12 +9,9 @@ export const GlobalStyles = createGlobalStyle`
     --quinary: #FBFAEF;
   }
   * {
-    /* outline: 1px solid red; */
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    /*max-height: 100vh; 
-     max-width: 100vw;*/
   }
   body{
     -webkit-font-smoothing: antialiased;
@@ -26,8 +23,10 @@ export const GlobalStyles = createGlobalStyle`
     text-decoration: none;
   }
 `
+
 // Outer container for the entire page
-export const PageContainer = styled.div`
+
+export const StartPageContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   height: 100vh;
@@ -36,49 +35,38 @@ export const PageContainer = styled.div`
   ${(props) =>
     props.LoginRegister &&
     css`
-
-     @media (min-width: 351px) and (max-width: 1000px){
-    /* height: 85vh; */
-      }
-
       @media (max-width: 700px) and (max-height: 400px){
     height: 100%;
       }
-
-    `
-      }
-
-${(props) =>
-    props.createNewEventContainer &&
-    css`
-     height: 100%;
-     /* @media (max-width: 1200px){
-    height: none;
-      } */
-
     `
       }
 
 // Page container styling for very small devices
-  @media (max-width: 350px){
-    grid-template-columns: repeat(1, 1fr);
-    height: 60%;
-      }
+@media (max-width: 350px){
+  grid-template-columns: repeat(1, 1fr);
+  height: 60%;
+    }
 
-      // Page container styling for small to medium devices
-  @media (min-width: 351px) and (max-width: 1000px){
-    grid-template-columns: repeat(1, 1fr);
-      }
+    // Page container styling for small to medium devices
+@media (min-width: 351px) and (max-width: 1000px){
+  grid-template-columns: repeat(1, 1fr);
+    }
+`
+
+export const PageContainer = styled.div`
+height: 100%;
 `
 //Main styling for the Inner Wrapper
 export const InnerWrapper = styled.div`
 width: 80%;
 margin: 0 auto;
+color: var(--secondary);
+text-align: center;
 
-/* //Inner wrapper for small devices
+//Inner wrapper for small devices
 @media (max-width: 700px){
-        width: 60%;
-      } */
+        width: 100%;
+      }
 
 // Inner wrapper for login/register
 ${(props) =>
@@ -97,14 +85,6 @@ ${(props) =>
     
       }
 
-//Wrapper for the about page and media query for footer
-${(props) =>
-    props.aboutPageWrapper &&
-    css`
-      width: 90%;
-    `
-      }
-
 //Wrapper for the footer and media query for footer
 ${(props) =>
     props.footerWrapper &&
@@ -113,80 +93,12 @@ ${(props) =>
       justify-content: space-evenly;
       align-self: center;
       flex-wrap: wrap;
+      color: var(--primary);
 
       // makes the sections in the footer into a column and not a row
       @media (max-width: 700px){
         flex-direction: column;
         width: 50%;
-      }
-    `
-      }
-
-//Wrapper for the create event page and media query for footer
-${(props) =>
-    props.contactPageWrapper &&
-    css`
-      width: 60%;
-    `
-      }
-
-${(props) =>
-    props.createEventWrapper &&
-    css`
-      width: 60%;
-      margin: 10% 60%;
-
-      @media (max-width: 1200px){
-        margin: 0 auto;
-      }
-    `
-      }
-
-${(props) =>
-    props.eventWrapper &&
-    css`
-      width: 90%;
-
-      @media (max-width: 700px){
-        
-      }
-    `
-      }
-
-${(props) =>
-    props.contactPageWrapper &&
-    css`
-    margin-top: 5%;
-
-      @media (min-width: 200px) and (max-width: 299px){
-        margin-top: 30%;
-
-}
-
-@media (min-width: 300px) and (max-width: 699px){
-  margin-top: 30%;
-
-}
-
-@media (min-width: 700px) and (max-width: 1200px){
-  /* margin-top: 15%; */
-}
-    `
-      }
-
-
-
-
-// Inner wrapper for the FAQ page
-${(props) =>
-    props.FAQWrapper &&
-    css`
-      margin-top: 10%;
-      margin-bottom: 5%;
-
-      // Inner wrapper for the FAQ page on small devices
-      @media (max-width: 700px){
-        width: 70%;
       }
     `
       }
@@ -224,31 +136,6 @@ export const Typography = styled.h3`
     margin-top: 10%;
       }
   `
-
-// Container for
-export const Container = styled.div`
-height: 100vh;
-display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    color: var(--secondary);
-
-    ${(props) =>
-    props.contactPage &&
-    css`
-
-@media (max-width: 350px){
-    height: 100%;
-      }
-
-@media (min-width: 351px) and (max-width: 700px){
-    height: 150%;
-      }
-
-    `
-      }
-`
 
 export const NavWrapper = styled.div`
   height: 100px;
@@ -293,6 +180,32 @@ export const Button = styled.button`
       margin-bottom: 20px;
     `
       }
+
+${(props) =>
+    props.logout &&
+    css`
+      border: 1px solid var(--secondary);
+      position: fixed;
+      top: 110px;
+      left: 40px;
+
+      // Styling and psoitioning for logo on very small screens
+      @media (max-width: 350px){
+        top: 55px;
+        left: 2px;
+        padding: 2px 3px;
+        font-size: 10px;
+      }
+
+      // Styling and psoitioning for logo on smaller screen
+  @media (min-width: 351px) and (max-width: 700px){
+    top: 55px;
+    left: 5px;
+    padding: 4px;
+      }
+
+    `
+      }
 `
 // Start page image
 export const Img = styled.img`
@@ -310,12 +223,18 @@ export const Title = styled.h1`
     text-align: center;
     color: var(--secondary);
     border-bottom: 3px solid var(--secondary);
-    padding: 0 0 2px;
-    margin: 0 32% 30px;
+    margin: 15% 10% 0 10%;
     font-size: 50px;
 
     @media (max-width: 350px){
         font-size: 30px;
+        margin: 20%;
+      }
+
+  // Styling and psoitioning for logo on smaller screen
+  @media (min-width: 351px) and (max-width: 700px){
+    font-size: 40px;
+    margin: 15%;
       }
 `
 
@@ -332,27 +251,3 @@ export const Tags = styled.span`
         padding: 2px;
     }
     `
-
-   /*  export const Title = styled.h1`
-    text-align: center;
-    border-bottom: 3px solid var(--secondary);
-    padding: 0 0 2px;
-    margin: 0 32% 30px;
-    font-size: 3rem;
-
-    @media (min-width: 200px) and (max-width: 299px){
-      margin: 15% 20%;
-  font-size: 1.5rem;
-
-}
-
-@media (min-width: 300px) and (max-width: 699px){
-  margin: 15% 20%;
-  font-size: 2rem;
-}
-
-@media (min-width: 700px) and (max-width: 1200px){
-  margin: 10% 20%;
-}
-      
-` */

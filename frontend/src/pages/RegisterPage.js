@@ -1,6 +1,6 @@
 import React from "react";
 /* import { Link } from "react-router-dom"; */
-import { InnerWrapper, PageContainer, Img, Typography, FormContainer, P } from 'utils/GlobalStyles'
+import { InnerWrapper, StartPageContainer, Img, Typography, FormContainer, P } from 'utils/GlobalStyles'
 /* import { UserInput } from */
 import LoginPageImg from '../utils/assets/loginpage-img.jpg';
 import Box  from '@mui/material/Box';
@@ -23,7 +23,7 @@ export const RegisterPage = ({ onRegister }) => {
     }
 
     return (
-        <PageContainer LoginRegister>
+        <StartPageContainer LoginRegister>
           <InnerWrapper formWrapper>
             <FormContainer>
               <ThemeProvider theme={customTheme}>
@@ -111,7 +111,7 @@ export const RegisterPage = ({ onRegister }) => {
         </FormContainer>
         </InnerWrapper>
         <Img src={LoginPageImg} alt="login-image" />
-        </PageContainer>
+        </StartPageContainer>
     )
 }
 

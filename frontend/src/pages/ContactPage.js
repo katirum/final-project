@@ -1,5 +1,5 @@
 import React from 'react'
-import { InnerWrapper, Container } from 'utils/GlobalStyles'
+import { InnerWrapper, PageContainer, Title } from 'utils/GlobalStyles'
 import creators from '../utils/creators.json'
 import mailimg from '../utils/assets/email.png'
 import githubimg from '../utils/assets/github.png'
@@ -7,11 +7,12 @@ import portfolioimg from '../utils/assets/web.png'
 import styled from 'styled-components/macro'
 export const ContactPage = () => {
     return(
-        <Container contactPage>
-            <InnerWrapper contactPageWrapper>
-                <h2>Hello, Creators!</h2>
+        <PageContainer>
+            <InnerWrapper>
+                <Title>Contact</Title>
+                <H2>Hello, Creators!</H2>
                     <p>Get in touch with our creators to know more about this project or our other projects</p>
-                    <ContactPageContainer>
+                    <ContactDetailsContainer>
                         {creators.map((item) => (
                     <CreatorContainer key={item.id}>
            <a
@@ -44,13 +45,13 @@ export const ContactPage = () => {
             </CreatorInfoContainer>
             </CreatorContainer>
          
-        ))}</ContactPageContainer>
+        ))}</ContactDetailsContainer>
                     
-                </InnerWrapper>  </Container> 
+                </InnerWrapper>  </PageContainer> 
                 )
 }
 
-const ContactPageContainer = styled.div`
+const ContactDetailsContainer = styled.div`
     display: grid;
   grid-template-columns: 100%;
   margin-top: 5%;
@@ -115,11 +116,6 @@ const CreatorContainer = styled.div`
     margin: 10% 0;
 
 }
-
-@media (min-width: 700px) and (max-width: 1200px){
-  /* margin-top: 20%; */
-  
-}
 `
 
 const CreatorInfoContainer = styled.div`
@@ -127,6 +123,8 @@ display: flex;
 flex-direction: column;
 align-items: center;
 margin: 20px 0;
+`
 
-
+const H2 = styled.h2`
+margin-top: 5%;
 `

@@ -22,8 +22,8 @@ export const EventDetailsPage = () => {
   }
 
   return (
-    <PageContainer>
-    <InnerWrapper eventWrapper>
+    <PageContainer >
+    <InnerWrapper>
       <Title> {eventDetails.title}</Title>
       {/* <Link to="/">Go back</Link> */}
       <div>
@@ -41,3 +41,4 @@ export const EventDetailsPage = () => {
 
   )
 }
+

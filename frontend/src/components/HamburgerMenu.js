@@ -1,6 +1,60 @@
-import React,{useState} from "react";
+import React,{ useState } from "react";
 import { NavLink } from 'react-router-dom'
 import styled from "styled-components";
+/* import { Button } from "utils/GlobalStyles"; */
+
+// HAMBURGER MENU
+export const HamburgerMenu = () => {
+ /*  let navigate = useNavigate();
+  const handleLogout = () => {
+    sessionStorage.removeItem('Auth Token');
+    navigate('/login')
+}   */
+
+const [click, setClick] = useState(false);
+const handleClick = () => setClick(!click);
+  
+  return (
+    <>
+        <MenuLabel htmlFor="navi-toggle" onClick={handleClick}>
+        <Icon clicked={click}>&nbsp;</Icon>
+          </MenuLabel>
+          <NavBackground clicked={click}>&nbsp;</NavBackground>
+                
+        <Navigation clicked={click}>
+          <List>
+            <li>
+            <ItemLink onClick={handleClick} to="/">Home</ItemLink>
+            </li>
+            <li>
+            <ItemLink onClick={handleClick} to="/login">Login/Register</ItemLink>
+            </li>
+            <li>
+            <ItemLink onClick={handleClick} to="/events">All Events</ItemLink>
+            </li>
+            <li>
+            <ItemLink onClick={handleClick} to="/create-events">Create Event</ItemLink>
+            </li>
+            <li>
+            <ItemLink onClick={handleClick} to="/contact">Contact</ItemLink>
+            </li>
+            <li>
+            <ItemLink onClick={handleClick} to="/about">About</ItemLink>
+            </li>
+            <li>
+            <ItemLink onClick={handleClick} to="/faq">FAQ</ItemLink>
+            </li>
+            {/* {'Auth Token' && <button onClick={handleLogout}>Logout</button>}
+            <li>
+           <Button onClick={handleLogout}>Logout</Button>
+            </li> */}
+            
+          </List>
+        </Navigation>
+    </>
+  );
+}
+
 
 const COLORS = {
   PrimaryDark: "#064635",
@@ -175,42 +229,3 @@ transition: all 0.4s;
   transform: translateX(1rem) ;
 }
 `
-
-// HAMBURGER MENU
-export const HamburgerMenu = () => {
-  
-const [click, setClick] = useState(false);
-const handleClick = () => setClick(!click);
-  
-  return (
-    <>
-        <MenuLabel htmlFor="navi-toggle" onClick={handleClick}>
-        <Icon clicked={click}>&nbsp;</Icon>
-          </MenuLabel>
-          <NavBackground clicked={click}>&nbsp;</NavBackground>
-                
-        <Navigation clicked={click}>
-          <List>
-            <li>
-            <ItemLink onClick={handleClick} to="/">Home</ItemLink>
-            </li>
-            <li>
-            <ItemLink onClick={handleClick} to="/login">Login/Register</ItemLink>
-            </li>
-            <li>
-            <ItemLink onClick={handleClick} to="/events">Events</ItemLink>
-            </li>
-            <li>
-            <ItemLink onClick={handleClick} to="/contact">Contact</ItemLink>
-            </li>
-            <li>
-            <ItemLink onClick={handleClick} to="/about">About</ItemLink>
-            </li>
-            <li>
-            <ItemLink onClick={handleClick} to="/faq">FAQ</ItemLink>
-            </li>
-          </List>
-        </Navigation>
-    </>
-  );
-}
