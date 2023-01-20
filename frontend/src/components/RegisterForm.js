@@ -6,29 +6,7 @@ import styled from 'styled-components/macro';
 import Typography from '@mui/material/Typography'
 import {createTheme, ThemeProvider} from '@mui/material/styles'
 import { Link } from 'react-router-dom';
-
-
-/* import { InnerWrapper } from '../utils/GlobalStyles' */
-
-const customTheme = createTheme({
-    palette: {
-      primary: {
-        light: "#f5f5f5", // border
-        main: "#f5f5f5", //button and outline
-        dark: "#f5f5f5", 
-        contrastText: "#f5f5f5" //text when u type
-      },
-      secondary: {
-        light: "#f5f5f5",
-        main: "#c93434",
-        dark: "#f5f5f5",
-        contrastText: "#f5f5f5"
-      },
-      text: {
-        primary: "#f5f5f5"
-      }
-      }
-  });
+import { FormContainer } from 'utils/GlobalStyles';
 
 
 export const Form = ({title, setPassword, setEmail, handleAction}) => {
@@ -115,13 +93,26 @@ export const Form = ({title, setPassword, setEmail, handleAction}) => {
     );
 }
 
-const FormContainer = styled.div `
-border: 2px solid whitesmoke;
-border-radius: 15px;
-padding: 20px;
-text-align: center;
-color: whitesmoke;
-`
+const customTheme = createTheme({
+  palette: {
+    primary: {
+      light: "#f5f5f5", // border
+      main: "#f5f5f5", //button and outline
+      dark: "#f5f5f5", 
+      contrastText: "#f5f5f5" //text when u type
+    },
+    secondary: {
+      light: "#f5f5f5",
+      main: "#c93434",
+      dark: "#f5f5f5",
+      contrastText: "#f5f5f5"
+    },
+    text: {
+      primary: "#f5f5f5"
+    }
+    }
+});
+
 
 const P = styled.p`
 margin-top: 5%;

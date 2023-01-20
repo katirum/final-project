@@ -10,20 +10,19 @@ export const StartPage = () => {
         <StartPageContainer>
           <InnerWrapper>
             <TextContainer>
-                <h1>Level up your language skills!</h1>
+                <H1>Level up your language skills!</H1>
                 <p>Why practice alone when you can do it together? Grab a coffee and let's go!</p>
-                <Link to="/login"><Button start
-                type="button">Start</Button></Link>
+                <Link to="/login">
+                  <Button start type="button">Start</Button>
+                </Link>
             </TextContainer>
             </InnerWrapper>
-            {/* <ImgContainer> */}
             <Img src={StartImg} alt="langish logo" />
-           {/* </ImgContainer> */}
-            
         </StartPageContainer>
     )
 }
 
+// Container for intro text
 const TextContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -32,15 +31,16 @@ const TextContainer = styled.div`
   color: var(--secondary);
   text-align: center;
 
+// Margins  for really small screens
   @media (max-width: 350px){
     margin: 0 5% 10% 10%;
   }
-
+// Margins for small screens
   @media (min-width: 350px) and (max-width: 700px){
     margin: 10% 5% 0 10%;
   }
 
-  // Size of font for medium screens
+  // Margins and font size for medium screens
   @media (min-width: 701px) and (max-width: 1000px){
     margin: 8% 10% 0 10%;
   }
@@ -80,8 +80,11 @@ const TextContainer = styled.div`
   }
 }
 `
-
-/* const ImgContainer = styled.div`
-    height: 100vh;
-` */
+// Styling for title on small screens
+const H1 = styled.h1`
+@media (max-width: 350px)
+    {
+      margin-top: 10%;
+    }
+`
 

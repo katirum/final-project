@@ -11,7 +11,7 @@ export const ContactPage = () => {
             <InnerWrapper>
                 <Title>Contact</Title>
                 <H2>Hello, Creators!</H2>
-                    <p>Get in touch with our creators to know more about this project or our other projects</p>
+                    <P>Get in touch with our creators to know more about this project or our other projects</P>
                     <ContactDetailsContainer>
                         {creators.map((item) => (
                     <CreatorContainer key={item.id}>
@@ -127,4 +127,12 @@ margin: 20px 0;
 
 const H2 = styled.h2`
 margin-top: 5%;
+`
+
+const P = styled.p`
+@media (max-width: 700px){
+    width: 80%;
+    margin: 0 auto;
+
+}
 `
