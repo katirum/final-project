@@ -35,38 +35,38 @@ export const StartPageContainer = styled.div`
     props.LoginRegister &&
     css`
       @media (max-width: 700px) and (max-height: 400px){
-    height: 100%;
+        height: 100%;
       }
     `
-      }
+    }
 
 // Page container styling for very small devices
-@media (max-width: 350px){
-  grid-template-columns: repeat(1, 1fr);
-  height: 60%;
-    }
+  @media (max-width: 350px){
+    grid-template-columns: repeat(1, 1fr);
+    height: 60%;
+  }
 
-    // Page container styling for small to medium devices
-@media (min-width: 351px) and (max-width: 1000px){
-  grid-template-columns: repeat(1, 1fr);
-    }
+// Page container styling for small to medium devices
+  @media (min-width: 351px) and (max-width: 1000px){
+    grid-template-columns: repeat(1, 1fr);
+  }
 `
 
 // Page container for all other pages
 export const PageContainer = styled.div`
-height: 100%;
+  height: 100%;
 `
 //Main styling for the Inner Wrapper
 export const InnerWrapper = styled.div`
-width: 80%;
-margin: 0 auto;
-color: var(--secondary);
-text-align: center;
+  width: 80%;
+  margin: 0 auto;
+  color: var(--secondary);
+  text-align: center;
 
-//Inner wrapper for small devices
-@media (max-width: 700px){
-        width: 100%;
-      }
+// Inner wrapper for small devices
+  @media (max-width: 700px){
+    width: 100%;
+  }
 
 // Inner wrapper for login/register form
 ${(props) =>
@@ -82,7 +82,7 @@ ${(props) =>
         margin: 0;
       }
     `
-      }
+    }
 
 //Wrapper for the footer and media query for footer
 ${(props) =>
@@ -100,7 +100,7 @@ ${(props) =>
         width: 50%;
       }
     `
-      }
+    }
 `
 
 // Title for login and register
@@ -109,8 +109,8 @@ export const Typography = styled.h3`
   font-size: 350%;
 
   @media (max-width: 350px){
-        font-size: 200%;
-      }
+    font-size: 200%;
+  }
   `
 
   //Container for login/register form
@@ -124,8 +124,7 @@ export const Typography = styled.h3`
   @media (max-width: 700px){
     padding: 5px;
     margin: 5%;
-      }
-
+  }
   `
   
   //Paragraph in login/register from
@@ -134,7 +133,7 @@ export const Typography = styled.h3`
 
   @media (max-width: 700px){
     margin-top: 10%;
-      }
+  }
   `
 
 // Navigation bar wrapper. Makes it transparent and always visible
@@ -144,6 +143,7 @@ export const NavWrapper = styled.div`
   z-index: 100;
   position: fixed;
 `
+
 // Styling for logo on big screen
 export const Logo = styled.img`
   height: 8rem;
@@ -156,14 +156,14 @@ export const Logo = styled.img`
     height: 4rem;
     top: -5px;
     left: -1px;
-      }
-// Size and positioning for logo on very small screens
-      @media (max-width: 350px){
+  }
+
+  // Size and positioning for logo on very small screens
+  @media (max-width: 350px){
     height: 3rem;
     top: 1px;
     left: -3px;
-      }
-
+  }
 `
 //Main styling for all buttons
 export const Button = styled.button`
@@ -181,10 +181,10 @@ export const Button = styled.button`
     css`
       margin-bottom: 20px;
     `
-      }
+  }
 
-//Specific styling for logout button
-${(props) =>
+  //Specific styling for logout button
+  ${(props) =>
     props.logout &&
     css`
       border: 1px solid var(--secondary);
@@ -192,7 +192,7 @@ ${(props) =>
       top: 110px;
       left: 40px;
 
-      // Size and position on really small screens
+    // Size and position on really small screens
       @media (max-width: 350px){
         top: 55px;
         left: 2px;
@@ -200,15 +200,14 @@ ${(props) =>
         font-size: 10px;
       }
 
-      // Size and position on small screens
-    @media (min-width: 351px) and (max-width: 700px){
-    top: 55px;
-    left: 5px;
-    padding: 4px;
+    // Size and position on small screens
+      @media (min-width: 351px) and (max-width: 700px){
+        top: 55px;
+        left: 5px;
+        padding: 4px;
       }
-
     `
-      }
+  }
 `
 // Start page image
 export const Img = styled.img`
@@ -218,43 +217,47 @@ export const Img = styled.img`
 
   // Styling for startpage image. Makes the image appear on top half on smaller devices
   @media (max-width: 1000px){
-        grid-area: 1 / 1 / span 1 / span 1; 
-        height: 40vh;
-      }
+    grid-area: 1 / 1 / span 1 / span 1; 
+    height: 40vh;
+  }
 `
 
 // Styling for page titles
 export const Title = styled.h1`
-    text-align: center;
-    color: var(--secondary);
-    border-bottom: 3px solid var(--secondary);
-    margin: 15% 10% 0 10%;
-    font-size: 50px;
+  text-align: center;
+  color: var(--secondary);
+  border-bottom: 3px solid var(--secondary);
+  margin: 15% 10% 0 10%;
+  font-size: 50px;
 
-    // Page tite size on really small screens
-    @media (max-width: 350px){
-        font-size: 30px;
-        margin: 20%;
-      }
+  // Page tite size on really small screens
+  @media (max-width: 350px){
+    font-size: 30px;
+    margin: 40% 5% 10%;
+  }
 
-    // Page tite size on small screens
-    @media (min-width: 351px) and (max-width: 700px){
+  // Page tite size on small screens
+  @media (min-width: 351px) and (max-width: 700px){
     font-size: 40px;
-    margin: 15%;
-      }
+    margin: 40% 5% 10%;
+  }
+
+  @media (min-width: 701px) and (max-width: 1200px){
+    margin: 30% 5% 5%;
+  }
 `
 
 //Language tags on all events page and event details page
 export const Tags = styled.span`
-    color: var(--primary);
-    display: inline-block;
-    background-color: var(--secondary);
-    padding: 5px 10px;
+  color: var(--primary);
+  display: inline-block;
+  background-color: var(--secondary);
+  padding: 5px 10px;
 
-    //Language tags on smaller screns
-    @media (max-width: 700px){
-        padding: 2px;
-    }
-    `
+  //Language tags on smaller screns
+  @media (max-width: 700px){
+    padding: 2px;
+  }
+`
 
     

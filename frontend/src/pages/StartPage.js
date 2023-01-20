@@ -1,11 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-/* import { Navbar } from "components/Navbar"; */
 import StartImg from '../utils/assets/startimage.jpg';
 import styled from "styled-components/macro";
 import { StartPageContainer, InnerWrapper, Button, Img } from "utils/GlobalStyles";
 
 export const StartPage = () => {
+  
     return (
         <StartPageContainer>
           <InnerWrapper>
@@ -13,11 +13,11 @@ export const StartPage = () => {
                 <H1>Level up your language skills!</H1>
                 <p>Why practice alone when you can do it together? Grab a coffee and let's go!</p>
                 <Link to="/login">
-                  <Button start type="button">Start</Button>
+                  <Button start id="start" name="start button" type="button">Start</Button>
                 </Link>
             </TextContainer>
             </InnerWrapper>
-            <Img src={StartImg} alt="langish logo" />
+            <Img src={StartImg} alt="languable logo" />
         </StartPageContainer>
     )
 }

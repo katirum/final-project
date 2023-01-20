@@ -1,12 +1,9 @@
 import React from "react";
-/* import { Link } from "react-router-dom"; */
 import { InnerWrapper, StartPageContainer, Img, Typography, FormContainer, P } from 'utils/GlobalStyles'
-/* import { UserInput } from */
 import LoginPageImg from '../utils/assets/loginpage-img.jpg';
 import Box  from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { Buttons } from 'components/Button';
-import styled from 'styled-components/macro';
 import {createTheme, ThemeProvider} from '@mui/material/styles'
 import { Link } from 'react-router-dom';
 
@@ -26,91 +23,95 @@ export const RegisterPage = ({ onRegister }) => {
         <StartPageContainer LoginRegister>
           <InnerWrapper formWrapper>
             <FormContainer>
-              <ThemeProvider theme={customTheme}>
-                 <div>
-                   <Typography>
-                      Register
-                   </Typography>
-                 </div>
+               <ThemeProvider theme={customTheme}>
+                  <div>
+                    <Typography>
+                        Register
+                    </Typography>
+                  </div>
 
-              <Box
-                  component="form"
-                  sx={{
-                      color: '#f5f5f5',
-                      display: 'flex',
-                      flexDirection: 'column' 
-                     }}
-                    noValidate
-                    autoComplete="off"
-              >
-                <TextField 
-                  sx={{
-                    margin: '10px',
-                      "& .MuiInputBase-root": {"& > fieldset": {
-                            borderColor: "#f5f5f5"
+                  {/* Box for register form */}
+                  <Box
+                      component="form"
+                      sx={{
+                          color: '#f5f5f5',
+                          display: 'flex',
+                          flexDirection: 'column' 
+                        }}
+                        noValidate
+                        autoComplete="off">
+
+                    {/* Input field for email */}
+                    <TextField 
+                      sx={{
+                        margin: '10px',
+                          "& .MuiInputBase-root": {"& > fieldset": {
+                                borderColor: "#f5f5f5"
+                            },
+                            '@media (max-width: 700px)' : {
+                              margin: '3px'
+                            }
                         },
-                        '@media (max-width: 700px)' : {
-                          margin: '3px'
-                        }
-                    },
-                    "& .MuiOutlinedInput-root:hover": {
-                        "& > fieldset": {
-                    borderColor: "#f5f5f5"
-                        }
-                      },
-                      label: {
-                        color: "#f5f5f5",
-                      }
-                 
-            }}
-            id="email" 
-            label="Enter your Email" 
-            variant="outlined"
-            color="primary"
-            onChange={(e)=>{
-                email = e.target.value
-            }}
-            />
-            <TextField 
-            sx={{
-                margin: '10px',
-                "& .MuiInputBase-root": {"& > fieldset": {
+                        "& .MuiOutlinedInput-root:hover": {
+                            "& > fieldset": {
                         borderColor: "#f5f5f5"
-                    },
-                    '@media (max-width: 700px)' : {
-                      margin: '3px'
-                    }
-                },
-                "& .MuiOutlinedInput-root:hover": {
-                    "& > fieldset": {
-              borderColor: "#f5f5f5"
-                    }
-                  },
-                  label: {
-                    color: "#f5f5f5f5",
-                  }
-                 
-            }}
-            id="password" 
-            type= "password"
-            label="Enter your Password" 
-            variant="outlined"
-            onChange={(e)=>{
-                password = e.target.value
-            }}
-            />
-        </Box>
-        </ThemeProvider>
+                            }
+                          },
+                          label: {
+                            color: "#f5f5f5",
+                          }
+                          }}
+                          id="email" 
+                          label="Enter your Email" 
+                          variant="outlined"
+                          color="primary"
+                          onChange={(e)=>{
+                              email = e.target.value
+                          }}
+                          />
+                          
+                          {/* Input field for password */}
+                          <TextField 
+                          sx={{
+                              margin: '10px',
+                              "& .MuiInputBase-root": {"& > fieldset": {
+                                      borderColor: "#f5f5f5"
+                                  },
+                                  '@media (max-width: 700px)' : {
+                                    margin: '3px'
+                                  }
+                              },
+                              "& .MuiOutlinedInput-root:hover": {
+                                  "& > fieldset": {
+                            borderColor: "#f5f5f5"
+                                  }
+                                },
+                                label: {
+                                  color: "#f5f5f5f5",
+                                }
+                          }}
+                          id="password" 
+                          type= "password"
+                          label="Enter your Password" 
+                          variant="outlined"
+                          onChange={(e)=>{
+                              password = e.target.value
+                          }}
+                          />
+                    </Box>
+                </ThemeProvider>
 
-        <Buttons  
-          title="Register"
-          handleAction={onSubmit}
-        />
-        
-        <P>Already a member? <Link to="/login"><strong>Login here</strong></Link></P>
-        </FormContainer>
-        </InnerWrapper>
-        <Img src={LoginPageImg} alt="login-image" />
+                <Buttons  
+                  title="Register"
+                  handleAction={onSubmit}
+                />
+
+              <P>Already a member? 
+                <Link to="/login" role="button" aria-label="Go to login page"><strong>Login here</strong></Link>
+              </P>
+            </FormContainer>
+          </InnerWrapper>
+            <Img src={LoginPageImg} alt="login-image" />
         </StartPageContainer>
     )
 }

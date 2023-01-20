@@ -21,97 +21,98 @@ export const LoginPage = ({ onLogin }) => {
 
     return (
         <StartPageContainer LoginRegister>
-        <InnerWrapper formWrapper>
-        <FormContainer>
-        <ThemeProvider theme={customTheme}>
-        <div>
-          <Typography >
-            Login
-          </Typography>
-        </div>
+          <InnerWrapper formWrapper>
+            <FormContainer>
+              <ThemeProvider theme={customTheme}>
+                <div>
+                  <Typography >
+                    Login
+                  </Typography>
+                </div>
 
-        <Box
-            component="form"
-            sx={{
-                color: '#f5f5f5',
-                display: 'flex',
-                flexDirection: 'column' 
-            }}
-            noValidate
-            autoComplete="off"
-        >
-            <TextField 
-            sx={{
-                margin: '10px',
-                "& .MuiInputBase-root": {"& > fieldset": {
-                        borderColor: "#f5f5f5"
-                    },
-                    '@media (max-width: 700px)' : {
-                      margin: '3px'
-                    }
-                },
-                "& .MuiOutlinedInput-root:hover": {
-                    "& > fieldset": {
-              borderColor: "#f5f5f5"
-                    }
-                  },
-                  label: {
-                    color: "#f5f5f5",
-                  }
-                 
-            }}
-            id="email" 
-            label="Enter your Email" 
-            variant="outlined"
-            color="primary"
-            onChange={(e)=>{
-                email = e.target.value
-            }}
-            />
-            <TextField 
-            sx={{
-                margin: '10px',
-                "& .MuiInputBase-root": {"& > fieldset": {
-                        borderColor: "#f5f5f5"
-                    },
-                    '@media (max-width: 700px)' : {
-                      margin: '3px'
-                    }
-                },
-                "& .MuiOutlinedInput-root:hover": {
-                    "& > fieldset": {
-              borderColor: "#f5f5f5"
-                    }
-                  },
-                  label: {
-                    color: "#f5f5f5f5",
-                  }
-                 
-            }}
-            id="password" 
-            type= "password"
-            label="Enter your Password" 
-            variant="outlined"
-            onChange={(e)=>{
-                password = e.target.value
-            }}
-            />
-        </Box>
-        </ThemeProvider>
+                {/* Box around the input fields */}
+                <Box
+                    component="form"
+                    sx={{
+                        color: '#f5f5f5',
+                        display: 'flex',
+                        flexDirection: 'column' 
+                    }}
+                    noValidate
+                    autoComplete="off"
+                >
 
-        <Buttons  
-          title="Login"
-          handleAction={onSubmit}
-        />
-        
-        <P>Not a member? <Link to="/register"><strong>Register here</strong></Link></P>
-      
+                  {/* Input field and styling for email */}
+                    <TextField 
+                    sx={{
+                        margin: '10px',
+                        "& .MuiInputBase-root": {"& > fieldset": {
+                                borderColor: "#f5f5f5"
+                            },
+                            '@media (max-width: 700px)' : {
+                              margin: '3px'
+                            }
+                        },
+                        "& .MuiOutlinedInput-root:hover": {
+                            "& > fieldset": {
+                      borderColor: "#f5f5f5"
+                            }
+                          },
+                          label: {
+                            color: "#f5f5f5",
+                          }
+                        
+                    }}
+                    id="email" 
+                    label="Enter your Email" 
+                    variant="outlined"
+                    color="primary"
+                    onChange={(e)=>{
+                        email = e.target.value
+                    }}
+                    />
 
-        </FormContainer>
-        
-        </InnerWrapper>
-        <Img src={LoginPageImg} alt="login-image" />
-        </StartPageContainer>
+                    {/* Input field and styling for epassword */}
+                    <TextField 
+                    sx={{
+                        margin: '10px',
+                        "& .MuiInputBase-root": {"& > fieldset": {
+                                borderColor: "#f5f5f5"
+                            },
+                            '@media (max-width: 700px)' : {
+                              margin: '3px'
+                            }
+                        },
+                        "& .MuiOutlinedInput-root:hover": {
+                            "& > fieldset": {
+                      borderColor: "#f5f5f5"
+                            }
+                          },
+                          label: {
+                            color: "#f5f5f5f5",
+                          }   
+                    }}
+                    id="password" 
+                    type= "password"
+                    label="Enter your Password" 
+                    variant="outlined"
+                    onChange={(e)=>{
+                        password = e.target.value
+                    }}
+                    />
+                </Box>
+             </ThemeProvider>
+              <Buttons  
+                title="Login"
+                handleAction={onSubmit}
+              />
+              <P>Not a member? 
+                <Link to="/register" role="button" aria-label="Go to register page"><strong>Register here</strong></Link>
+              </P>
+            </FormContainer>
+          </InnerWrapper>
+          <Img src={LoginPageImg} alt="login-image" />
+       </StartPageContainer>
     )
 }
 

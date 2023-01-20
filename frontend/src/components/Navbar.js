@@ -22,11 +22,11 @@ let authToken = sessionStorage.getItem('Auth Token')
     return (
         <NavWrapper>
       
-          <Link to="/"><Logo src={LogoImg} alt="langish logo" /></Link>
-          <HamburgerMenu />
+          <Link to="/"><Logo role="button" tabindex="0" src={LogoImg} alt="langish logo, leads to homepage if clicked" /></Link>
+          <HamburgerMenu tabindex="0" />
           
         {authToken
-            ? <Button logout onClick={handleLogout}>Logout</Button> 
+            ? <Button logout onClick={handleLogout} name="logout button">Logout</Button> 
             : <></>
         }
   

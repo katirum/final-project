@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-/* import { EventList } from 'components/YourEventList'; */
 import { EventForm } from 'components/YourNewEvent';
 import { API_URL } from 'utils/urls';
 import { useNavigate } from 'react-router-dom';
@@ -78,12 +77,11 @@ export const CreateEditEventsPage = () => {
         eventDate: newEventDate,
         place: newPlace,
         time: newTime,
-         // message is the key in API
-      })
+      }) 
     }
     fetch(API_URL("events"), option)
       .then((res) => res.json())
-      .finally(() => setNewEvent('').setNewTitle('').setNewLanguage('').setNewCity('').setNewEventDate('').setNewTime('')/* .setNewPlace('').setNewStartDate('').setNewEndDate('') */) // shows the new thought as it targets the value on the input you posted
+      .finally(() => setNewEvent('').setNewTitle('').setNewLanguage('').setNewCity('').setNewEventDate('').setNewTime(''))
   }
 
  

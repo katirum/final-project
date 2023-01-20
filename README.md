@@ -1,13 +1,35 @@
-# Final Project
+## Final Project: Languable by Kartika & Neah
 
-Replace this readme with your own information about your project.
+The idea behind this project is based on our experiences living in countries that required us to speak a whole different languages. Sometimes, it can be lonely to try to learn and practice your target language by yourself. So we want to create a space where people can learn languages casually-- with no pressure or judgement. 
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+## Tech
 
-## The problem
+For this project, we use Firebase for our backend authentication. We also use MongoDB, Express and NodeJS for the server. For our frontend, we use React, Styled Components, and JavaScript.
+The design was made in Canva.
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+Backend: 
+-MongoDB
+-Express.js
+-Mongoose
+-Google Cloud
 
-## View it live
+Frontend:
+-React 
+-MUI 5
+-Firebase
+-Toastify
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+Other: 
+-Canva
+-Trello
+-Pexels
+
+## What We Are Working On
+
+The features we are working on implementing are;
+1. Creating a personal dashboard for a user.
+2. Creating a feature so a user can RSVP to an event.
+3. A page where users can edit and delete their account.
+4. A feature to upload an image to your event
+
+## View it Live

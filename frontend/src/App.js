@@ -14,7 +14,8 @@ import { AboutPage } from 'pages/AboutPage'
 import { ContactPage } from 'pages/ContactPage'
 import { EventDetailsPage } from 'pages/EventDetailsPage';
 import { FaqPage } from 'pages/FaqPage';
-/* import { app } from './firebase-config'; */
+import { NotFoundPage } from 'pages/NotFoundPage';
+import { app } from './firebase-config';
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -119,6 +120,7 @@ export const App = () => {
     <Route path="/about" element={<AboutPage />} />
     <Route path="/faq" element={<FaqPage />} />
     <Route path="/events/:id" element={<EventDetailsPage />} />
+    <Route path="*" element={<NotFoundPage/>} />
     <Route 
     path="/login" 
     element={<LoginPage 
