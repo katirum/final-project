@@ -63,22 +63,24 @@ app.use(cors());
 app.use(express.json());
 
 
-// Start defining your routes here
+// ROUTES
 app.get("/", (req, res) => {
   res.send("Events!");
 });
 
+// all events
  app.get("/events", async (req, res) => {
-  const events = await Event.find().sort({createdAt: 'desc'}).limit(20).exec();
+  const events = await Event.find().sort({createdAt: 'desc'}).exec();
   res.json(events);
 });
 
+// One event
 app.get("/events/:id", async (req, res) => {
   const oneEvent = await Event.findById(req.params.id);
   res.json(oneEvent);
 });
 
-
+// post a new event
 app.post("/events", async (req, res) => {
   const {title, description, language, city, eventDate, place, createdAt, time/* */} = req.body;
   try{
@@ -89,6 +91,8 @@ app.post("/events", async (req, res) => {
   }
 });
 
+
+// IN PROGRESS: edit an event
 app.patch("/events/:id", async (req, res) => {
   const { id } = req.params;
   try{
