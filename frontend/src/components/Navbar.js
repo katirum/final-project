@@ -1,7 +1,5 @@
-import React,{ useState, useEffect } from "react";
-import { NavLink, useNavigate } from 'react-router-dom'
-/* import styled, { css } from "styled-components/macro"; */
-/* import { BrowserRouter as Router/* , Switch, Route */ 
+import React from "react";
+import { useNavigate } from 'react-router-dom'
 import { NavWrapper, Logo, Button } from "utils/GlobalStyles";
 import LogoImg from '../utils/assets/logoimage.png';
 import { HamburgerMenu } from "./HamburgerMenu";

@@ -54,6 +54,7 @@ useEffect(() => {
         placeholder="Search for title, city or language"
         onChange={event => setQuery(event.target.value)}/>
         <EventGrid>{
+          // eslint-disable-next-line array-callback-return
           eventList.filter(post => {
             if (query === '') {
               return post;

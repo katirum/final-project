@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import { GlobalStyles } from 'utils/GlobalStyles';
 import { Routes, Route,  useNavigate } from 'react-router-dom';

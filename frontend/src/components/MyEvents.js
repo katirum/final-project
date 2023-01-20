@@ -4,20 +4,10 @@ import { Link, useNavigate } from 'react-router-dom'
 import { Button, InnerWrapper } from '../utils/GlobalStyles'
 import events from "reducers/events";
 import { MainScreen } from './MainScreen'
-import { Card, Row, Col, Badge } from 'react-bootstrap'
 import { API_URL } from '../utils/urls'
-/* import events from '../data/events' 
-import axios from "axios";*/
+
 
 export const MyEvents = () => {
-
-    /* const [events, setEvents] = useState([]) */
-
-    /* const deleteHandler = (id) => {
-        if(window.confirm('are you sure?')){
-
-        }
-    } */
 
     const eventItems = useSelector((store) => store.events.items);
     const dispatch = useDispatch();

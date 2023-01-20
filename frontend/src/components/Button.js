@@ -1,6 +1,5 @@
 import * as React from 'react';
 import Button from '@mui/material/Button';
-import common from '@mui/material/colors'
 
 export const Buttons = ({title, handleAction}) => {
     return (
