@@ -23,6 +23,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { Provider } from 'react-redux';
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import { API_URL } from 'utils/urls';
+import ScrollToTop from 'components/ScrollToTop';
 
 import user from "./reducers/user";
 import events from "./reducers/events";
@@ -107,6 +108,7 @@ export const App = () => {
  /* let authToken = sessionStorage.getItem('Auth Token') */
   return (
     <> 
+    <ScrollToTop />
     <Provider store={store}>
     <GlobalStyles />
     <ToastContainer />
