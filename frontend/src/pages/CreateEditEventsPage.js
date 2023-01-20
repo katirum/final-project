@@ -26,7 +26,7 @@ export const CreateEditEventsPage = () => {
         if (!authToken) {
             navigate('/login')
         }
-    }, [])
+    }, [navigate])
 
   /* functions for all the changes that happen after input/like a post */
 
