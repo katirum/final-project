@@ -39,7 +39,8 @@ export const RegisterPage = ({ onRegister }) => {
                           flexDirection: 'column' 
                         }}
                         noValidate
-                        autoComplete="off">
+                        autoComplete="off"
+                        onKeyPress={(e) => e.key === 'Enter' ? onSubmit(e) : null}>
 
                     {/* Input field for email */}
                     <TextField 

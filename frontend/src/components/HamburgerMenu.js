@@ -1,18 +1,21 @@
-import React,{ useState } from "react";
-import { NavLink } from 'react-router-dom'
+import React,{ useState} from "react";
+import { NavLink, useNavigate  } from 'react-router-dom'
 import styled from "styled-components";
-/* import { Button } from "utils/GlobalStyles"; */
+import { Button } from "utils/GlobalStyles";
 
 // HAMBURGER MENU
 export const HamburgerMenu = () => {
- /*  let navigate = useNavigate();
+  let navigate = useNavigate();
   const handleLogout = () => {
     sessionStorage.removeItem('Auth Token');
     navigate('/login')
-}   */
+}   
 
 const [click, setClick] = useState(false);
 const handleClick = () => setClick(!click);
+
+//Gets auth token from the session storage to check if user is logged in
+let authToken = sessionStorage.getItem('Auth Token')
   
   return (
     <>
@@ -22,6 +25,10 @@ const handleClick = () => setClick(!click);
           <NavBackground clicked={click}>&nbsp;</NavBackground>
                 
         <Navigation clicked={click}>
+        {authToken
+            ? <Button logout onClick={handleLogout} name="logout button">Logout</Button> 
+            : <></>
+        }
           <List>
             <li>
             <ItemLink onClick={handleClick} to="/">Home</ItemLink>
@@ -44,10 +51,7 @@ const handleClick = () => setClick(!click);
             <li>
             <ItemLink onClick={handleClick} to="/faq">FAQ</ItemLink>
             </li>
-            {/* {'Auth Token' && <button onClick={handleLogout}>Logout</button>}
-            <li>
-           <Button onClick={handleLogout}>Logout</Button>
-            </li> */}
+             
             
           </List>
         </Navigation>

@@ -15,9 +15,9 @@ export const Footer = () => {
         </InfoColumn>
         <InfoColumn>
           <h2>FOLLOW US</h2>
-          <a href='/#'>Twitter</a>
-          <a href='/#'>Instagram</a>
-          <a href='/#'>Facebook</a>
+          <a href='https://twitter.com/'>Twitter</a>
+          <a href='https://www.instagram.com/'>Instagram</a>
+          <a href='https://www.facebook.com/'>Facebook</a>
         </InfoColumn>
         <InfoColumn>
           <h2>JOIN US</h2>

@@ -14,7 +14,8 @@ export const EventForm = (
         <Title>New Event</Title>
         <PostEventContainer
          // OnFormSubmit function is found in create/edit event page
-          onSubmit={onFormSubmit}>
+          onSubmit={onFormSubmit}
+          onKeyPress={(e) => e.key === 'Enter' ? onFormSubmit(e) : ''}>
           <EventFormDetails>
             <label htmlFor='Title of event'>
               <Input 

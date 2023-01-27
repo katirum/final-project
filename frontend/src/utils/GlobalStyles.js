@@ -189,13 +189,13 @@ export const Button = styled.button`
     css`
       border: 1px solid var(--secondary);
       position: fixed;
-      top: 110px;
+      top: 50px;
       left: 40px;
 
     // Size and position on really small screens
       @media (max-width: 350px){
-        top: 55px;
-        left: 2px;
+        top: 15px;
+        left: 10px;
         padding: 2px 3px;
         font-size: 10px;
       }

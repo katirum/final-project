@@ -7,10 +7,8 @@ import { Footer } from 'components/Footer';
 import { StartPage } from 'pages/StartPage';
 import { LoginPage } from 'pages/LoginPage';
 import { RegisterPage } from 'pages/RegisterPage';
-import { DashboardPage } from 'pages/DashboardPage';
 import { AllEventsPage } from 'pages/AllEventsPage';
 import { CreateEditEventsPage } from 'pages/CreateEditEventsPage';
-import { AccountSettingsPage } from 'pages/AccountSettingsPage';
 import { AboutPage } from 'pages/AboutPage'
 import { ContactPage } from 'pages/ContactPage'
 import { EventDetailsPage } from 'pages/EventDetailsPage';
@@ -20,47 +18,10 @@ import { app } from './firebase-config';
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Provider } from 'react-redux';
-import { configureStore, combineReducers } from '@reduxjs/toolkit';
-import { API_URL } from 'utils/urls';
 import ScrollToTop from 'components/ScrollToTop';
-
-import user from "./reducers/user";
-import events from "./reducers/events";
-
-const reducer = combineReducers({
-  user: user.reducer,
-  events: events.reducer,
-});
-
-const store = configureStore({ reducer });
 
 export const App = () => {
   const navigate = useNavigate();
-
-
-  // function that saves the  UID to the server
-  const sendUidToServer = (uid) => {
-    const options = {
-      method: 'POST',
-      headers: { 
-        'Content-Type': 'application/json' },
-      body: JSON.stringify({ uid })
-    };
-  
-    fetch(API_URL("save-uid"), options)
-      .then(response => response.json())
-      .then(data => {
-        if (data.success) {
-          // UID saved successfully on the server-side
-        } else {
-          console.log(data.message);
-        }
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  };
   
 
   //HANDLES THE REGISTRATION OF NEW USER
@@ -69,8 +30,6 @@ export const App = () => {
     createUserWithEmailAndPassword(authentication, args.email, args.password)
     .then((response) => {
       sessionStorage.setItem('Auth Token', response._tokenResponse.refreshToken)
-      const { uid } = response.user;
-      sendUidToServer(uid);
       navigate('/create-events')
     })
     .catch((error) => {
@@ -89,8 +48,6 @@ export const App = () => {
        signInWithEmailAndPassword(authentication, args.email, args.password)
         .then((response) => {
           sessionStorage.setItem('Auth Token', response._tokenResponse.refreshToken)
-         /*  const { uid } = response.user;
-      sendUidToServer(uid); */
           navigate('/create-events')
         })
         .catch((error) => {
@@ -104,21 +61,16 @@ export const App = () => {
   }
 
  
-
- /* let authToken = sessionStorage.getItem('Auth Token') */
   return (
     <> 
     <ScrollToTop />
-    <Provider store={store}>
     <GlobalStyles />
     <ToastContainer />
     <Navbar />
     <Routes>
     <Route path="/" element={<StartPage />} />
-    <Route path="/dashboard" element={<DashboardPage />} />
     <Route path="/events" element={<AllEventsPage />} />
     <Route path="/create-events" element={<CreateEditEventsPage />} />
-    <Route path="/account-settings" element={<AccountSettingsPage />} />
     <Route path="/contact" element={<ContactPage />} />
     <Route path="/about" element={<AboutPage />} />
     <Route path="/faq" element={<FaqPage />} />
@@ -137,7 +89,6 @@ export const App = () => {
     />
   </Routes>
     <Footer />
-    </ Provider>
     </>
   );
 }

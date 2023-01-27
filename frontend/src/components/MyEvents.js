@@ -41,18 +41,6 @@ export const MyEvents = () => {
             })
     }, [accessToken, dispatch]);
 
-
-   /*  const fetchEvents = async() => {
-      const { data } = await axios.get('API_URL');
-      setEvents(data);
-    } 
-
-    console.log(events);
-
-    useEffect(() => {
-      fetchEvents();
-    }, [])*/
-
     return (
         
         <InnerWrapper>
@@ -69,32 +57,6 @@ export const MyEvents = () => {
                     return <p key={item._id}>{item.description}</p>
                 })}
             </div> 
-
-           {/* { <Row xs={1} md={2} className="g-4">
-      {eventItems.map((item) => (
-        <Col key={item._id}>
-          <Card >
-            <Card.Img variant="top" src="holder.js/100px160" />
-            <Card.Body>
-                <h4>
-                    <Badge>
-                        {item.language}
-                    </Badge>
-                    <Badge>
-                        {item.city}
-                    </Badge>
-                </h4>
-              <Card.Title>{item.title}</Card.Title>
-              <Card.Text>
-                {item.description}
-              </Card.Text>
-              <Button href={`/event/${item._id}`}>Edit</Button>
-              <Button onClick={() => deleteHandler(item._id)}>Delete</Button>
-            </Card.Body>
-          </Card>
-        </Col>
-      ))}
-    </Row>} */}
             </MainScreen>
         </InnerWrapper>
     )

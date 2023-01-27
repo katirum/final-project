@@ -1,10 +1,20 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import Faq from "../components/Faq";
-import faqsData from '../utils/faq.json'
+import { API_URL } from "utils/urls";
 import styled from "styled-components/macro";
 import { InnerWrapper, Title, PageContainer } from "utils/GlobalStyles";
 
 export const FaqPage = () => {
+
+  const [faqsData, setFaqsData] = useState([]);
+
+  useEffect(() => {
+      fetch(API_URL("faq"))
+        // eslint-disable-next-line no-undef
+        .then((res) => res.json())
+        .then((data) => setFaqsData(data))
+        .catch((error) => console.log(error))
+    }, [])
   return (
     <PageContainer>
     <InnerWrapper>

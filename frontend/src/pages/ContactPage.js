@@ -1,11 +1,22 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { InnerWrapper, PageContainer, Title } from 'utils/GlobalStyles'
-import creators from '../utils/creators.json'
+import { API_URL } from 'utils/urls'
 import mailimg from '../utils/assets/email.png'
 import githubimg from '../utils/assets/github.png'
 import portfolioimg from '../utils/assets/web.png'
 import styled from 'styled-components/macro'
 export const ContactPage = () => {
+
+    const [creators, setCreators] = useState([]);
+
+    useEffect(() => {
+        fetch(API_URL("creators"))
+          // eslint-disable-next-line no-undef
+          .then((res) => res.json())
+          .then((data) => setCreators(data))
+          .catch((error) => console.log(error))
+      }, [])
+    
     return(
         <PageContainer>
             <InnerWrapper>
@@ -13,31 +24,31 @@ export const ContactPage = () => {
                 <H2>Hello, Creators!</H2>
                     <P>Get in touch with our creators to know more about this project or our other projects</P>
                     <ContactDetailsContainer>
-                        {creators.map((item) => (
-                    <CreatorContainer key={item.id}>
+                        {creators.map((creators) => (
+                    <CreatorContainer key={creators.id}>
            <a
-              href={item.portfolio}
+              href={creators.portfolio}
               target="_blank"
               rel="noreferrer"
               role="button">
-                <Img src={item.image} alt="profpic" />
+                <Img src={creators.image} alt="profpic" />
             </a>
-            <CreatorInfoContainer><h4>{item.name}</h4>
+            <CreatorInfoContainer><h4>{creators.name}</h4>
             
             <IconContainer><a
-            href={`mailto: ${item.email}`}
+            href={`mailto: ${creators.email}`}
             target="_blank"
             rel="noreferrer"
             role="button"><IconImg src={mailimg} alt='email'/>
             </a>
             <a
-            href={item.github}
+            href={creators.github}
             target="_blank"
             rel="noreferrer"
             role="button"><IconImg src={githubimg} alt='github'/>
             </a>
             <a
-            href={item.portfolio}
+            href={creators.portfolio}
             target="_blank"
             rel="noreferrer"
             role="button"><IconImg src={portfolioimg} alt='portfolio'/></a></IconContainer>

@@ -2,6 +2,8 @@ import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
 import bcrypt from 'bcrypt';
+import creators from './utils/creators.json';
+import faq from './utils/faq.json';
 
 const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/final-project";
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -52,6 +54,39 @@ const EventsSchema = new mongoose.Schema({
 
 const Event = mongoose.model("Event", EventsSchema);
 
+// CREATORS SCHEMA
+const Creators = mongoose.model("Creators",
+{
+  id: Number,
+  name: String,
+  image: String,
+  email: String,
+  github: String,
+  portfolio: String
+})
+
+if(process.env.RESET_DB) {
+  const allCreators = async () => {
+    await creators.deleteMany();
+    creators.forEach(singleCreator => {
+      const newCreator = new Creator(singleCreator);
+      newCreator.save();
+    })
+  }
+  allCreators();
+}
+ 
+
+  
+
+// FAQ SCHEMA
+const Faq = mongoose.model("Faq",
+{
+  id: Number,
+  question: String,
+  answer: String
+})
+
 // Defines the port the app will run on. Defaults to 8080, but can be overridden
 // when starting the server. Example command to overwrite PORT env variable value:
 // PORT=9000 npm start
@@ -72,6 +107,22 @@ app.get("/", (req, res) => {
  app.get("/events", async (req, res) => {
   const events = await Event.find().sort({createdAt: 'desc'}).exec();
   res.json(events);
+});
+
+// Get all games
+/* app.get("/creators", async (req, res) => {
+  res.json(creators)
+}); */
+app.get('/creators', async (req, res) => {
+  const allTheCreators = await Creators.find();
+  res.status(200).json(
+   allTheCreators
+  );
+});
+
+app.get("/faq", async (req, res) => {
+  const faq = await Faq.find();
+  res.send(faq);
 });
 
 // One event

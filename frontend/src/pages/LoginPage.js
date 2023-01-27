@@ -29,7 +29,7 @@ export const LoginPage = ({ onLogin }) => {
                     Login
                   </Typography>
                 </div>
-
+                
                 {/* Box around the input fields */}
                 <Box
                     component="form"
@@ -40,7 +40,9 @@ export const LoginPage = ({ onLogin }) => {
                     }}
                     noValidate
                     autoComplete="off"
+                    onKeyPress={(e) => e.key === 'Enter' ? onSubmit(e) : ''}
                 >
+                  
 
                   {/* Input field and styling for email */}
                     <TextField 
@@ -100,11 +102,14 @@ export const LoginPage = ({ onLogin }) => {
                         password = e.target.value
                     }}
                     />
+                    
                 </Box>
              </ThemeProvider>
               <Buttons  
+              type="submit"
                 title="Login"
-                handleAction={onSubmit}
+                
+               handleAction={onSubmit}
               />
               <P>Not a member? 
                 <Link to="/register" role="button" aria-label="Go to register page"><strong>Register here</strong></Link>

@@ -58,7 +58,6 @@ const SidebarContainer = styled.div`
         font-size: 15px;
         text-align: center;
     }
-
 }
 
 

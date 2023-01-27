@@ -11,7 +11,7 @@ export const CreateEditEventsPage = () => {
   const [newTitle, setNewTitle] = useState('');
   const [newLanguage, setNewLanguage] = useState('');
   const [newCity, setNewCity] = useState('');
-  const [newTime, setNewTime] = useState(null);
+  const [newTime, setNewTime] = useState('');
   const [newPlace, setNewPlace] = useState('');
   const [newEventDate, setNewEventDate] = useState(new Date());
 
