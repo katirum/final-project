@@ -1,9 +1,6 @@
 import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
-import bcrypt from 'bcrypt';
-import creators from './utils/creators.json';
-import faq from './utils/faq.json';
 
 const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/final-project";
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -53,39 +50,8 @@ const EventsSchema = new mongoose.Schema({
 })
 
 const Event = mongoose.model("Event", EventsSchema);
-
-// CREATORS SCHEMA
-const Creators = mongoose.model("Creators",
-{
-  id: Number,
-  name: String,
-  image: String,
-  email: String,
-  github: String,
-  portfolio: String
-})
-
-if(process.env.RESET_DB) {
-  const allCreators = async () => {
-    await creators.deleteMany();
-    creators.forEach(singleCreator => {
-      const newCreator = new Creator(singleCreator);
-      newCreator.save();
-    })
-  }
-  allCreators();
-}
  
 
-  
-
-// FAQ SCHEMA
-const Faq = mongoose.model("Faq",
-{
-  id: Number,
-  question: String,
-  answer: String
-})
 
 // Defines the port the app will run on. Defaults to 8080, but can be overridden
 // when starting the server. Example command to overwrite PORT env variable value:
@@ -109,22 +75,6 @@ app.get("/", (req, res) => {
   res.json(events);
 });
 
-// Get all games
-/* app.get("/creators", async (req, res) => {
-  res.json(creators)
-}); */
-app.get('/creators', async (req, res) => {
-  const allTheCreators = await Creators.find();
-  res.status(200).json(
-   allTheCreators
-  );
-});
-
-app.get("/faq", async (req, res) => {
-  const faq = await Faq.find();
-  res.send(faq);
-});
-
 // One event
 app.get("/events/:id", async (req, res) => {
   const oneEvent = await Event.findById(req.params.id);
@@ -133,9 +83,9 @@ app.get("/events/:id", async (req, res) => {
 
 // post a new event
 app.post("/events", async (req, res) => {
-  const {title, description, language, city, eventDate, place, createdAt, time/* */} = req.body;
+  const {title, description, language, city, eventDate, place, createdAt, time} = req.body;
   try{
-    const savedEvent = await new Event({title: title, description: description, language: language, city: city, eventDate: eventDate, place: place, time: time, createdAt: createdAt /**/}).save();
+    const savedEvent = await new Event({title: title, description: description, language: language, city: city, eventDate: eventDate, place: place, time: time, createdAt: createdAt}).save();
     res.status(201).json({success: true, response: savedEvent});
   }catch (err){
     res.status(400).json({success: false, message:'cannot post event'})

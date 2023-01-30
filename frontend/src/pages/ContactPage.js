@@ -1,21 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { InnerWrapper, PageContainer, Title } from 'utils/GlobalStyles'
-import { API_URL } from 'utils/urls'
 import mailimg from '../utils/assets/email.png'
 import githubimg from '../utils/assets/github.png'
 import portfolioimg from '../utils/assets/web.png'
 import styled from 'styled-components/macro'
+
 export const ContactPage = () => {
-
-    const [creators, setCreators] = useState([]);
-
-    useEffect(() => {
-        fetch(API_URL("creators"))
-          // eslint-disable-next-line no-undef
-          .then((res) => res.json())
-          .then((data) => setCreators(data))
-          .catch((error) => console.log(error))
-      }, [])
     
     return(
         <PageContainer>
@@ -24,31 +14,61 @@ export const ContactPage = () => {
                 <H2>Hello, Creators!</H2>
                     <P>Get in touch with our creators to know more about this project or our other projects</P>
                     <ContactDetailsContainer>
-                        {creators.map((creators) => (
-                    <CreatorContainer key={creators.id}>
+                    <CreatorContainer>
            <a
-              href={creators.portfolio}
+              href="https://kartikap.netlify.app/"
               target="_blank"
               rel="noreferrer"
               role="button">
-                <Img src={creators.image} alt="profpic" />
+                <Img src="https://i.ibb.co/B3K0Lrt/kartika-Edited.png" alt="profpic" />
             </a>
-            <CreatorInfoContainer><h4>{creators.name}</h4>
+            <CreatorInfoContainer><h4>Kartika Purwahyuningrum</h4>
             
             <IconContainer><a
-            href={`mailto: ${creators.email}`}
+            href={`mailto: tikaprw@gmail.com`}
             target="_blank"
             rel="noreferrer"
             role="button"><IconImg src={mailimg} alt='email'/>
             </a>
             <a
-            href={creators.github}
+            href="https://github.com/katirum"
             target="_blank"
             rel="noreferrer"
             role="button"><IconImg src={githubimg} alt='github'/>
             </a>
             <a
-            href={creators.portfolio}
+            href="https://kartikap.netlify.app/"
+            target="_blank"
+            rel="noreferrer"
+            role="button"><IconImg src={portfolioimg} alt='portfolio'/></a></IconContainer>
+            
+            </CreatorInfoContainer>
+            </CreatorContainer>
+
+            <CreatorContainer>
+           <a
+              href="https://neah-rockstroh-portfolio.netlify.app/"
+              target="_blank"
+              rel="noreferrer"
+              role="button">
+                <Img src="https://i.ibb.co/mhSSzgg/neah.jpg" alt="profpic" />
+            </a>
+            <CreatorInfoContainer><h4>Neah Rockstroh</h4>
+            
+            <IconContainer><a
+            href={`mailto: neah.rockstroh@gmail.com`}
+            target="_blank"
+            rel="noreferrer"
+            role="button"><IconImg src={mailimg} alt='email'/>
+            </a>
+            <a
+            href="https://github.com/Archkrull"
+            target="_blank"
+            rel="noreferrer"
+            role="button"><IconImg src={githubimg} alt='github'/>
+            </a>
+            <a
+            href="https://neah-rockstroh-portfolio.netlify.app/"
             target="_blank"
             rel="noreferrer"
             role="button"><IconImg src={portfolioimg} alt='portfolio'/></a></IconContainer>
@@ -56,7 +76,7 @@ export const ContactPage = () => {
             </CreatorInfoContainer>
             </CreatorContainer>
          
-        ))}</ContactDetailsContainer>
+        </ContactDetailsContainer>
                     
                 </InnerWrapper>  </PageContainer> 
                 )
